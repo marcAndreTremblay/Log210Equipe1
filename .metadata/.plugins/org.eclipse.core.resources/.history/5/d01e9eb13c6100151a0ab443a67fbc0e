@@ -1,0 +1,12 @@
+<jsp:include page="Header.jsp"/>
+        <p>Ceci est une page générée depuis une JSP.(Accueil)</p>
+        <p>
+        <a href= "/GestionnaireDeLivre/CreationCompteEtudiant"> etudiant </a>
+        <a href= "/GestionnaireDeLivre/CreationCompteGestionnaire"> gestionnaire </a>
+            <% 
+//            String attribut = (String) request.getAttribute("test");
+  //          out.println( attribut );
+            %>
+        </p>
+    </body>
+</html>
