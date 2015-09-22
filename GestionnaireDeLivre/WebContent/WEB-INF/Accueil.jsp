@@ -1,17 +1,5 @@
-<%@ page pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Accueil</title>
-    </head>
-    <body>
-        <p>Ceci est une page générée depuis une JSP.</p>
-        <p>
-            <% 
-//            String attribut = (String) request.getAttribute("test");
-  //          out.println( attribut );
-            %>
-        </p>
-    </body>
-</html>
+<jsp:include page="./CommandJSPImport/Header.jsp"/>
+	<h3>Accueil</h3>
+    <a href= "/GestionnaireDeLivre/CreationCompteEtudiant"> etudiant </a>
+    <a href= "/GestionnaireDeLivre/CreationCompteGestionnaire"> gestionnaire </a>
+<jsp:include page="./CommandJSPImport/Footer.jsp"/>
