@@ -203,3 +203,16 @@
 127.0.0.1 - - [22/Sep/2015:13:11:43 -0400] "GET / HTTP/1.1" 404 962
 127.0.0.1 - - [22/Sep/2015:13:11:48 -0400] "GET / HTTP/1.1" 404 962
 0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:12:09 -0400] "GET /GestionnaireDeLivre/CreationCompteGestionnaire HTTP/1.1" 200 4248
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:15:24 -0400] "GET /GestionnaireDeLivre/CreationCompteGestionnaire HTTP/1.1" 200 4249
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:15:24 -0400] "GET /GestionnaireDeLivre/css/demo.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:15:24 -0400] "GET /GestionnaireDeLivre/css/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:15:24 -0400] "GET /GestionnaireDeLivre/css/animate-custom.css HTTP/1.1" 304 -
+127.0.0.1 - - [22/Sep/2015:13:16:42 -0400] "GET / HTTP/1.1" 404 962
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:16:49 -0400] "GET /GestionnaireDeLivre/CreationCompteGestionnaire HTTP/1.1" 200 4253
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:16:49 -0400] "GET /GestionnaireDeLivre/css/demo.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:16:49 -0400] "GET /GestionnaireDeLivre/css/animate-custom.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:16:49 -0400] "GET /GestionnaireDeLivre/css/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:16:51 -0400] "GET /GestionnaireDeLivre/Login HTTP/1.1" 200 3514
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:16:53 -0400] "GET /GestionnaireDeLivre/CreationCompteEtudiant HTTP/1.1" 200 3898
+0:0:0:0:0:0:0:1 - - [22/Sep/2015:13:16:55 -0400] "GET /GestionnaireDeLivre/Login HTTP/1.1" 200 3514
+127.0.0.1 - - [22/Sep/2015:13:17:52 -0400] "GET / HTTP/1.1" 404 962
