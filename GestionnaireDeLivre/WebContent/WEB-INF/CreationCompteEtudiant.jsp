@@ -42,10 +42,16 @@
 									<a href= "/GestionnaireDeLivre/Login" class="to_register"> Se connecter </a>
 								</p>
                             </form>
-                        </div>
-						
+                        </div>			
                     </div>
                 </div>  
             </section>
         </div>
+        <!-- Pour gagner de l'espace -->
+				<table>
+				    <tr>
+				        <th height="100px"> </th>
+				    </tr>
+				</table>
+        <!-- Fin pour gagner de l'espace -->	
 <jsp:include page="./CommandJSPImport/Footer.jsp"/>

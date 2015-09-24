@@ -57,7 +57,7 @@
         <!-- Pour gagner de l'espace -->
 <table>
     <tr>
-        <th height="100px"> </th>
+        <th height="200px"> </th>
     </tr>
 </table>
         <!-- Fin pour gagner de l'espace -->

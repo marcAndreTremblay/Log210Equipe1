@@ -4,7 +4,7 @@
             <header>
 
 				<nav class="codrops-demos">
-
+					
 				</nav>
             </header>
             <section>				
@@ -17,18 +17,14 @@
 
                         <div id="login" class="animate form">
                             <form  action="mysuperscript.php" autocomplete="on"> 
-                                <h1>> Creation d'un compte gestionnaire </h1>
+                                <h1>> Creation d'un compte etudiant </h1>
                                 <p> 
                                     <label for="emailsignup" class="youmail" data-icon="e" > Votre email</label>
                                     <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="ex: mysupermail@mail.com"/>
                                 </p>
                                 <p>
-                                    <label for="usernamesignup" class="uname" data-icon="u">Nom de la coopérative</label>
-                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="ex: NomCoop" />
-                                </p>
-                                <p>
-                                    <label for="usernamesignup" class="uname" data-icon="u">Adresse de la coopérative</label>
-                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="ex: 541 rue Dubois" />
+                                    <label for="usernamesignup" class="uname" data-icon="u">Votre numéro de téléphone</label>
+                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="ex: 541 159 1835" />
                                 </p>
                                 <p> 
                                     <label for="passwordsignup" class="youpasswd" data-icon="p">Votre mot de passe</label>
@@ -47,20 +43,15 @@
 								</p>
                             </form>
                         </div>
-						
+		        <!-- Pour gagner de l'espace -->
+<table>
+    <tr>
+        <th height="100px"> </th>
+    </tr>
+</table>
+        <!-- Fin pour gagner de l'espace -->				
                     </div>
                 </div>  
             </section>
         </div>
-        
-        
-        <!-- Pour gagner de l'espace -->
-<table>
-    <tr>
-        <th height="200px"> </th>
-    </tr>
-</table>
-        <!-- Fin pour gagner de l'espace -->
-        
-        
 <jsp:include page="./CommandJSPImport/Footer.jsp"/>
