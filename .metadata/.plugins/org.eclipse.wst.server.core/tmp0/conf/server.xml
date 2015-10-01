@@ -126,7 +126,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="C:\Users\Mandaniaina\Documents\GitHub\log210\Log210Equipe9\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\Mandaniaina\Documents\GitHub\log210\Log210Equipe9\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\GestionnaireDeLivre" path="/GestionnaireDeLivre" reloadable="true" source="org.eclipse.jst.jee.server:GestionnaireDeLivre"/></Host>
+      <Context docBase="C:\Users\Trésor\Documents\GTI\3-Automne_2015\LOG_210\Log210Equipe9\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\Trésor\Documents\GTI\3-Automne_2015\LOG_210\Log210Equipe9\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\GestionnaireDeLivre" path="/GestionnaireDeLivre" reloadable="true" source="org.eclipse.jst.jee.server:GestionnaireDeLivre"/></Host>
     </Engine>
   </Service>
 </Server>

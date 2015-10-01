@@ -1,6 +1,0 @@
-<jsp:include page="./CommandJSPImport/Header.jsp"/>
-        <p>Ceci est une page générée depuis une JSP.(Accueil)</p>
-        <p>
-        <a href= "/GestionnaireDeLivre/CreationCompteEtudiant"> etudiant </a>
-        <a href= "/GestionnaireDeLivre/CreationCompteGestionnaire"> gestionnaire </a>
-<jsp:include page="./CommandJSPImport/Footer.jsp"/>
