@@ -55,8 +55,19 @@
             this.textBoxNewPhone = new System.Windows.Forms.TextBox();
             this.textBoxNewName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panelNewUserControler = new System.Windows.Forms.Panel();
+            this.panelNewCoop = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBoxCoopName = new System.Windows.Forms.TextBox();
+            this.textBoxCoopAdresse = new System.Windows.Forms.TextBox();
+            this.textBoxCoopContactInfo = new System.Windows.Forms.TextBox();
             this.panelLogin.SuspendLayout();
             this.panelNewUser.SuspendLayout();
+            this.panelNewUserControler.SuspendLayout();
+            this.panelNewCoop.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonQuit
@@ -82,7 +93,7 @@
             this.panelLogin.Controls.Add(this.label1);
             this.panelLogin.Controls.Add(this.textBoxPassword);
             this.panelLogin.Controls.Add(this.textBoxUsername);
-            this.panelLogin.Location = new System.Drawing.Point(9, 361);
+            this.panelLogin.Location = new System.Drawing.Point(9, 421);
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(300, 280);
             this.panelLogin.TabIndex = 8;
@@ -167,11 +178,10 @@
             // panelNewUser
             // 
             this.panelNewUser.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelNewUser.Controls.Add(this.panelNewCoop);
+            this.panelNewUser.Controls.Add(this.panelNewUserControler);
             this.panelNewUser.Controls.Add(this.label10);
             this.panelNewUser.Controls.Add(this.comboBUserType);
-            this.panelNewUser.Controls.Add(this.labelError);
-            this.panelNewUser.Controls.Add(this.buttonRetour);
-            this.panelNewUser.Controls.Add(this.buttonNewSignUp);
             this.panelNewUser.Controls.Add(this.label9);
             this.panelNewUser.Controls.Add(this.textBoxNewEmail);
             this.panelNewUser.Controls.Add(this.label8);
@@ -185,7 +195,7 @@
             this.panelNewUser.Controls.Add(this.label3);
             this.panelNewUser.Location = new System.Drawing.Point(9, 15);
             this.panelNewUser.Name = "panelNewUser";
-            this.panelNewUser.Size = new System.Drawing.Size(300, 320);
+            this.panelNewUser.Size = new System.Drawing.Size(300, 400);
             this.panelNewUser.TabIndex = 0;
             // 
             // label10
@@ -205,13 +215,14 @@
             this.comboBUserType.Name = "comboBUserType";
             this.comboBUserType.Size = new System.Drawing.Size(114, 21);
             this.comboBUserType.TabIndex = 25;
+            this.comboBUserType.SelectedIndexChanged += new System.EventHandler(this.comboBUserType_SelectedIndexChanged);
             // 
             // labelError
             // 
             this.labelError.AutoSize = true;
             this.labelError.BackColor = System.Drawing.SystemColors.Control;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(126, 231);
+            this.labelError.Location = new System.Drawing.Point(113, 1);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(82, 13);
             this.labelError.TabIndex = 24;
@@ -220,7 +231,7 @@
             // buttonRetour
             // 
             this.buttonRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRetour.Location = new System.Drawing.Point(212, 283);
+            this.buttonRetour.Location = new System.Drawing.Point(199, 53);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(80, 25);
             this.buttonRetour.TabIndex = 23;
@@ -231,7 +242,7 @@
             // buttonNewSignUp
             // 
             this.buttonNewSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNewSignUp.Location = new System.Drawing.Point(104, 250);
+            this.buttonNewSignUp.Location = new System.Drawing.Point(91, 20);
             this.buttonNewSignUp.Name = "buttonNewSignUp";
             this.buttonNewSignUp.Size = new System.Drawing.Size(134, 27);
             this.buttonNewSignUp.TabIndex = 13;
@@ -334,6 +345,92 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "New user";
             // 
+            // panelNewUserControler
+            // 
+            this.panelNewUserControler.Controls.Add(this.buttonNewSignUp);
+            this.panelNewUserControler.Controls.Add(this.buttonRetour);
+            this.panelNewUserControler.Controls.Add(this.labelError);
+            this.panelNewUserControler.Location = new System.Drawing.Point(8, 313);
+            this.panelNewUserControler.Name = "panelNewUserControler";
+            this.panelNewUserControler.Size = new System.Drawing.Size(283, 79);
+            this.panelNewUserControler.TabIndex = 27;
+            // 
+            // panelNewCoop
+            // 
+            this.panelNewCoop.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelNewCoop.Controls.Add(this.textBoxCoopContactInfo);
+            this.panelNewCoop.Controls.Add(this.textBoxCoopAdresse);
+            this.panelNewCoop.Controls.Add(this.textBoxCoopName);
+            this.panelNewCoop.Controls.Add(this.label14);
+            this.panelNewCoop.Controls.Add(this.label13);
+            this.panelNewCoop.Controls.Add(this.label12);
+            this.panelNewCoop.Controls.Add(this.label11);
+            this.panelNewCoop.Location = new System.Drawing.Point(8, 220);
+            this.panelNewCoop.Name = "panelNewCoop";
+            this.panelNewCoop.Size = new System.Drawing.Size(288, 90);
+            this.panelNewCoop.TabIndex = 28;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(0, 1);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(101, 16);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Cooperative :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(7, 35);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(74, 16);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Adresse :";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(9, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(57, 16);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Name :";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(5, 54);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(148, 16);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "Contact information :";
+            // 
+            // textBoxCoopName
+            // 
+            this.textBoxCoopName.Location = new System.Drawing.Point(154, 13);
+            this.textBoxCoopName.Name = "textBoxCoopName";
+            this.textBoxCoopName.Size = new System.Drawing.Size(124, 20);
+            this.textBoxCoopName.TabIndex = 29;
+            // 
+            // textBoxCoopAdresse
+            // 
+            this.textBoxCoopAdresse.Location = new System.Drawing.Point(154, 33);
+            this.textBoxCoopAdresse.Name = "textBoxCoopAdresse";
+            this.textBoxCoopAdresse.Size = new System.Drawing.Size(124, 20);
+            this.textBoxCoopAdresse.TabIndex = 33;
+            // 
+            // textBoxCoopContactInfo
+            // 
+            this.textBoxCoopContactInfo.Location = new System.Drawing.Point(154, 53);
+            this.textBoxCoopContactInfo.Name = "textBoxCoopContactInfo";
+            this.textBoxCoopContactInfo.Size = new System.Drawing.Size(124, 20);
+            this.textBoxCoopContactInfo.TabIndex = 34;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,6 +448,10 @@
             this.panelLogin.PerformLayout();
             this.panelNewUser.ResumeLayout(false);
             this.panelNewUser.PerformLayout();
+            this.panelNewUserControler.ResumeLayout(false);
+            this.panelNewUserControler.PerformLayout();
+            this.panelNewCoop.ResumeLayout(false);
+            this.panelNewCoop.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -384,5 +485,14 @@
         private System.Windows.Forms.Label labelLoginError;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBUserType;
+        private System.Windows.Forms.Panel panelNewCoop;
+        private System.Windows.Forms.Panel panelNewUserControler;
+        private System.Windows.Forms.TextBox textBoxCoopContactInfo;
+        private System.Windows.Forms.TextBox textBoxCoopAdresse;
+        private System.Windows.Forms.TextBox textBoxCoopName;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }

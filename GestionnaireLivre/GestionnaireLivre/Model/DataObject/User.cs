@@ -11,6 +11,7 @@ namespace GestionnaireLivre.Model.DataObject
         public string EmailAdress;
         public string UserTypeName;
         public int UserTypeID;
+        public int CoopRefID;
 
         public User(MySqlDataReader dataReader)
         {
@@ -21,7 +22,7 @@ namespace GestionnaireLivre.Model.DataObject
             EmailAdress = dataReader.GetValue(4).ToString();
             UserTypeName = dataReader.GetValue(5).ToString();
             UserTypeID = (int)dataReader.GetValue(6);
-       
+            CoopRefID = (int)dataReader.GetValue(7);
         }
     }
 
@@ -34,6 +35,7 @@ namespace GestionnaireLivre.Model.DataObject
         public string Username;
         public string EmailAdress;
         public int UserTypeID;
+        public int CoopRefID;
     }
 
 }

@@ -18,4 +18,12 @@ namespace GestionnaireLivre.Model.DataObject
             ContactInformation = dataReader.GetValue(3).ToString();
         }
     }
+
+    public struct NewCooperative
+    {
+        public string Name;
+        public string Adress;
+        public string ContactInformation;
+
+    }
 }

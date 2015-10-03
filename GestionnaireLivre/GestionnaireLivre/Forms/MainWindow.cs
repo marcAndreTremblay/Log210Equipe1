@@ -96,7 +96,7 @@ namespace GestionnaireLivre
         
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            User userinfo = DBService.RetrieveUserInfo(DBService.loginID);
+            User userinfo = DBService.RetrieveSpecificUser(DBService.loginID);
             labelWelcomeName.Text = "(" + userinfo .UserTypeName+ ")" + userinfo.Name;
             labelClientPhone.Text = userinfo.Phone;
 

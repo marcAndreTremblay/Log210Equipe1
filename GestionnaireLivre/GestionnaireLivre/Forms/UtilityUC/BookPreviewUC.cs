@@ -43,13 +43,7 @@ namespace GestionnaireLivre.Forms.UtilityUC
             Volume.VolumeInfoData.ImageLinksData links = book.VolumeInfo.ImageLinks;
             if (links != null)
             {
-                Image small = GetImageFromUrl(links.Small);
                 Image smallThumbnail = GetImageFromUrl(links.SmallThumbnail);
-
-                if (small != null)
-                {
-                    pictureBBookCover.Image = small;
-                }
                 if(smallThumbnail != null)
                 {
                     pictureBBookCover.Image = smallThumbnail;

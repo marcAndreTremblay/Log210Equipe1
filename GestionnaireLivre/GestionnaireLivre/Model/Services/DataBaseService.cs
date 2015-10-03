@@ -233,12 +233,32 @@ namespace GestionnaireLivre.Model.Services
 
             return cooperatives;
         }
-
-        public User RetrieveUserInfo(int userId)
+        public Cooperative RetrieveSpecificCooperatives(int coop_id)
         {
             OpenConnection();
 
-            MySqlCommand cmd = new MySqlCommand("RetrieveUserInfos", connection);
+            Cooperative cooperatives;
+
+            MySqlCommand cmd = new MySqlCommand("RetrieveSpecificCooperative", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            cooperatives = new Cooperative(rdr);
+            
+
+            CloseConnection();
+
+            return cooperatives;
+        }
+
+
+        public User RetrieveSpecificUser(int userId)
+        {
+            OpenConnection();
+
+            MySqlCommand cmd = new MySqlCommand("RetrieveSpecificUser", connection);
             
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add(new MySqlParameter("client_id", userId));
@@ -260,6 +280,28 @@ namespace GestionnaireLivre.Model.Services
             newUser.Password = Crypting.GetSHA512Hash(newUser.Password);
 
             MySqlCommand cmd = new MySqlCommand("RegisterUser", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new MySqlParameter("name", newUser.Name));
+                cmd.Parameters.Add(new MySqlParameter("phone", newUser.Phone));
+                cmd.Parameters.Add(new MySqlParameter("username", newUser.Username));
+                cmd.Parameters.Add(new MySqlParameter("password", newUser.Password));
+                cmd.Parameters.Add(new MySqlParameter("email", newUser.EmailAdress));
+                cmd.Parameters.Add(new MySqlParameter("fk_usertypeid", newUser.UserTypeID));
+                cmd.Parameters.Add(new MySqlParameter("fk_coop_ref", newUser.CoopRefID));
+            cmd.Connection.Open();
+            int i = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
+            if (i == 1) return true;
+            return false;
+        }
+
+        public bool RegisterAdminWithCoop(NewUser newUser, NewCooperative newCoop)
+        {
+
+            newUser.Password = Crypting.GetSHA512Hash(newUser.Password);
+
+            MySqlCommand cmd = new MySqlCommand("RegisterAdminWithCoop", connection);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new MySqlParameter("name", newUser.Name));
@@ -268,6 +310,9 @@ namespace GestionnaireLivre.Model.Services
             cmd.Parameters.Add(new MySqlParameter("password", newUser.Password));
             cmd.Parameters.Add(new MySqlParameter("email", newUser.EmailAdress));
             cmd.Parameters.Add(new MySqlParameter("fk_usertypeid", newUser.UserTypeID));
+            cmd.Parameters.Add(new MySqlParameter("coopName", newCoop.Name));
+            cmd.Parameters.Add(new MySqlParameter("coopAdress", newCoop.Adress));
+            cmd.Parameters.Add(new MySqlParameter("coopContactInfo", newCoop.ContactInformation));
 
             cmd.Connection.Open();
             int i = cmd.ExecuteNonQuery();
@@ -276,6 +321,7 @@ namespace GestionnaireLivre.Model.Services
             if (i == 1) return true;
             return false;
         }
+
         public bool RegisterBook(NewBook newBook)
         {
 

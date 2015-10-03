@@ -1,4 +1,4 @@
-﻿/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
@@ -82,6 +82,8 @@ CREATE TABLE `usertype` (
 
 
 
+
+
 DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -125,6 +127,7 @@ CREATE TABLE `user` (
   `Username` varchar(45) NOT NULL,
   `FK_usertype_id` int(11) NOT NULL,
   `Email` varchar(45) NOT NULL,
+   `FK_coop_ref` int(11) NULL,
   PRIMARY KEY (`PK_id`),
   UNIQUE INDEX `Username_UNIQUE` (`Username`),
   UNIQUE KEY `PK_id_UNIQUE` (`PK_id`),
@@ -135,17 +138,25 @@ CREATE TABLE `user` (
 
 
 
+
+
 DROP TABLE IF EXISTS `user_book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_book` (
   `FK_user_id` int(11) NOT NULL,
   `FK_book_id` int(11) NOT NULL,
-  KEY `PK_id_idx` (`FK_user_id`),
-  KEY `PK_id_idx1` (`FK_book_id`),
-  CONSTRAINT `BookID` FOREIGN KEY (`FK_book_id`) REFERENCES `book` (`PK_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `FK_userID` (`FK_user_id`),
+  KEY `FK_BookID` (`FK_book_id`),
+  CONSTRAINT `FK_BookID` FOREIGN KEY (`FK_book_id`) REFERENCES `book` (`PK_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+   CONSTRAINT `FK_userID` FOREIGN KEY (`FK_user_id`) REFERENCES `user` (`PK_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+
+
 
 
 
@@ -168,8 +179,13 @@ INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('4', 
 
 INSERT INTO `gestionnairebd`.`cooperative` (`PK_id`, `Name`, `Adress`, `Contactinfo`) VALUES ('1', 'Coopérative ETS', '231 something', '231 442 1234');
 
-INSERT INTO `gestionnairebd`.`user` (`PK_id`, `Name`, `Phone`, `Password`, `Username`, `FK_usertype_id`, `Email`) VALUES ('1', 'GodClient ', '4189999999', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'test', '1', 'god@paradise.god');
-INSERT INTO `gestionnairebd`.`user` (`PK_id`, `Name`, `Phone`, `Password`, `Username`, `FK_usertype_id`, `Email`) VALUES ('2', 'GodAdmin ', '4189999999', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'test1', '2', 'god@paradise.god');
+INSERT INTO `gestionnairebd`.`user` (`PK_id`, `Name`, `Phone`, `Password`, `Username`, `FK_usertype_id`, `Email`,`FK_coop_ref`) VALUES ('1', 'GodClient ', '4189999999', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'test', '1', 'god@paradise.god',0);
+INSERT INTO `gestionnairebd`.`user` (`PK_id`, `Name`, `Phone`, `Password`, `Username`, `FK_usertype_id`, `Email` , `FK_coop_ref`) VALUES ('2', 'GodAdmin ', '4189999999', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'test1', '2', 'god@paradise.god' ,1);
+
+
+
+
+
 
 
 DELIMITER ;
@@ -181,92 +197,31 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RegisterUser`(
     IN username VARCHAR(45),
     IN password VARCHAR(128),
     IN email VARCHAR(45),
-    IN fk_usertypeid INT(11))
+    IN fk_usertypeid INT(11),
+    IN fk_coop_ref INT(11))
 BEGIN
-   INSERT INTO user
-         (
-           Name, 
-           Phone, 
-           Password,
-           Username, 
-           FK_usertype_id,
-           Email 
-         )
-    VALUES 
-         ( 
-           name, 
-           phone, 
-           password,
-           username, 
-           fk_usertypeid,
-           email 
-         ) ; 
-END ;;
-
-
-
-
-
-DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `GetTransactionType` */;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetTransactionType`()
-BEGIN
-	select * from gestionnairebd.transactiontype;
-END ;;
-
-DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `RetrieveCooperatives` */;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveCooperatives`()
-BEGIN
-	select * from gestionnairebd.cooperative;
-END ;;
-
-DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `GetTransactionType` */;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetTransactionType`()
-BEGIN
-	select * from gestionnairebd.transactiontype;
-END ;;
-
-DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `GetTransactionStatus` */;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetTransactionStatus`()
-BEGIN
-	select * from gestionnairebd.transactionstatus;
-END ;;
-
-
-
-DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `GetUserType` */;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserType`()
-BEGIN
-	select * from gestionnairebd.usertype;
-END ;;
-
-DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `GetBookCondition` */;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBookCondition`()
-BEGIN
-	select * from gestionnairebd.bookcondition;
+	INSERT INTO `gestionnairebd`.`user` (`Name`, `Phone`, `Password`, `Username`, `FK_usertype_id`, `Email` , user.FK_coop_ref)
+   VALUES( name, phone, password,username, fk_usertypeid,email,fk_coop_ref) ; 
+   
 END ;;
 
 
 DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `RetrieveUserInfos` */;
+/*!50003 DROP PROCEDURE IF EXISTS `RegisterAdminWithCoop` */;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveUserInfos`(
-		in client_id int(11) )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RegisterAdminWithCoop`(
+	IN name VARCHAR(45),
+    IN phone VARCHAR(45),
+    IN username VARCHAR(45),
+    IN password VARCHAR(128),
+    IN email VARCHAR(45),
+	IN fk_usertypeid INT(11),
+    IN coopName VARCHAR(45),
+    IN coopAdress VARCHAR(45),
+    IN coopContactInfo VARCHAR(45))
 BEGIN
-	select user.PK_Id , user.Name , user.Phone , user.Username, user.Email , usertype.Name ,usertype.PK_id
-	from gestionnairebd.user , gestionnairebd.usertype
-	WHERE  user.PK_Id = client_id AND user.FK_usertype_id =  usertype.PK_Id ;
+    INSERT INTO `gestionnairebd`.`cooperative` ( `Name`, `Adress`, `Contactinfo`) VALUES ( coopName, coopAdress, coopContactInfo);     
+	call gestionnairebd.RegisterUser(name, phone, username, password, email, 2 ,LAST_INSERT_ID());
 END ;;
 
 DELIMITER ;
@@ -289,6 +244,86 @@ INSERT INTO `gestionnairebd`.`book` (`ISBN`, `Title`, `Author`, `Publishier`, `L
 
 INSERT INTO `gestionnairebd`.`user_book` (`FK_user_id`, `FK_book_id`) VALUES (bookSellerId, LAST_INSERT_ID());
 END ;;
+
+
+
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetTransactionType` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetTransactionType`()
+BEGIN
+	select * from gestionnairebd.transactiontype;
+END ;;
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetTransactionType` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetTransactionType`()
+BEGIN
+	select * from gestionnairebd.transactiontype;
+END ;;
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetTransactionStatus` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetTransactionStatus`()
+BEGIN
+	select * from gestionnairebd.transactionstatus;
+END ;;
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetUserType` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserType`()
+BEGIN
+	select * from gestionnairebd.usertype;
+END ;;
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `GetBookCondition` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetBookCondition`()
+BEGIN
+	select * from gestionnairebd.bookcondition;
+END ;;
+
+
+
+
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveSpecificUser` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveSpecificUser`(
+		in client_id int(11) )
+BEGIN
+	select user.PK_Id , user.Name , user.Phone , user.Username, user.Email , usertype.Name ,usertype.PK_id , user.FK_coop_ref
+	from gestionnairebd.user , gestionnairebd.usertype
+	WHERE  user.PK_Id = client_id AND user.FK_usertype_id =  usertype.PK_Id ;
+END ;;
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveCooperatives` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveCooperatives`()
+BEGIN
+	select * from gestionnairebd.cooperative;
+END ;;
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveSpecificCooperative` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveSpecificCooperative`(
+		in coop_id int(11) )
+BEGIN
+	select *
+	from gestionnairebd.cooperative
+	WHERE   gestionnairebd.cooperative.PK_id = coop_id;
+END ;;
+
+
+
 
 DELIMITER ;
 /*!50003 DROP PROCEDURE IF EXISTS `ValidateUserCrendentials` */;

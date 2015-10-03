@@ -19,7 +19,7 @@ namespace GestionnaireLivre
         private Point panelRecommendedTopLeft = new Point(10, 10);
       
         private Size loginStatePrefSize = new Size(320, 300);
-        private Size newUserStatePrefSize = new Size(320, 340);
+        private Size newUserStatePrefSize = new Size(320, 420);
 
         private FormWindowState currentState = FormWindowState.login;
         #endregion
@@ -104,10 +104,25 @@ namespace GestionnaireLivre
             UserType usertypeSelected = (UserType)comboBUserType.SelectedItem;
             newUser.UserTypeID = usertypeSelected.id;
 
-           result = DBService.RegisterUser(newUser);
+            if (usertypeSelected.name == "Admin")
+            {
+                if (textBoxCoopName.Text == "" || textBoxCoopName.Text.Length < 3) { labelError.Visible = true; return; }
+                if (textBoxCoopAdresse.Text == "" || textBoxCoopAdresse.Text.Length < 3) { labelError.Visible = true; return; }
+                if (textBoxCoopContactInfo.Text == "" || textBoxCoopContactInfo.Text.Length < 3) { labelError.Visible = true; return; }
 
-            
+                NewCooperative newCoop = new NewCooperative();
+                    newCoop.Adress = textBoxCoopAdresse.Text;
+                    newCoop.ContactInformation = textBoxCoopContactInfo.Text;
+                    newCoop.Name = textBoxCoopName.Text;
 
+                    result = DBService.RegisterAdminWithCoop(newUser, newCoop);
+            }
+            if (usertypeSelected.name == "Client")
+            {
+                result = DBService.RegisterUser(newUser);
+            }
+
+      
            if(result == false)
            {
                labelError.Visible = true;
@@ -187,6 +202,21 @@ namespace GestionnaireLivre
         {
             login,
             newUser
+        }
+
+        private void comboBUserType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox newSender = (ComboBox)sender;
+            UserType selectedType = (UserType)newSender.SelectedItem;
+
+            if(selectedType.name == "Client")
+            {
+                panelNewCoop.Visible = false;
+            }
+            if (selectedType.name == "Admin")
+            {
+                panelNewCoop.Visible = true;
+            }
         }
     }
 }
