@@ -1,0 +1,9 @@
+﻿<Properties StartupItem="GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.42f7391ae6c59f9f" />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.GestionnaireDeLivreMobile AndroidDesignerPreferredDevice="Nexus 4" />
+</Properties>

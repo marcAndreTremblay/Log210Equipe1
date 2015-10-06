@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">GestionnaireDeLivreMobile</string>
+  <string name="demande_type_code">Choisir un type de code</string>
+	
+    <string-array name="liste_code">
+      <item>ISBN</item>
+      <item>EAN</item>
+      <item>UPC</item>
+    </string-array>
+</resources>

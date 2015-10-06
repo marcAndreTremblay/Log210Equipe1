@@ -1,0 +1,6 @@
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile\obj\Debug\assemblies\GestionnaireDeLivreMobile.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile\obj\Debug\assemblies\Mono.Android.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile\obj\Debug\assemblies\mscorlib.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile\obj\Debug\assemblies\System.Core.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile\obj\Debug\assemblies\System.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile\obj\Debug\assemblies\System.Xml.dll
