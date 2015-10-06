@@ -1,2 +1,0 @@
-INDEX VERSION 1.127+C:\Users\Trésor\Documents\GTI\3-Automne_2015\LOG_210\Log210Equipe9\.metadata\.plugins\org.eclipse.jdt.core
-1406890638.index
