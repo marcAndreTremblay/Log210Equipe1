@@ -1,9 +1,0 @@
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\bin\Debug\GestionnaireDeLivre.UITests.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\bin\Debug\GestionnaireDeLivre.UITests.pdb
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\bin\Debug\nunit.framework.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\bin\Debug\Xamarin.UITest.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\bin\Debug\nunit.framework.xml
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\bin\Debug\Xamarin.UITest.xml
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\obj\Debug\GestionnaireDeLivre.UITests.csprojResolveAssemblyReference.cache
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\obj\Debug\GestionnaireDeLivre.UITests.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre.UITests\obj\Debug\GestionnaireDeLivre.UITests.pdb

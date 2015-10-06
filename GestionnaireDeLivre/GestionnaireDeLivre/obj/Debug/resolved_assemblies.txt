@@ -1,6 +1,0 @@
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre\obj\Debug\assemblies\GestionnaireDeLivre.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre\obj\Debug\assemblies\Mono.Android.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre\obj\Debug\assemblies\mscorlib.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre\obj\Debug\assemblies\System.Core.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre\obj\Debug\assemblies\System.dll
-C:\Users\Mandaniaina\Documents\Projects\GestionnaireDeLivre\GestionnaireDeLivre\obj\Debug\assemblies\System.Xml.dll
