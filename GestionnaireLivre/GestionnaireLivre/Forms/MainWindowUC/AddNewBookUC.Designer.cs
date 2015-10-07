@@ -55,6 +55,8 @@
             this.buttonRegisterNow = new System.Windows.Forms.Button();
             this.comboBBookState = new System.Windows.Forms.ComboBox();
             this.labelErrorSearch = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBoxCooperative = new System.Windows.Forms.ComboBox();
             this.panelSellPrice.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -271,7 +273,7 @@
             this.buttonRegisterNow.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonRegisterNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegisterNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRegisterNow.Location = new System.Drawing.Point(16, 374);
+            this.buttonRegisterNow.Location = new System.Drawing.Point(16, 420);
             this.buttonRegisterNow.Name = "buttonRegisterNow";
             this.buttonRegisterNow.Size = new System.Drawing.Size(225, 35);
             this.buttonRegisterNow.TabIndex = 24;
@@ -298,11 +300,31 @@
             this.labelErrorSearch.TabIndex = 26;
             this.labelErrorSearch.Text = "(Could not find anything)";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(14, 355);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(355, 16);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Witch cooperative are you going to deposite your book at?";
+            // 
+            // comboBoxCooperative
+            // 
+            this.comboBoxCooperative.FormattingEnabled = true;
+            this.comboBoxCooperative.Location = new System.Drawing.Point(16, 374);
+            this.comboBoxCooperative.Name = "comboBoxCooperative";
+            this.comboBoxCooperative.Size = new System.Drawing.Size(345, 21);
+            this.comboBoxCooperative.TabIndex = 28;
+            // 
             // AddNewBookUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
+            this.Controls.Add(this.comboBoxCooperative);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.labelErrorSearch);
             this.Controls.Add(this.comboBBookState);
             this.Controls.Add(this.buttonRegisterNow);
@@ -363,5 +385,7 @@
         private System.Windows.Forms.Button buttonRegisterNow;
         private System.Windows.Forms.ComboBox comboBBookState;
         private System.Windows.Forms.Label labelErrorSearch;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBoxCooperative;
     }
 }

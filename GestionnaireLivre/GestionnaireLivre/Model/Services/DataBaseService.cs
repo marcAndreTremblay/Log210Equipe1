@@ -218,7 +218,7 @@ namespace GestionnaireLivre.Model.Services
 
             List<Cooperative> cooperatives = new List<Cooperative>();
 
-            MySqlCommand cmd = new MySqlCommand("GetCooperative", connection);
+            MySqlCommand cmd = new MySqlCommand("RetrieveCooperatives", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -338,7 +338,7 @@ namespace GestionnaireLivre.Model.Services
             cmd.Parameters.Add(new MySqlParameter("price", newBook.price));
             cmd.Parameters.Add(new MySqlParameter("fk_bootcondition", newBook.FK_bookcondition));
             cmd.Parameters.Add(new MySqlParameter("fk_transactionType", newBook.FK_transactionType));
-
+            cmd.Parameters.Add(new MySqlParameter("fk_cooperativeid", newBook.FK_coop_ref));
             cmd.Connection.Open();
             int i = cmd.ExecuteNonQuery();
             cmd.Connection.Close();

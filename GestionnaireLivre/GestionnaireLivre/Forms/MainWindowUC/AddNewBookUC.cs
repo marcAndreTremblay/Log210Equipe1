@@ -34,8 +34,11 @@ namespace GestionnaireLivre.Forms.MainWindowUC
             DataBService = _dbService;
             BookSService = _bookSeachService;
             InitializeComponent();
-            
-
+            List<Cooperative> cooperative = DataBService.RetrieveCooperatives();
+            foreach (Cooperative coop in cooperative)
+            {
+                comboBoxCooperative.Items.Add(coop);
+            }
             List<BookCondition> bookCondition = DataBService.BookCondition;
             foreach(BookCondition bc in bookCondition)
             {
@@ -80,7 +83,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
 
             comboBBookState.SelectedIndex = 0;
             comboBBookCondition.SelectedIndex = 0;
-
+            comboBoxCooperative.SelectedIndex = 0;
             if (bookPreview != null)
             {
                 bookPreview.Visible = false;
@@ -186,7 +189,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
 
             BookCondition bookcconditionSelected = (BookCondition)comboBBookCondition.SelectedItem;
             TransactionType bookTransactionTypeSelected = (TransactionType)comboBBookState.SelectedItem;
-          
+            Cooperative selectedCoop = (Cooperative)comboBoxCooperative.SelectedItem;
 
             NewBook newbook = new NewBook();
                 newbook.Title = textBoxBookName.Text;
@@ -198,6 +201,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
                 newbook.price = Convert.ToInt32(textBPriceTag.Text);
                 newbook.FK_bookcondition = bookcconditionSelected.id;
                 newbook.FK_transactionType = bookTransactionTypeSelected.id;
+                newbook.FK_coop_ref = selectedCoop.id;
 
                 DialogResult result1 = MessageBox.Show("Confirme?",
                                                              "Important Question",

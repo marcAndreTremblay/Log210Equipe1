@@ -35,5 +35,6 @@ namespace GestionnaireLivre.Model.DataObject
 
         public int FK_bookcondition;
         public int FK_transactionType;
+        public int FK_coop_ref;
     }
 }

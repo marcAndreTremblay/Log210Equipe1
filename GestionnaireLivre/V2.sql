@@ -237,10 +237,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RegisterNewBook`(
      IN categorie VARCHAR(45),
     IN price int(11),
     IN fk_bootcondition int(11),
-     IN fk_transactionType int(11))
+     IN fk_transactionType int(11),
+     IN fk_cooperativeid int(11))
 BEGIN
 INSERT INTO `gestionnairebd`.`book` (`ISBN`, `Title`, `Author`, `Publishier`, `Language`, `Categorie` , `Price`, `NewOwnerId` , `IsTransactionDone` ,`timeCreated`, `FK_bookcondition`, `FK_transactionType`,`FK_transactionStatus`,`FK_cooperativeid`) 
-        VALUES (isbn, title, author, publishier, blanguage, categorie , price, NULL , FALSE , now(), fk_bootcondition,fk_transactionType,1,1);
+        VALUES (isbn, title, author, publishier, blanguage, categorie , price, NULL , FALSE , now(), fk_bootcondition,fk_transactionType,1,fk_cooperativeid);
 
 INSERT INTO `gestionnairebd`.`user_book` (`FK_user_id`, `FK_book_id`) VALUES (bookSellerId, LAST_INSERT_ID());
 END ;;

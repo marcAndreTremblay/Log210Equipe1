@@ -17,6 +17,12 @@ namespace GestionnaireLivre.Model.DataObject
             Adress = dataReader.GetValue(2).ToString();
             ContactInformation = dataReader.GetValue(3).ToString();
         }
+
+
+        public override string ToString()
+        {
+            return Name + " (" + Adress+")";
+        }
     }
 
     public struct NewCooperative
