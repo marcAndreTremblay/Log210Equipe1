@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 
 using GestionnaireLivre.Model.Services;
+using GestionnaireLivre.Model.DataObject;
 
 namespace GestionnaireLivre.Forms.MainUserControl
 {
@@ -21,6 +22,10 @@ namespace GestionnaireLivre.Forms.MainUserControl
         {
             DBService = dbService;
             InitializeComponent();
+
+
+            List<Book> myBook = DBService.RetriveBookBySellerId(DBService.loginID);
+
         }
     }
 }

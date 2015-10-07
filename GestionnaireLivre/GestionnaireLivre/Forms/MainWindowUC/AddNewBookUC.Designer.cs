@@ -56,7 +56,11 @@
             this.comboBBookState = new System.Windows.Forms.ComboBox();
             this.labelErrorSearch = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBoxCooperative = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBoxCodeEAN = new System.Windows.Forms.TextBox();
+            this.textBoxCodeUPC = new System.Windows.Forms.TextBox();
             this.panelSellPrice.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +78,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 110);
+            this.label2.Location = new System.Drawing.Point(13, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 16);
             this.label2.TabIndex = 1;
@@ -82,14 +86,14 @@
             // 
             // textBoxBookName
             // 
-            this.textBoxBookName.Location = new System.Drawing.Point(98, 107);
+            this.textBoxBookName.Location = new System.Drawing.Point(98, 148);
             this.textBoxBookName.Name = "textBoxBookName";
             this.textBoxBookName.Size = new System.Drawing.Size(168, 20);
             this.textBoxBookName.TabIndex = 2;
             // 
             // textBoxCodeISBN
             // 
-            this.textBoxCodeISBN.Location = new System.Drawing.Point(98, 81);
+            this.textBoxCodeISBN.Location = new System.Drawing.Point(98, 80);
             this.textBoxCodeISBN.Name = "textBoxCodeISBN";
             this.textBoxCodeISBN.Size = new System.Drawing.Size(168, 20);
             this.textBoxCodeISBN.TabIndex = 4;
@@ -108,7 +112,7 @@
             // 
             // textBoxAuthor
             // 
-            this.textBoxAuthor.Location = new System.Drawing.Point(98, 133);
+            this.textBoxAuthor.Location = new System.Drawing.Point(98, 174);
             this.textBoxAuthor.Name = "textBoxAuthor";
             this.textBoxAuthor.Size = new System.Drawing.Size(168, 20);
             this.textBoxAuthor.TabIndex = 6;
@@ -117,7 +121,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 135);
+            this.label4.Location = new System.Drawing.Point(13, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 16);
             this.label4.TabIndex = 5;
@@ -127,7 +131,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 160);
+            this.label5.Location = new System.Drawing.Point(13, 201);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 16);
             this.label5.TabIndex = 7;
@@ -135,7 +139,7 @@
             // 
             // textBoxPublisher
             // 
-            this.textBoxPublisher.Location = new System.Drawing.Point(98, 158);
+            this.textBoxPublisher.Location = new System.Drawing.Point(98, 199);
             this.textBoxPublisher.Name = "textBoxPublisher";
             this.textBoxPublisher.Size = new System.Drawing.Size(168, 20);
             this.textBoxPublisher.TabIndex = 8;
@@ -171,7 +175,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(14, 189);
+            this.label7.Location = new System.Drawing.Point(14, 230);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 16);
             this.label7.TabIndex = 11;
@@ -179,7 +183,7 @@
             // 
             // textBoxLanguage
             // 
-            this.textBoxLanguage.Location = new System.Drawing.Point(98, 185);
+            this.textBoxLanguage.Location = new System.Drawing.Point(98, 226);
             this.textBoxLanguage.Name = "textBoxLanguage";
             this.textBoxLanguage.Size = new System.Drawing.Size(168, 20);
             this.textBoxLanguage.TabIndex = 12;
@@ -188,7 +192,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(14, 267);
+            this.label8.Location = new System.Drawing.Point(14, 308);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(141, 16);
             this.label8.TabIndex = 13;
@@ -214,7 +218,7 @@
             // comboBBookCondition
             // 
             this.comboBBookCondition.FormattingEnabled = true;
-            this.comboBBookCondition.Location = new System.Drawing.Point(161, 266);
+            this.comboBBookCondition.Location = new System.Drawing.Point(161, 307);
             this.comboBBookCondition.Name = "comboBBookCondition";
             this.comboBBookCondition.Size = new System.Drawing.Size(105, 21);
             this.comboBBookCondition.TabIndex = 16;
@@ -234,7 +238,7 @@
             // 
             // textBCategorie
             // 
-            this.textBCategorie.Location = new System.Drawing.Point(98, 211);
+            this.textBCategorie.Location = new System.Drawing.Point(98, 252);
             this.textBCategorie.Name = "textBCategorie";
             this.textBCategorie.Size = new System.Drawing.Size(168, 20);
             this.textBCategorie.TabIndex = 19;
@@ -243,7 +247,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(14, 215);
+            this.label10.Location = new System.Drawing.Point(14, 256);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 16);
             this.label10.TabIndex = 18;
@@ -253,7 +257,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(13, 296);
+            this.label11.Location = new System.Drawing.Point(13, 337);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 16);
             this.label11.TabIndex = 22;
@@ -263,7 +267,7 @@
             // 
             this.panelSellPrice.Controls.Add(this.label9);
             this.panelSellPrice.Controls.Add(this.textBPriceTag);
-            this.panelSellPrice.Location = new System.Drawing.Point(16, 320);
+            this.panelSellPrice.Location = new System.Drawing.Point(16, 361);
             this.panelSellPrice.Name = "panelSellPrice";
             this.panelSellPrice.Size = new System.Drawing.Size(280, 27);
             this.panelSellPrice.TabIndex = 23;
@@ -273,7 +277,7 @@
             this.buttonRegisterNow.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonRegisterNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegisterNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRegisterNow.Location = new System.Drawing.Point(16, 420);
+            this.buttonRegisterNow.Location = new System.Drawing.Point(16, 461);
             this.buttonRegisterNow.Name = "buttonRegisterNow";
             this.buttonRegisterNow.Size = new System.Drawing.Size(225, 35);
             this.buttonRegisterNow.TabIndex = 24;
@@ -284,7 +288,7 @@
             // comboBBookState
             // 
             this.comboBBookState.FormattingEnabled = true;
-            this.comboBBookState.Location = new System.Drawing.Point(161, 293);
+            this.comboBBookState.Location = new System.Drawing.Point(161, 334);
             this.comboBBookState.Name = "comboBBookState";
             this.comboBBookState.Size = new System.Drawing.Size(105, 21);
             this.comboBBookState.TabIndex = 25;
@@ -304,26 +308,64 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(14, 355);
+            this.label12.Location = new System.Drawing.Point(14, 396);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(355, 16);
             this.label12.TabIndex = 27;
             this.label12.Text = "Witch cooperative are you going to deposite your book at?";
             // 
-            // comboBoxCooperative
+            // comboBox1
             // 
-            this.comboBoxCooperative.FormattingEnabled = true;
-            this.comboBoxCooperative.Location = new System.Drawing.Point(16, 374);
-            this.comboBoxCooperative.Name = "comboBoxCooperative";
-            this.comboBoxCooperative.Size = new System.Drawing.Size(345, 21);
-            this.comboBoxCooperative.TabIndex = 28;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(16, 415);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(345, 21);
+            this.comboBox1.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(13, 107);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 16);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "Code EAN";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(13, 129);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(72, 16);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Code UPC";
+            // 
+            // textBoxCodeEAN
+            // 
+            this.textBoxCodeEAN.Location = new System.Drawing.Point(98, 103);
+            this.textBoxCodeEAN.Name = "textBoxCodeEAN";
+            this.textBoxCodeEAN.Size = new System.Drawing.Size(168, 20);
+            this.textBoxCodeEAN.TabIndex = 32;
+            // 
+            // textBoxCodeUPC
+            // 
+            this.textBoxCodeUPC.Location = new System.Drawing.Point(98, 126);
+            this.textBoxCodeUPC.Name = "textBoxCodeUPC";
+            this.textBoxCodeUPC.Size = new System.Drawing.Size(168, 20);
+            this.textBoxCodeUPC.TabIndex = 33;
             // 
             // AddNewBookUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.Controls.Add(this.comboBoxCooperative);
+            this.Controls.Add(this.textBoxCodeUPC);
+            this.Controls.Add(this.textBoxCodeEAN);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.labelErrorSearch);
             this.Controls.Add(this.comboBBookState);
@@ -386,6 +428,10 @@
         private System.Windows.Forms.ComboBox comboBBookState;
         private System.Windows.Forms.Label labelErrorSearch;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBoxCooperative;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxCodeEAN;
+        private System.Windows.Forms.TextBox textBoxCodeUPC;
     }
 }

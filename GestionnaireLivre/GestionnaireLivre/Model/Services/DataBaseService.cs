@@ -252,8 +252,6 @@ namespace GestionnaireLivre.Model.Services
 
             return cooperatives;
         }
-
-
         public User RetrieveSpecificUser(int userId)
         {
             OpenConnection();
@@ -274,6 +272,30 @@ namespace GestionnaireLivre.Model.Services
 
             return newUser;
         }
+        public List<Book> RetriveBookBySellerId(int sellerId)
+        {
+            OpenConnection();
+
+            List<Book> bookList = new List<Book>();
+
+            MySqlCommand cmd = new MySqlCommand("RetrieveBooksBySellerId", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(new MySqlParameter("client_id", sellerId));
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bookList.Add(new Book(rdr));
+            }
+
+            CloseConnection();
+
+            return bookList;
+        }
+
+
         public bool RegisterUser(NewUser newUser)
         {
 
@@ -295,7 +317,6 @@ namespace GestionnaireLivre.Model.Services
             if (i == 1) return true;
             return false;
         }
-
         public bool RegisterAdminWithCoop(NewUser newUser, NewCooperative newCoop)
         {
 
@@ -321,25 +342,26 @@ namespace GestionnaireLivre.Model.Services
             if (i == 1) return true;
             return false;
         }
-
         public bool RegisterBook(NewBook newBook)
         {
 
             MySqlCommand cmd = new MySqlCommand("RegisterNewBook", connection);
 
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new MySqlParameter("bookSellerId", loginID));
-            cmd.Parameters.Add(new MySqlParameter("isbn", newBook.ISBN));
-            cmd.Parameters.Add(new MySqlParameter("title", newBook.Title));
-            cmd.Parameters.Add(new MySqlParameter("author", newBook.Author));
-            cmd.Parameters.Add(new MySqlParameter("publishier", newBook.Publishier));
-            cmd.Parameters.Add(new MySqlParameter("blanguage", newBook.Language));
-            cmd.Parameters.Add(new MySqlParameter("categorie", newBook.Categorie));
-            cmd.Parameters.Add(new MySqlParameter("price", newBook.price));
-            cmd.Parameters.Add(new MySqlParameter("fk_bootcondition", newBook.FK_bookcondition));
-            cmd.Parameters.Add(new MySqlParameter("fk_transactionType", newBook.FK_transactionType));
-            cmd.Parameters.Add(new MySqlParameter("fk_cooperativeid", newBook.FK_coop_ref));
-            cmd.Connection.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new MySqlParameter("bookSellerId", loginID));
+                cmd.Parameters.Add(new MySqlParameter("isbn", newBook.ISBN));
+                cmd.Parameters.Add(new MySqlParameter("eancode", newBook.EANcode));
+                cmd.Parameters.Add(new MySqlParameter("upccode", newBook.UPCcode));
+                cmd.Parameters.Add(new MySqlParameter("title", newBook.Title));
+                cmd.Parameters.Add(new MySqlParameter("author", newBook.Author));
+                cmd.Parameters.Add(new MySqlParameter("publishier", newBook.Publishier));
+                cmd.Parameters.Add(new MySqlParameter("blanguage", newBook.Language));
+                cmd.Parameters.Add(new MySqlParameter("categorie", newBook.Categorie));
+                cmd.Parameters.Add(new MySqlParameter("price", newBook.price));
+                cmd.Parameters.Add(new MySqlParameter("fk_bootcondition", newBook.FK_bookcondition));
+                cmd.Parameters.Add(new MySqlParameter("fk_transactionType", newBook.FK_transactionType));
+                cmd.Parameters.Add(new MySqlParameter("fk_cooperativeid", newBook.FK_coop_ref));
+                cmd.Connection.Open();
             int i = cmd.ExecuteNonQuery();
             cmd.Connection.Close();
 

@@ -37,7 +37,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
             List<Cooperative> cooperative = DataBService.RetrieveCooperatives();
             foreach (Cooperative coop in cooperative)
             {
-                comboBoxCooperative.Items.Add(coop);
+                comboBox1.Items.Add(coop);
             }
             List<BookCondition> bookCondition = DataBService.BookCondition;
             foreach(BookCondition bc in bookCondition)
@@ -83,7 +83,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
 
             comboBBookState.SelectedIndex = 0;
             comboBBookCondition.SelectedIndex = 0;
-            comboBoxCooperative.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
             if (bookPreview != null)
             {
                 bookPreview.Visible = false;
@@ -186,19 +186,24 @@ namespace GestionnaireLivre.Forms.MainWindowUC
 
         private void buttonRegisterNow_Click(object sender, EventArgs e)
         {
+            
+            double price;
+            if (textBPriceTag.Text.Length > 0 && Double.TryParse(textBPriceTag.Text, out price))
+            {
+                BookCondition bookcconditionSelected = (BookCondition)comboBBookCondition.SelectedItem;
+                TransactionType bookTransactionTypeSelected = (TransactionType)comboBBookState.SelectedItem;
+                Cooperative selectedCoop = (Cooperative)comboBox1.SelectedItem;
 
-            BookCondition bookcconditionSelected = (BookCondition)comboBBookCondition.SelectedItem;
-            TransactionType bookTransactionTypeSelected = (TransactionType)comboBBookState.SelectedItem;
-            Cooperative selectedCoop = (Cooperative)comboBoxCooperative.SelectedItem;
-
-            NewBook newbook = new NewBook();
+                NewBook newbook = new NewBook();
                 newbook.Title = textBoxBookName.Text;
-                newbook.Author =  textBoxAuthor.Text;
+                newbook.Author = textBoxAuthor.Text;
                 newbook.ISBN = textBoxCodeISBN.Text;
+                newbook.UPCcode = textBoxCodeUPC.Text;
+                newbook.EANcode = textBoxCodeEAN.Text;
                 newbook.Language = textBoxLanguage.Text;
                 newbook.Categorie = textBCategorie.Text;
                 newbook.Publishier = textBoxPublisher.Text;
-                newbook.price = Convert.ToInt32(textBPriceTag.Text);
+                newbook.price = price;
                 newbook.FK_bookcondition = bookcconditionSelected.id;
                 newbook.FK_transactionType = bookTransactionTypeSelected.id;
                 newbook.FK_coop_ref = selectedCoop.id;
@@ -209,11 +214,12 @@ namespace GestionnaireLivre.Forms.MainWindowUC
                 if (result1 == DialogResult.Yes)
                 {
                     bool result = DataBService.RegisterBook(newbook);
-                    if(result == true)
+                    if (result == true)
                     {
                         ClearPage();
                     }
                 }
+            }
         }
 
 

@@ -89,13 +89,15 @@ DROP TABLE IF EXISTS `book`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book` (
   `PK_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ISBN` varchar(45) NOT NULL,
+  `ISBN` varchar(45)  NULL,
+  `EANcode` varchar(45)  NULL,
+   `UPCcode` varchar(45)  NULL,
   `Title` varchar(255) NOT NULL,
   `Author` varchar(45)  NULL,
   `Publishier` varchar(45)  NULL,
   `Language` varchar(45)  NULL,
    `Categorie` varchar(45)  NULL,
-  `Price` int(11) NOT NULL,
+  `Price` double NOT NULL,
 	`NewOwnerId` int(11)  ,
    `IsTransactionDone` bool,
   `timeCreated` datetime DEFAULT NULL,
@@ -230,18 +232,20 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RegisterNewBook`(
 	IN bookSellerId int(11),
 	IN isbn VARCHAR(45),
+    IN eancode VARCHAR(45),
+    IN upccode VARCHAR(45),
     IN title varchar(255),
     IN author VARCHAR(45),
     IN publishier VARCHAR(45),
     IN blanguage VARCHAR(45),
      IN categorie VARCHAR(45),
-    IN price int(11),
+    IN price double,
     IN fk_bootcondition int(11),
      IN fk_transactionType int(11),
      IN fk_cooperativeid int(11))
 BEGIN
-INSERT INTO `gestionnairebd`.`book` (`ISBN`, `Title`, `Author`, `Publishier`, `Language`, `Categorie` , `Price`, `NewOwnerId` , `IsTransactionDone` ,`timeCreated`, `FK_bookcondition`, `FK_transactionType`,`FK_transactionStatus`,`FK_cooperativeid`) 
-        VALUES (isbn, title, author, publishier, blanguage, categorie , price, NULL , FALSE , now(), fk_bootcondition,fk_transactionType,1,fk_cooperativeid);
+INSERT INTO `gestionnairebd`.`book` (`ISBN`, `EANcode`, `UPCcode`, `Title`, `Author`, `Publishier`, `Language`, `Categorie` , `Price`, `NewOwnerId` , `IsTransactionDone` ,`timeCreated`, `FK_bookcondition`, `FK_transactionType`,`FK_transactionStatus`,`FK_cooperativeid`) 
+        VALUES (isbn,eancode,upccode, title, author, publishier, blanguage, categorie , price, NULL , FALSE , now(), fk_bootcondition,fk_transactionType,1,fk_cooperativeid);
 
 INSERT INTO `gestionnairebd`.`user_book` (`FK_user_id`, `FK_book_id`) VALUES (bookSellerId, LAST_INSERT_ID());
 END ;;
@@ -289,7 +293,27 @@ BEGIN
 	select * from gestionnairebd.bookcondition;
 END ;;
 
-
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveBooksBySellerId` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveBooksBySellerId`(
+		in client_id int(11) )
+BEGIN
+	select book.* ,  
+		transactiontype.Name as transactionType,
+		bookcondition.Description as conditionDescription,
+		transactionstatus.Name as transactionStatus
+    from gestionnairebd.book , 
+		gestionnairebd.user_book , 
+		gestionnairebd.transactiontype ,
+		gestionnairebd.bookcondition ,
+		gestionnairebd.transactionstatus
+	WHERE  user_book.FK_user_id = 1 
+		and  book.PK_id = user_book.FK_book_id
+		and book.FK_bookcondition = bookcondition.PK_id
+		and book.FK_transactionType = transactiontype.PK_id 
+        and book.FK_transactionStatus = transactionstatus.PK_id;
+END ;;
 
 
 

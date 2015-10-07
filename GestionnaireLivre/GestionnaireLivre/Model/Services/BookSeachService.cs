@@ -11,6 +11,10 @@ using Google.Apis.Books.v1.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 
+using System.Net;
+using System.IO;
+using System.Drawing;
+
 namespace GestionnaireLivre.Model.Services
 {
     public class  BookSeachService
@@ -27,11 +31,25 @@ namespace GestionnaireLivre.Model.Services
         }
 
         //0071807993
-                
 
+        public static Image GetImageFromUrl(string url)
+        {
+            HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+
+            using (HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse())
+            {
+                using (Stream stream = httpWebReponse.GetResponseStream())
+                {
+                    return Image.FromStream(stream);
+                }
+            }
+        }
 
         public async Task<Volume> SearchBookISBN(string isbn)
         {
+
+            
+
             var result = await GoogleBookSeachAPIService.Volumes.List(isbn).ExecuteAsync();
             if (result != null && result.Items!=null)
             {
