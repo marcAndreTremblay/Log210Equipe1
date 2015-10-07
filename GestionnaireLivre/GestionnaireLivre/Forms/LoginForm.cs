@@ -92,54 +92,61 @@ namespace GestionnaireLivre
             if (textBoxNewUsername.Text == "" || textBoxNewUsername.Text.Length < 4){ labelError.Visible = true; return;}
             if (textBoxNewEmail.Text == "" || textBoxNewEmail.Text.Length <= 6){ labelError.Visible = true; return;}
 
-            NewUser newUser = new NewUser();
-            newUser.Name = textBoxNewName.Text;
-            newUser.Phone = textBoxNewPhone.Text;
-            newUser.Password = textBoxNewPassword.Text;
-            newUser.Username = textBoxNewUsername.Text;
-            newUser.EmailAdress = textBoxNewEmail.Text;
 
-            bool result= false;
-
-            UserType usertypeSelected = (UserType)comboBUserType.SelectedItem;
-            newUser.UserTypeID = usertypeSelected.id;
-
-            if (usertypeSelected.name == "Admin")
+            bool emailTestResult = StringValidatorService.IsValidEmailAdress(textBoxNewEmail.Text);
+            if (emailTestResult == true)
             {
-                if (textBoxCoopName.Text == "" || textBoxCoopName.Text.Length < 3) { labelError.Visible = true; return; }
-                if (textBoxCoopAdresse.Text == "" || textBoxCoopAdresse.Text.Length < 3) { labelError.Visible = true; return; }
-                if (textBoxCoopContactInfo.Text == "" || textBoxCoopContactInfo.Text.Length < 3) { labelError.Visible = true; return; }
+                NewUser newUser = new NewUser();
+                newUser.Name = textBoxNewName.Text;
+                newUser.Phone = textBoxNewPhone.Text;
+                newUser.Password = textBoxNewPassword.Text;
+                newUser.Username = textBoxNewUsername.Text;
+                newUser.EmailAdress = textBoxNewEmail.Text;
 
-                NewCooperative newCoop = new NewCooperative();
+                bool result = false;
+
+                UserType usertypeSelected = (UserType)comboBUserType.SelectedItem;
+                newUser.UserTypeID = usertypeSelected.id;
+
+                if (usertypeSelected.name == "Admin")
+                {
+                    if (textBoxCoopName.Text == "" || textBoxCoopName.Text.Length < 3) { labelError.Visible = true; return; }
+                    if (textBoxCoopAdresse.Text == "" || textBoxCoopAdresse.Text.Length < 3) { labelError.Visible = true; return; }
+                    if (textBoxCoopContactInfo.Text == "" || textBoxCoopContactInfo.Text.Length < 3) { labelError.Visible = true; return; }
+
+                    NewCooperative newCoop = new NewCooperative();
                     newCoop.Adress = textBoxCoopAdresse.Text;
                     newCoop.ContactInformation = textBoxCoopContactInfo.Text;
                     newCoop.Name = textBoxCoopName.Text;
 
                     result = DBService.RegisterAdminWithCoop(newUser, newCoop);
+                }
+                if (usertypeSelected.name == "Client")
+                {
+                    result = DBService.RegisterUser(newUser);
+                }
+
+
+                if (result == false)
+                {
+                    labelError.Visible = true;
+                }
+                else
+                {
+                    ResetLoginPanel();
+
+                    textBoxUsername.Text = newUser.Username;
+
+                    ResetNewUserPanel();
+
+                    this.currentState = FormWindowState.login;
+                    this.Invalidate(true);
+
+                    textBoxPassword.Focus();
+                }
             }
-            if (usertypeSelected.name == "Client")
-            {
-                result = DBService.RegisterUser(newUser);
-            }
 
-      
-           if(result == false)
-           {
-               labelError.Visible = true;
-           }
-           else
-           {
-               ResetLoginPanel();
 
-               textBoxUsername.Text = newUser.Username;
-
-               ResetNewUserPanel();
-              
-               this.currentState = FormWindowState.login;
-               this.Invalidate(true);
-
-               textBoxPassword.Focus();
-           }
         }
         #endregion
 

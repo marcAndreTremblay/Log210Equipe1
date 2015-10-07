@@ -186,9 +186,11 @@ namespace GestionnaireLivre.Forms.MainWindowUC
 
         private void buttonRegisterNow_Click(object sender, EventArgs e)
         {
-            
+
+
             double price;
-            if (textBPriceTag.Text.Length > 0 && Double.TryParse(textBPriceTag.Text, out price))
+            if (textBPriceTag.Text.Length > 0 && Double.TryParse(textBPriceTag.Text, out price) &&
+                String.IsNullOrEmpty(textBoxBookName.Text) == false)
             {
                 BookCondition bookcconditionSelected = (BookCondition)comboBBookCondition.SelectedItem;
                 TransactionType bookTransactionTypeSelected = (TransactionType)comboBBookState.SelectedItem;
@@ -208,9 +210,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
                 newbook.FK_transactionType = bookTransactionTypeSelected.id;
                 newbook.FK_coop_ref = selectedCoop.id;
 
-                DialogResult result1 = MessageBox.Show("Confirme?",
-                                                             "Important Question",
-                                                             MessageBoxButtons.YesNo);
+                DialogResult result1 = MessageBox.Show("Confirme?","Important Question",MessageBoxButtons.YesNo);
                 if (result1 == DialogResult.Yes)
                 {
                     bool result = DataBService.RegisterBook(newbook);
