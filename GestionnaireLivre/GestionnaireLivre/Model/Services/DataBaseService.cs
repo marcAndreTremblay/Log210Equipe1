@@ -272,6 +272,7 @@ namespace GestionnaireLivre.Model.Services
             return coop;
         }
        
+        //somechange
         
         /// <summary>
         /// Retrive all the informations 
