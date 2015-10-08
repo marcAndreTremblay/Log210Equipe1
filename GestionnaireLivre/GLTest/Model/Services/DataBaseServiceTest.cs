@@ -141,6 +141,7 @@ namespace GLTest.Model.Services
         public void TestRegisterNewUserClient()
         {
             //Note(Marc): there is a problem when this test is run twice because the username is not unique maybe randomise it?
+            //Maybe reset the bd?
             DataBaseService sut = new DataBaseService();
             NewUser newu = DataObjectFctory.BuildNewUserClient();
 

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
-  <TopNode>[0-1005]GLTest.Model.CryptingTest.TestMD5Crypting</TopNode>
-  <SelectedNode>[0-1000]C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\Project2.nunit</SelectedNode>
+  <TopNode>[0-1000]C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\Project2.nunit</TopNode>
+  <SelectedNode>[0-1028]C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\GLTest.dll</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\Project2.nunit" Expanded="true" />
-    <Node UniqueName="[0-1027]C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\GLTest.dll" Expanded="true" />
-    <Node UniqueName="[0-1028]GLTest" Expanded="true" />
-    <Node UniqueName="[0-1029]GLTest.Model" Expanded="true" />
+    <Node UniqueName="[0-1028]C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\GLTest.dll" Expanded="true" />
+    <Node UniqueName="[0-1029]GLTest" Expanded="true" />
+    <Node UniqueName="[0-1030]GLTest.Model" Expanded="true" />
     <Node UniqueName="[0-1001]GLTest.Model.CryptingTest" Expanded="true" />
     <Node UniqueName="[0-1005]GLTest.Model.CryptingTest.TestMD5Crypting" Expanded="true" />
     <Node UniqueName="[0-1002]GLTest.Model.CryptingTest.TestSHA512Crypting" Expanded="true" />
-    <Node UniqueName="[0-1030]GLTest.Model.Services" Expanded="true" />
+    <Node UniqueName="[0-1031]GLTest.Model.Services" Expanded="true" />
     <Node UniqueName="[0-1008]GLTest.Model.Services.DataBaseServiceTest" Expanded="true" />
     <Node UniqueName="[0-1009]GLTest.Model.Services.DataBaseServiceTest.TestCheckUserCrendential" Expanded="true" />
-    <Node UniqueName="[0-1022]GLTest.Model.Services.DataBaseServiceTest.TestRetriveSpecificCoopInfo" Expanded="true" />
   </Nodes>
 </VisualState>
