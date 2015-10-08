@@ -264,11 +264,19 @@ namespace GestionnaireLivre.Model.Services
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
             dataReader.Read();
-
-            User newUser = new User(dataReader);
+            User newUser;
+           if( dataReader.HasRows == true)
+           {
+                newUser = new User(dataReader);
+            }
+           else
+           {
+               newUser = new User();
+               newUser.Id = -1;
+           }
             
-
             CloseConnection();
+            
 
             return newUser;
         }
