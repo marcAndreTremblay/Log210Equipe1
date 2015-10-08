@@ -27,8 +27,8 @@ C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin
 C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\GLTest.pdb
 C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\GestionnaireLivre.exe
 C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\nunit.framework.dll
-C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\MySql.Data.dll
 C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\Google.Apis.Books.v1.dll
+C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\MySql.Data.dll
 C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\Google.Apis.dll
 C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\Google.Apis.Core.dll
 C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\Newtonsoft.Json.dll
