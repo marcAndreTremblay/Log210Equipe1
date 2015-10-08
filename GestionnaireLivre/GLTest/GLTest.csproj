@@ -69,6 +69,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Factory\DataObjectFctory.cs" />
     <Compile Include="Model\CryptingTest.cs" />
     <Compile Include="Model\Services\DataBaseServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

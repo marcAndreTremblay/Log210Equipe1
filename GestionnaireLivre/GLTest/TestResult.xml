@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\Project2.nunit" total="19" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-10-08" time="10:40:17">
+<test-results name="C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\Project2.nunit" total="20" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-10-08" time="11:25:07">
   <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.8009" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest" machine-name="MARCCARBON-PC" user="Marc" user-domain="MarcCarbon-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\Project2.nunit" executed="True" result="Success" success="True" time="1.118" asserts="0">
+  <test-suite type="Project" name="C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\Project2.nunit" executed="True" result="Success" success="True" time="0.173" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\GLTest.dll" executed="True" result="Success" success="True" time="1.100" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\Marc-André\Documents\GitHub\Log210Equipe9\GestionnaireLivre\GLTest\bin\Debug\GLTest.dll" executed="True" result="Success" success="True" time="0.173" asserts="0">
         <results>
-          <test-suite type="Namespace" name="GLTest" executed="True" result="Success" success="True" time="1.100" asserts="0">
+          <test-suite type="Namespace" name="GLTest" executed="True" result="Success" success="True" time="0.172" asserts="0">
             <results>
-              <test-suite type="Namespace" name="Model" executed="True" result="Success" success="True" time="1.099" asserts="0">
+              <test-suite type="Namespace" name="Model" executed="True" result="Success" success="True" time="0.172" asserts="0">
                 <results>
-                  <test-suite type="TestFixture" name="CryptingTest" executed="True" result="Success" success="True" time="0.083" asserts="0">
+                  <test-suite type="TestFixture" name="CryptingTest" executed="True" result="Success" success="True" time="0.018" asserts="0">
                     <results>
-                      <test-suite type="ParameterizedTest" name="TestMD5Crypting" executed="True" result="Success" success="True" time="0.066" asserts="0">
+                      <test-suite type="ParameterizedTest" name="TestMD5Crypting" executed="True" result="Success" success="True" time="0.006" asserts="0">
                         <results>
-                          <test-case name="GLTest.Model.CryptingTest.Different pass " executed="True" result="Success" success="True" time="0.055" asserts="1" />
+                          <test-case name="GLTest.Model.CryptingTest.Different pass " executed="True" result="Success" success="True" time="0.001" asserts="1" />
                           <test-case name="GLTest.Model.CryptingTest.Same pass" executed="True" result="Success" success="True" time="0.000" asserts="1" />
                         </results>
                       </test-suite>
@@ -27,27 +27,28 @@
                       </test-suite>
                     </results>
                   </test-suite>
-                  <test-suite type="Namespace" name="Services" executed="True" result="Success" success="True" time="1.005" asserts="0">
+                  <test-suite type="Namespace" name="Services" executed="True" result="Success" success="True" time="0.147" asserts="0">
                     <results>
-                      <test-suite type="TestFixture" name="DataBaseServiceTest" executed="True" result="Success" success="True" time="1.004" asserts="0">
+                      <test-suite type="TestFixture" name="DataBaseServiceTest" executed="True" result="Success" success="True" time="0.146" asserts="0">
                         <results>
-                          <test-suite type="ParameterizedTest" name="TestCheckUserCrendential" executed="True" result="Success" success="True" time="0.887" asserts="0">
+                          <test-suite type="ParameterizedTest" name="TestCheckUserCrendential" executed="True" result="Success" success="True" time="0.023" asserts="0">
                             <results>
-                              <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestRightUserCrendential" executed="True" result="Success" success="True" time="0.876" asserts="1" />
-                              <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestRightUserCrendential" executed="True" result="Success" success="True" time="0.003" asserts="1" />
-                              <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestWrongUserCrendential" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestWrongUserCrendential" executed="True" result="Success" success="True" time="0.013" asserts="1" />
+                              <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestRightUserCrendential" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                              <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestRightUserCrendential" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                             </results>
                           </test-suite>
-                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestConnection" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestConnection" executed="True" result="Success" success="True" time="0.002" asserts="1" />
                           <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestGetBookConditionDataAcess" executed="True" result="Success" success="True" time="0.010" asserts="1" />
-                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestGetTransactionStatusDataAcess" executed="True" result="Success" success="True" time="0.011" asserts="1" />
-                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestGetTransactionTypeDataAcess" executed="True" result="Success" success="True" time="0.012" asserts="1" />
-                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestGetUserTypeDataAcess" executed="True" result="Success" success="True" time="0.011" asserts="1" />
-                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestRetriveCooperativeDataAcess" executed="True" result="Success" success="True" time="0.011" asserts="1" />
+                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestGetTransactionStatusDataAcess" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestGetTransactionTypeDataAcess" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestGetUserTypeDataAcess" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestRegisterNewUserClient" executed="True" result="Success" success="True" time="0.007" asserts="1" />
+                          <test-case name="GLTest.Model.Services.DataBaseServiceTest.TestRetriveCooperativeDataAcess" executed="True" result="Success" success="True" time="0.010" asserts="1" />
                           <test-suite type="ParameterizedTest" name="TestRetriveSpecificCoopInfo" executed="True" result="Success" success="True" time="0.016" asserts="0">
                             <results>
                               <test-case name="GLTest.Model.Services.DataBaseServiceTest.Coop dont exist" executed="True" result="Success" success="True" time="0.007" asserts="1" />
-                              <test-case name="GLTest.Model.Services.DataBaseServiceTest.Coop dont exist" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                              <test-case name="GLTest.Model.Services.DataBaseServiceTest.Coop dont exist" executed="True" result="Success" success="True" time="0.002" asserts="1" />
                               <test-case name="GLTest.Model.Services.DataBaseServiceTest.Coop exist" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                             </results>
                           </test-suite>

@@ -5,6 +5,8 @@ using NUnit.Core;
 
 using System.Collections.Generic;
 
+using GLTest.Factory;
+
 using GestionnaireLivre.Model.Services;
 using GestionnaireLivre.Model.DataObject;
 
@@ -132,6 +134,19 @@ namespace GLTest.Model.Services
                 result = true;
             }
             Assert.AreEqual(true, result);
+        }
+
+
+        [Test]
+        public void TestRegisterNewUserClient()
+        {
+            //Note(Marc): there is a problem when this test is run twice because the username is not unique maybe randomise it?
+            DataBaseService sut = new DataBaseService();
+            NewUser newu = DataObjectFctory.BuildNewUserClient();
+
+            bool sutResult = sut.RegisterUser(newu);
+            Assert.AreEqual(true, sutResult);
+
         }
     }
 }

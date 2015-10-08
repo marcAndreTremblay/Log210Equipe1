@@ -335,6 +335,7 @@ namespace GestionnaireLivre.Model.Services
 
             newUser.Password = Crypting.GetSHA512Hash(newUser.Password);
 
+          
             MySqlCommand cmd = new MySqlCommand("RegisterUser", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new MySqlParameter("name", newUser.Name));
@@ -344,9 +345,19 @@ namespace GestionnaireLivre.Model.Services
                 cmd.Parameters.Add(new MySqlParameter("email", newUser.EmailAdress));
                 cmd.Parameters.Add(new MySqlParameter("fk_usertypeid", newUser.UserTypeID));
                 cmd.Parameters.Add(new MySqlParameter("fk_coop_ref", newUser.CoopRefID));
-            cmd.Connection.Open();
-            int i = cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+
+                int i = -1;
+                try
+                {
+                    cmd.Connection.Open();
+                     i= cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                }
+                catch(Exception e)
+                {
+                    return false;
+                }
+           
 
             if (i == 1) return true;
             return false;
