@@ -76,6 +76,13 @@ namespace GLTest.Model.Services
 
             Assert.AreEqual(true, result);
         }
+        [Test]
+        public void TestConnection()
+        {
+            DataBaseService sut = new DataBaseService();
+            bool sutResult = sut.TestConnection();
+            Assert.AreEqual(true, sutResult);
+        }
 
 
         [TestCase(-1, true,TestName = "User dont exist")]
@@ -93,6 +100,38 @@ namespace GLTest.Model.Services
 
             }
             Assert.AreEqual(expectedResult, sutresult);
+        }
+
+
+        [TestCase(-1, true, TestName = "Coop dont exist")]
+        [TestCase(100, false, TestName = "Coop dont exist")]
+        [TestCase(1, true, TestName = "Coop exist")]
+        public void TestRetriveSpecificCoopInfo(int coopId, bool expectedResult)
+        {
+            DataBaseService sut = new DataBaseService();
+
+            Cooperative coopresult = sut.RetrieveSpecificCooperatives(coopId);
+            bool sutresult = false;
+            if (coopresult.id == coopId)
+            {
+                sutresult = true;
+
+            }
+            Assert.AreEqual(expectedResult, sutresult);
+        }
+
+
+        [Test]
+        public void TestRetriveCooperativeDataAcess()
+        {
+            DataBaseService sut = new DataBaseService();
+            List<Cooperative> coopList = sut.RetrieveCooperatives();
+            bool result = false;
+            if(coopList.Count > 0)
+            {
+                result = true;
+            }
+            Assert.AreEqual(true, result);
         }
     }
 }

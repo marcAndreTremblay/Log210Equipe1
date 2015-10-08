@@ -100,6 +100,18 @@ namespace GestionnaireLivre.Model.Services
             }
         }
 
+        public bool TestConnection()
+        {
+            try
+            {
+              OpenConnection();
+              CloseConnection();
+            }catch(Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public int CheckLogInCredentials(string username, string password)
         {
@@ -237,21 +249,35 @@ namespace GestionnaireLivre.Model.Services
         {
             OpenConnection();
 
-            Cooperative cooperatives;
-
             MySqlCommand cmd = new MySqlCommand("RetrieveSpecificCooperative", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("coop_id", coop_id));
 
+            MySqlDataReader dataReader = cmd.ExecuteReader();
 
-            MySqlDataReader rdr = cmd.ExecuteReader();
-
-            cooperatives = new Cooperative(rdr);
-            
+            dataReader.Read();
+            Cooperative coop;
+            if (dataReader.HasRows == true)
+            {
+                coop = new Cooperative(dataReader);
+            }
+            else
+            {
+                coop = new Cooperative();
+                coop.id = -1;
+            }
 
             CloseConnection();
 
-            return cooperatives;
+            return coop;
         }
+       
+        
+        /// <summary>
+        /// Retrive all the informations 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>If no user have this id the returned user will have a id of -1</returns>
         public User RetrieveSpecificUser(int userId)
         {
             OpenConnection();
