@@ -136,18 +136,36 @@ namespace GLTest.Model.Services
             Assert.AreEqual(true, result);
         }
 
+        [Test]
+        public void TestRegisterNewAdminWithCoop()
+        {
+            DataBaseService sut = new DataBaseService();
+            NewCooperative newcoop = DataObjectFctory.BuildNewCoop();
+            NewUser newAdmin = DataObjectFctory.BuildNewUserAdmin();
+
+            bool sutResult = sut.RegisterAdminWithCoop(newAdmin, newcoop);
+            Assert.AreEqual(true, sutResult);
+        }
 
         [Test]
         public void TestRegisterNewUserClient()
         {
-            //Note(Marc): there is a problem when this test is run twice because the username is not unique maybe randomise it?
-            //Maybe reset the bd?
             DataBaseService sut = new DataBaseService();
             NewUser newu = DataObjectFctory.BuildNewUserClient();
 
             bool sutResult = sut.RegisterUser(newu);
             Assert.AreEqual(true, sutResult);
 
+        }
+        [Test]
+        public void testResgisterNewBook()
+        {
+            DataBaseService sut = new DataBaseService();
+            sut.loginID = 1;
+            NewBook newBook = DataObjectFctory.BuildNewBook();
+
+            bool sutResult = sut.RegisterBook(newBook);
+            Assert.AreEqual(true, sutResult);
         }
     }
 }

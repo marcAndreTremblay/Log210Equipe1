@@ -17,7 +17,7 @@ namespace GLTest.Factory
                 newUser.Name = "testClientName";
                 newUser.Phone = "4186936607";
                 newUser.Password = "test3";
-                newUser.Username = "test3";
+                newUser.Username = "testclient" + DateTime.Now.Millisecond.ToString();
                 newUser.UserTypeID = 1;
                 newUser.CoopRefID = -1;
             return newUser;
@@ -29,10 +29,36 @@ namespace GLTest.Factory
             newUser.Name = "testAdminName";
             newUser.Phone = "4186936607";
             newUser.Password = "test3";
-            newUser.Username = "test3";
+            newUser.Username = "testadmin" + DateTime.Now.Millisecond.ToString();
             newUser.UserTypeID = 2;
             newUser.CoopRefID = 1;
             return newUser;
+        }
+
+        public static NewCooperative BuildNewCoop()
+        {
+            NewCooperative newCoop = new NewCooperative();
+            newCoop.Adress = "123 Somewhere one earth";
+            newCoop.ContactInformation = "1-418-124-1234";
+            newCoop.Name = "Coop test super" + DateTime.Now.Millisecond.ToString(); 
+            return newCoop;
+        }
+
+        public static NewBook BuildNewBook()
+        {
+            NewBook newbook = new NewBook();
+            newbook.ISBN = "1234";
+            newbook.Language = "en";
+            newbook.price = 10.45;
+            newbook.Title = "testTile" + DateTime.Now.Millisecond.ToString();
+            newbook.Publishier = "Test publisher";
+            newbook.Author = "test author";
+            newbook.FK_bookcondition = 1;
+            newbook.FK_coop_ref = 1;
+            newbook.FK_transactionType = 1;
+            newbook.UPCcode = "3123131";
+
+            return newbook;
         }
     }
 }
