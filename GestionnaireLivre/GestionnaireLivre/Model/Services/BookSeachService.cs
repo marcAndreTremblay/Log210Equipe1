@@ -25,8 +25,8 @@ namespace GestionnaireLivre.Model.Services
         {
             GoogleBookSeachAPIService = new BooksService(new BaseClientService.Initializer
             {
-                ApplicationName = "gestionnaireBD",
-                ApiKey = "AIzaSyAKEJaaZvVIMzPCOxqScfyP5UKcrtpjS4c",
+                ApplicationName = ApplicationName,
+                ApiKey = APIKey,
             });
         }
 
