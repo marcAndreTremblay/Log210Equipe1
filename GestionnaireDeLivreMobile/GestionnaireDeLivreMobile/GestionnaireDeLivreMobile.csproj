@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClasseStatiquePorteDocument.cs" />
+    <Compile Include="GestionPageAfficherLivre.cs" />
     <Compile Include="GestionPageAjoutLivre.cs" />
     <Compile Include="GestionPageAccueil.cs" />
     <Compile Include="GestionPageCreationCompteGestionnaire.cs" />
@@ -61,6 +62,7 @@
     <AndroidResource Include="Resources\layout\PageCreationCompteGestionnaire.axml" />
     <AndroidResource Include="Resources\layout\PageAccueil.axml" />
     <AndroidResource Include="Resources\layout\PageAjoutLivre.axml" />
+    <AndroidResource Include="Resources\layout\PageAfficherLivre.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">

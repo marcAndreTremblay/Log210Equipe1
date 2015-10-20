@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.gestionnaire_de_livre_mobile">
   <uses-sdk android:minSdkVersion="16" />
   <application android:label="Gestionnaire de livre mobile" android:name="mono.android.app.Application" android:debuggable="true">
+    <activity android:icon="@drawable/icon" android:label="Accueil" android:name="md5101e6106b0e5f47e9cb548fc7d19d94a.GestionPageAfficherLivre" />
     <activity android:icon="@drawable/icon" android:label="Ajouter un livre" android:name="md5101e6106b0e5f47e9cb548fc7d19d94a.GestionPageAjoutLivre" />
     <activity android:icon="@drawable/icon" android:label="Accueil" android:name="md5101e6106b0e5f47e9cb548fc7d19d94a.GestionPageAccueil" />
     <activity android:icon="@drawable/icon" android:label="Création d'un compte gestionnaire" android:name="md5101e6106b0e5f47e9cb548fc7d19d94a.GestionPageCreationCompteGestionnaire" />

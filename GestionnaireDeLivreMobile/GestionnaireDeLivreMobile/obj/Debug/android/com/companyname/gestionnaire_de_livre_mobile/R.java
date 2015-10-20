@@ -10,6 +10,8 @@ package com.companyname.gestionnaire_de_livre_mobile;
 public final class R {
     public static final class array {
         public static final int liste_code=0x7f050000;
+        public static final int liste_etats=0x7f050001;
+        public static final int liste_transactions=0x7f050002;
     }
     public static final class attr {
     }
@@ -18,44 +20,63 @@ public final class R {
     }
     public static final class id {
         public static final int boutonAjouterLivre=0x7f060002;
-        public static final int boutonChercher=0x7f060005;
-        public static final int boutonCreerCompte=0x7f060018;
-        public static final int boutonCreerCompteEtudiant=0x7f060010;
-        public static final int boutonCreerCompteGestionnaire=0x7f060011;
+        public static final int boutonChercher=0x7f06000e;
+        public static final int boutonCreerCompte=0x7f060028;
+        public static final int boutonCreerCompteEtudiant=0x7f060020;
+        public static final int boutonCreerCompteGestionnaire=0x7f060021;
         public static final int boutonDeconexion=0x7f060003;
-        public static final int boutonSeConnecter=0x7f06000d;
-        public static final int champAdresseCooperative=0x7f06001c;
-        public static final int champCode=0x7f060007;
-        public static final int champConfirmationMotDePasse=0x7f060017;
-        public static final int champCourriel=0x7f060013;
-        public static final int champIdentifiant=0x7f06000a;
-        public static final int champMotDePasse=0x7f06000c;
-        public static final int champNomCooperative=0x7f06001a;
-        public static final int champTelephone=0x7f060015;
+        public static final int boutonSeConnecter=0x7f06001d;
+        public static final int champAdresseCooperative=0x7f06002c;
+        public static final int champAuteur=0x7f060012;
+        public static final int champCathegorie=0x7f060015;
+        public static final int champCode=0x7f060010;
+        public static final int champConfirmationMotDePasse=0x7f060027;
+        public static final int champCourriel=0x7f060023;
+        public static final int champEditeur=0x7f060013;
+        public static final int champIdentifiant=0x7f06001a;
+        public static final int champLangue=0x7f060014;
+        public static final int champMotDePasse=0x7f06001c;
+        public static final int champNomCooperative=0x7f06002a;
+        public static final int champPrix=0x7f060018;
+        public static final int champTelephone=0x7f060025;
+        public static final int champTitre=0x7f060011;
         public static final int linearLayout1=0x7f060000;
-        public static final int relativeLayout1=0x7f060004;
-        public static final int spinner=0x7f060006;
-        public static final int textView1=0x7f06000f;
-        public static final int texteAdresseCooperative=0x7f06001b;
-        public static final int texteConfirmationMotDePasse=0x7f060016;
-        public static final int texteCourriel=0x7f060012;
-        public static final int texteErreurLogin=0x7f06000e;
-        public static final int texteIdentifiant=0x7f060009;
-        public static final int texteInfoLivre=0x7f060008;
-        public static final int texteMotDePasse=0x7f06000b;
-        public static final int texteNomCoopreative=0x7f060019;
-        public static final int texteTelephone=0x7f060014;
+        public static final int relativeLayout1=0x7f06000d;
+        public static final int spinnerCode=0x7f06000f;
+        public static final int spinnerConditionLivre=0x7f060016;
+        public static final int spinnerTypeTransaction=0x7f060017;
+        public static final int textView1=0x7f06001f;
+        public static final int texteAdresseCooperative=0x7f06002b;
+        public static final int texteAuteur=0x7f060005;
+        public static final int texteCategorie=0x7f060008;
+        public static final int texteCondition=0x7f060009;
+        public static final int texteConfirmationMotDePasse=0x7f060026;
+        public static final int texteCoopérative=0x7f06000c;
+        public static final int texteCourriel=0x7f060022;
+        public static final int texteEditeur=0x7f060006;
+        public static final int texteErreurLogin=0x7f06001e;
+        public static final int texteIdentifiant=0x7f060019;
+        public static final int texteLangue=0x7f060007;
+        public static final int texteMotDePasse=0x7f06001b;
+        public static final int texteNomCoopreative=0x7f060029;
+        public static final int textePrix=0x7f06000b;
+        public static final int texteTelephone=0x7f060024;
+        public static final int texteTitre=0x7f060004;
+        public static final int texteTypeTransaction=0x7f06000a;
         public static final int texteValeurLivre=0x7f060001;
     }
     public static final class layout {
         public static final int pageaccueil=0x7f030000;
-        public static final int pageajoutlivre=0x7f030001;
-        public static final int pageconnexion=0x7f030002;
-        public static final int pagecreationcompteetudiant=0x7f030003;
-        public static final int pagecreationcomptegestionnaire=0x7f030004;
+        public static final int pageafficherlivre=0x7f030001;
+        public static final int pageajoutlivre=0x7f030002;
+        public static final int pageconnexion=0x7f030003;
+        public static final int pagecreationcompteetudiant=0x7f030004;
+        public static final int pagecreationcomptegestionnaire=0x7f030005;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int demande_condition_livre=0x7f040002;
         public static final int demande_type_code=0x7f040001;
+        public static final int demande_type_transaction=0x7f040003;
     }
 }
