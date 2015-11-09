@@ -351,16 +351,19 @@ namespace GestionnaireLivre.Model.Services
         }
 
         
-        public List<Book> SearchBookByTitle(string seachParam)
+        public List<Book> SearchBook(string title,string author,string upc,string isbn)
         {
             OpenConnection();
 
             List<Book> bookList = new List<Book>();
 
-            MySqlCommand cmd = new MySqlCommand("SeachBookByTitle", connection);
+            MySqlCommand cmd = new MySqlCommand("SeachBook", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add(new MySqlParameter("bookTitle", seachParam));
+            cmd.Parameters.Add(new MySqlParameter("bookTitle", "%" + title + "%"));
+            cmd.Parameters.Add(new MySqlParameter("bookIsbn", "%" + isbn + "%"));
+            cmd.Parameters.Add(new MySqlParameter("bookAuthor", "%" + author + "%"));
+            cmd.Parameters.Add(new MySqlParameter("bookUpc", "%" + upc + "%"));
 
             MySqlDataReader rdr = cmd.ExecuteReader();
 

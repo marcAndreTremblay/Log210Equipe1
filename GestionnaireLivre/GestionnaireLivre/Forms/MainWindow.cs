@@ -82,7 +82,7 @@ namespace GestionnaireLivre
         }
         private void buttonSearchBook_Click(object sender, EventArgs e)
         {
-            SearchBookUC control = new SearchBookUC(DBService);
+            SearchBookUC control = new SearchBookUC(DBService, BookSServices);
             showUserControl(control);
         }
 

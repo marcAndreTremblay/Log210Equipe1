@@ -8,25 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Google.Apis.Books.v1.Data;
+
 using GestionnaireLivre.Model.DataObject;
 using GestionnaireLivre.Model.Services;
+using GestionnaireLivre.Forms.UtilityUC;
+using System.Threading;
 
 namespace GestionnaireLivre.Forms.MainUserControl
 {
     public partial class SearchBookUC : UserControl
     {
-
+        private BookSeachService SeachService;
         private DataBaseService DBService;
         
-        public SearchBookUC(DataBaseService dbService)
+        public SearchBookUC(DataBaseService dbService,BookSeachService seachService)
         {
+            SeachService = seachService;
             DBService = dbService;
             InitializeComponent();
 
+            
 
             foreach(Book currentBook in DBService.RetriveAllBooks())
             {
-                //FLPBookSearchResult.Controls.Add();
+                BookInfoPanelUC panel = new BookInfoPanelUC(currentBook, null);
+                panel.OnBookReserved += OnBookReserveClick;
+                FLPBookSearchResult.Controls.Add(panel);                            
             }
 
         }
@@ -36,10 +44,15 @@ namespace GestionnaireLivre.Forms.MainUserControl
             List<Book> bookResult;
             if (TBSearchTitle.Text != "")
             {
-                bookResult = DBService.SearchBookByTitle("%"+TBSearchTitle.Text + "%");
+                bookResult = DBService.SearchBook(TBSearchTitle.Text,"","","");
             }
 
            
+        }
+
+        private void OnBookReserveClick(Book sender,EventArgs e)
+        {
+
         }
     }
 }

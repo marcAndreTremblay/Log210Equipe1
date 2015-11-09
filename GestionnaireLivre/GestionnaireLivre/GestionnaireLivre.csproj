@@ -125,6 +125,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\UtilityUC\BookInfoPanelUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UtilityUC\BookInfoPanelUC.Designer.cs">
+      <DependentUpon>BookInfoPanelUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataObject\Book.cs" />
     <Compile Include="Model\DataObject\BookCondition.cs" />
     <Compile Include="Model\DataObject\Cooperative.cs" />
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UtilityUC\BookInfoPanelUC.resx">
+      <DependentUpon>BookInfoPanelUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtilityUC\BookPreviewUC.resx">
       <DependentUpon>BookPreviewUC.cs</DependentUpon>

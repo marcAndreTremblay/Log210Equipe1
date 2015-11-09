@@ -31,8 +31,12 @@
             this.ButtonSearch = new System.Windows.Forms.Button();
             this.FLPBookSearchResult = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TBSearchTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.TBSearchTitle = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TBSearchISBN = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TBSearchAuthor = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +63,12 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.TBSearchAuthor);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.TBSearchISBN);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.TBSearchTitle);
             this.panel1.Controls.Add(this.ButtonSearch);
@@ -68,6 +77,15 @@
             this.panel1.Size = new System.Drawing.Size(868, 83);
             this.panel1.TabIndex = 2;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Title";
+            // 
             // TBSearchTitle
             // 
             this.TBSearchTitle.Location = new System.Drawing.Point(44, 10);
@@ -75,14 +93,37 @@
             this.TBSearchTitle.Size = new System.Drawing.Size(152, 20);
             this.TBSearchTitle.TabIndex = 1;
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Name";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "ISBN";
+            // 
+            // TBSearchISBN
+            // 
+            this.TBSearchISBN.Location = new System.Drawing.Point(44, 35);
+            this.TBSearchISBN.Name = "TBSearchISBN";
+            this.TBSearchISBN.Size = new System.Drawing.Size(152, 20);
+            this.TBSearchISBN.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(202, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Author";
+            // 
+            // TBSearchAuthor
+            // 
+            this.TBSearchAuthor.Location = new System.Drawing.Point(243, 10);
+            this.TBSearchAuthor.Name = "TBSearchAuthor";
+            this.TBSearchAuthor.Size = new System.Drawing.Size(152, 20);
+            this.TBSearchAuthor.TabIndex = 5;
             // 
             // SearchBookUC
             // 
@@ -106,5 +147,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TBSearchTitle;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TBSearchAuthor;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox TBSearchISBN;
     }
 }

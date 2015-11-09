@@ -303,17 +303,20 @@ BEGIN
 	select book.* ,  
 		transactiontype.Name as transactionType,
 		bookcondition.Description as conditionDescription,
-		transactionstatus.Name as transactionStatus
+		transactionstatus.Name as transactionStatus,
+         cooperative.Name as coopName
     from gestionnairebd.book , 
 		gestionnairebd.user_book , 
 		gestionnairebd.transactiontype ,
 		gestionnairebd.bookcondition ,
-		gestionnairebd.transactionstatus
+		gestionnairebd.transactionstatus,
+         gestionnairebd.cooperative
 	WHERE  user_book.FK_user_id = client_id 
 		and  book.PK_id = user_book.FK_book_id
 		and book.FK_bookcondition = bookcondition.PK_id
 		and book.FK_transactionType = transactiontype.PK_id 
-        and book.FK_transactionStatus = transactionstatus.PK_id;
+        and book.FK_transactionStatus = transactionstatus.PK_id
+         and book.FK_cooperativeid = cooperative.PK_id;
 END ;;
 
 
@@ -325,34 +328,46 @@ BEGIN
 	select book.* ,  
 		transactiontype.Name as transactionType,
 		bookcondition.Description as conditionDescription,
-		transactionstatus.Name as transactionStatus
+		transactionstatus.Name as transactionStatus,
+        cooperative.Name as coopName
     from gestionnairebd.book , 
 		gestionnairebd.transactiontype ,
 		gestionnairebd.bookcondition ,
-		gestionnairebd.transactionstatus
+		gestionnairebd.transactionstatus,
+        gestionnairebd.cooperative
 	WHERE book.FK_bookcondition = bookcondition.PK_id
 		and book.FK_transactionType = transactiontype.PK_id 
-        and book.FK_transactionStatus = transactionstatus.PK_id;
+        and book.FK_transactionStatus = transactionstatus.PK_id
+         and book.FK_cooperativeid = cooperative.PK_id;
 END ;;
 
 DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `SeachBookByTitle` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SeachBook` */;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SeachBookByTitle`(
-		in bookTitle varchar(50) )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SeachBook`(
+		in bookTitle varchar(50),
+        in bookIsbn varchar(50),
+        in bookAuthor varchar(50),
+        in bookUpc varchar(50))
 BEGIN
 	select book.* ,  
 		transactiontype.Name as transactionType,
 		bookcondition.Description as conditionDescription,
-		transactionstatus.Name as transactionStatus
+		transactionstatus.Name as transactionStatus,
+        cooperative.Name as coopName
     from gestionnairebd.book , 
 		gestionnairebd.transactiontype ,
 		gestionnairebd.bookcondition ,
-		gestionnairebd.transactionstatus
-	WHERE  book.Title LIKE bookTitle
+		gestionnairebd.transactionstatus,
+          gestionnairebd.cooperative
+		WHERE  book.Title LIKE bookTitle
+        and book.ISBN LIKE bookIsbn
+        and book.Author LIKE bookAuthor
+        and book.UPCcode LIKE bookUpc
 		and book.FK_bookcondition = bookcondition.PK_id
 		and book.FK_transactionType = transactiontype.PK_id 
-        and book.FK_transactionStatus = transactionstatus.PK_id;
+        and book.FK_transactionStatus = transactionstatus.PK_id
+        and book.FK_cooperativeid = cooperative.PK_id;
 END ;;
 
 DELIMITER ;

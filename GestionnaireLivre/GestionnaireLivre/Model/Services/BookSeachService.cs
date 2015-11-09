@@ -44,7 +44,26 @@ namespace GestionnaireLivre.Model.Services
                 }
             }
         }
-
+        public static Image GetImageFromVolume(Volume vol)
+        {
+           if (vol.VolumeInfo.ImageLinks.Small != "")
+          {
+              return GetImageFromUrl(vol.VolumeInfo.ImageLinks.Small);
+          }
+          if (vol.VolumeInfo.ImageLinks.Thumbnail != "")
+          {
+              return GetImageFromUrl(vol.VolumeInfo.ImageLinks.Thumbnail);
+          }
+          if (vol.VolumeInfo.ImageLinks.SmallThumbnail != "")
+          {
+              return GetImageFromUrl(vol.VolumeInfo.ImageLinks.SmallThumbnail);
+          }
+          if (vol.VolumeInfo.ImageLinks.Medium != "")
+          {
+              return GetImageFromUrl(vol.VolumeInfo.ImageLinks.Medium);
+          }
+          return null;
+        }
         public async Task<Volume> SearchBookISBN(string isbn)
         {
 

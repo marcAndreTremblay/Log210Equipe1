@@ -29,7 +29,7 @@ namespace GestionnaireLivre.Model.DataObject
         public string bookconditionDescription;
         public string transactionTypeName;
         public string transactionStatusName;
-
+        public string coopName;
         public Book(MySqlDataReader dataReader)
         {
             id = (int)dataReader.GetValue(0);
@@ -57,9 +57,10 @@ namespace GestionnaireLivre.Model.DataObject
             FK_transactionStatus = (int)dataReader.GetValue(15);
             FK_coop_ref = (int)dataReader.GetValue(16);
 
-            bookconditionDescription = dataReader.GetValue(17).ToString();
-            transactionTypeName = dataReader.GetValue(18).ToString();
+            transactionTypeName = dataReader.GetValue(17).ToString();
+            bookconditionDescription = dataReader.GetValue(18).ToString();
             transactionStatusName = dataReader.GetValue(19).ToString();
+            coopName = dataReader.GetValue(20).ToString();
         }
     }
 
