@@ -42,13 +42,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome to the new book store app";
             // 
-            // HomeUC
+            // GlobalHomeUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.LightBlue;
             this.Controls.Add(this.label1);
-            this.Name = "HomeUC";
+            this.Name = "GlobalHomeUC";
             this.Size = new System.Drawing.Size(900, 600);
             this.ResumeLayout(false);
             this.PerformLayout();

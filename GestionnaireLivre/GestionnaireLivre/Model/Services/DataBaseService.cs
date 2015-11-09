@@ -272,7 +272,6 @@ namespace GestionnaireLivre.Model.Services
             return coop;
         }
        
-        //somechange
         
         /// <summary>
         /// Retrive all the informations 
@@ -330,6 +329,50 @@ namespace GestionnaireLivre.Model.Services
             return bookList;
         }
 
+        public List<Book> RetriveAllBooks()
+        {
+            OpenConnection();
+
+            List<Book> bookList = new List<Book>();
+
+            MySqlCommand cmd = new MySqlCommand("RetrieveAllBooks", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bookList.Add(new Book(rdr));
+            }
+
+            CloseConnection();
+
+            return bookList;
+        }
+
+        
+        public List<Book> SearchBookByTitle(string seachParam)
+        {
+            OpenConnection();
+
+            List<Book> bookList = new List<Book>();
+
+            MySqlCommand cmd = new MySqlCommand("SeachBookByTitle", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(new MySqlParameter("bookTitle", seachParam));
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bookList.Add(new Book(rdr));
+            }
+
+            CloseConnection();
+
+            return bookList;
+        }
 
         public bool RegisterUser(NewUser newUser)
         {

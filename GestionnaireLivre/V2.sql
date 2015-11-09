@@ -171,13 +171,14 @@ INSERT INTO `gestionnairebd`.`bookcondition` (`PK_id`, `Description`, `reduction
 INSERT INTO `gestionnairebd`.`bookcondition` (`PK_id`, `Description`, `reduction`) VALUES ('4', 'Poor', '75');
 
 
-INSERT INTO `gestionnairebd`.`transactiontype` (`PK_id`, `Name`) VALUES ('1', 'In sale');
-INSERT INTO `gestionnairebd`.`transactiontype` (`PK_id`, `Name`) VALUES ('2', 'In exhange');
+INSERT INTO `gestionnairebd`.`transactiontype` (`PK_id`, `Name`) VALUES ('1', 'For sale');
+INSERT INTO `gestionnairebd`.`transactiontype` (`PK_id`, `Name`) VALUES ('2', 'For exhange');
 
 INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('1', 'Waiting for deposit');
-INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('2', 'Live');
+INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('2', 'On sale');
 INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('3', 'Reserved');
 INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('4', 'waiting for pick up');
+INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('5', 'In transit');
 
 INSERT INTO `gestionnairebd`.`cooperative` (`PK_id`, `Name`, `Adress`, `Contactinfo`) VALUES ('1', 'Coopérative ETS', '231 something', '231 442 1234');
 
@@ -308,7 +309,7 @@ BEGIN
 		gestionnairebd.transactiontype ,
 		gestionnairebd.bookcondition ,
 		gestionnairebd.transactionstatus
-	WHERE  user_book.FK_user_id = 1 
+	WHERE  user_book.FK_user_id = client_id 
 		and  book.PK_id = user_book.FK_book_id
 		and book.FK_bookcondition = bookcondition.PK_id
 		and book.FK_transactionType = transactiontype.PK_id 
@@ -316,6 +317,43 @@ BEGIN
 END ;;
 
 
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveAllBooks` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveAllBooks`()
+BEGIN
+	select book.* ,  
+		transactiontype.Name as transactionType,
+		bookcondition.Description as conditionDescription,
+		transactionstatus.Name as transactionStatus
+    from gestionnairebd.book , 
+		gestionnairebd.transactiontype ,
+		gestionnairebd.bookcondition ,
+		gestionnairebd.transactionstatus
+	WHERE book.FK_bookcondition = bookcondition.PK_id
+		and book.FK_transactionType = transactiontype.PK_id 
+        and book.FK_transactionStatus = transactionstatus.PK_id;
+END ;;
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `SeachBookByTitle` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SeachBookByTitle`(
+		in bookTitle varchar(50) )
+BEGIN
+	select book.* ,  
+		transactiontype.Name as transactionType,
+		bookcondition.Description as conditionDescription,
+		transactionstatus.Name as transactionStatus
+    from gestionnairebd.book , 
+		gestionnairebd.transactiontype ,
+		gestionnairebd.bookcondition ,
+		gestionnairebd.transactionstatus
+	WHERE  book.Title LIKE bookTitle
+		and book.FK_bookcondition = bookcondition.PK_id
+		and book.FK_transactionType = transactiontype.PK_id 
+        and book.FK_transactionStatus = transactionstatus.PK_id;
+END ;;
 
 DELIMITER ;
 /*!50003 DROP PROCEDURE IF EXISTS `RetrieveSpecificUser` */;

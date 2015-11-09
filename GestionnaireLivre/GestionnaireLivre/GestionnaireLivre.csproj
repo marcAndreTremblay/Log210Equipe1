@@ -109,6 +109,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -123,6 +125,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\DataObject\Book.cs" />
+    <Compile Include="Model\DataObject\BookCondition.cs" />
+    <Compile Include="Model\DataObject\Cooperative.cs" />
+    <Compile Include="Model\DataObject\TransactionStatus.cs" />
+    <Compile Include="Model\DataObject\TransactionType.cs" />
+    <Compile Include="Model\DataObject\User.cs" />
+    <Compile Include="Model\DataObject\UserType.cs" />
     <Compile Include="Forms\MainWindowUC\AddNewBookUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -153,6 +162,9 @@
     <Compile Include="Forms\UtilityUC\BookPreviewUC.Designer.cs">
       <DependentUpon>BookPreviewUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Crypting.cs" />
+    <Compile Include="Model\Services\BookSeachService.cs" />
+    <Compile Include="Model\Services\DataBaseService.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,16 +177,6 @@
     <Compile Include="Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Crypting.cs" />
-    <Compile Include="Model\DataObject\Book.cs" />
-    <Compile Include="Model\DataObject\BookCondition.cs" />
-    <Compile Include="Model\DataObject\Cooperative.cs" />
-    <Compile Include="Model\DataObject\TransactionStatus.cs" />
-    <Compile Include="Model\DataObject\TransactionType.cs" />
-    <Compile Include="Model\DataObject\User.cs" />
-    <Compile Include="Model\DataObject\UserType.cs" />
-    <Compile Include="Model\Services\BookSeachService.cs" />
-    <Compile Include="Model\Services\DataBaseService.cs" />
     <Compile Include="Model\Services\StringValidatorService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -222,6 +224,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

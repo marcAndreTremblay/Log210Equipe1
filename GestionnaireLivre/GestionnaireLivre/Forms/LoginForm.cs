@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Controls;
 
 using GestionnaireLivre.Model.Services;
 using GestionnaireLivre.Model.DataObject;
@@ -197,6 +198,7 @@ namespace GestionnaireLivre
             if(currentState == FormWindowState.login)
             {
                 ShowLoginPanel();
+                
             }
             else
             {
