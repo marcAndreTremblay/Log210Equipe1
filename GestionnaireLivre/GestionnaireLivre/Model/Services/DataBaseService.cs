@@ -350,6 +350,41 @@ namespace GestionnaireLivre.Model.Services
             return bookList;
         }
 
+        public List<Book> RetrieveLast10BookOnSale()
+        {
+            OpenConnection();
+
+            List<Book> bookList = new List<Book>();
+
+            MySqlCommand cmd = new MySqlCommand("RetrieveLast10BookOnSale", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bookList.Add(new Book(rdr));
+            }
+
+            CloseConnection();
+
+            return bookList;
+        }
+
+        public void ReserveSpecificBook(int costumerId, Book bookToReserve)
+        {
+            OpenConnection();
+
+            MySqlCommand cmd = new MySqlCommand("ReserveSpecificBook", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("client_id", costumerId));
+            cmd.Parameters.Add(new MySqlParameter("book_id", bookToReserve.id));
+            
+            cmd.ExecuteScalar();
+
+
+            CloseConnection();
+        }
         
         public List<Book> SearchBook(string title,string author,string upc,string isbn)
         {
@@ -357,7 +392,7 @@ namespace GestionnaireLivre.Model.Services
 
             List<Book> bookList = new List<Book>();
 
-            MySqlCommand cmd = new MySqlCommand("SeachBook", connection);
+            MySqlCommand cmd = new MySqlCommand("SearchBook", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add(new MySqlParameter("bookTitle", "%" + title + "%"));

@@ -28,9 +28,9 @@ namespace GestionnaireLivre.Forms.MainUserControl
             DBService = dbService;
             InitializeComponent();
 
-            
 
-            foreach(Book currentBook in DBService.RetriveAllBooks())
+
+            foreach (Book currentBook in DBService.RetrieveLast10BookOnSale())
             {
                 BookInfoPanelUC panel = new BookInfoPanelUC(currentBook, null);
                 panel.OnBookReserved += OnBookReserveClick;
@@ -39,20 +39,29 @@ namespace GestionnaireLivre.Forms.MainUserControl
 
         }
 
+        
+
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
-            List<Book> bookResult;
-            if (TBSearchTitle.Text != "")
+            List<Book> bookResult = DBService.SearchBook(TBSearchTitle.Text,TBSearchAuthor.Text,"",TBSearchISBN.Text);
+            FLPBookSearchResult.Controls.Clear();
+            foreach (Book currentBook in bookResult)
             {
-                bookResult = DBService.SearchBook(TBSearchTitle.Text,"","","");
+                BookInfoPanelUC panel = new BookInfoPanelUC(currentBook, null);
+                panel.OnBookReserved += OnBookReserveClick;
+                FLPBookSearchResult.Controls.Add(panel);
             }
-
-           
         }
 
         private void OnBookReserveClick(Book sender,EventArgs e)
         {
+            DialogResult result1 = MessageBox.Show("Are you sure you want to reserve : "+sender.Title +"?\n"
+                                                   +"You will have 48 hours to pick it up at :" +sender.coopName +"\nPrice : "+sender.price+"$", "Important Question", MessageBoxButtons.YesNo);
+            if (result1 == DialogResult.Yes)
+            {
 
+                DBService.ReserveSpecificBook(DBService.loginID, sender);
+            }
         }
     }
 }

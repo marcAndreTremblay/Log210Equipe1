@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using GestionnaireLivre.Model.Services;
 using GestionnaireLivre.Model.DataObject;
+using GestionnaireLivre.Forms.UtilityUC;
 
 namespace GestionnaireLivre.Forms.MainUserControl
 {
@@ -22,10 +23,31 @@ namespace GestionnaireLivre.Forms.MainUserControl
         {
             DBService = dbService;
             InitializeComponent();
+           
 
 
-            List<Book> myBook = DBService.RetriveBookBySellerId(DBService.loginID);
-
+            foreach(Book current in DBService.RetriveBookBySellerId(DBService.loginID))
+            {
+                
+                switch(current.FK_transactionStatus)
+                {
+                    case 1:
+                        {
+                            BookClientInfoUC newPanel = new BookClientInfoUC(current); 
+                            FLPWaitDeposit.Controls.Add(newPanel); } break;
+                    case 2:
+                        {
+                            BookClientInfoUC newPanel = new BookClientInfoUC(current);
+                            FLPOnSale.Controls.Add(newPanel);
+                        } break;
+                    case 3:
+                        {
+                            BookClientInfoUC newPanel = new BookClientInfoUC(current);
+                            FLPWaitPickup.Controls.Add(newPanel);
+                        } break;
+                    case 4: { } break;
+                }
+            }
         }
     }
 }

@@ -294,6 +294,55 @@ BEGIN
 	select * from gestionnairebd.bookcondition;
 END ;;
 
+
+
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveAllBooks` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveAllBooks`()
+BEGIN
+	select book.* ,  
+		transactiontype.Name as transactionType,
+		bookcondition.Description as conditionDescription,
+		transactionstatus.Name as transactionStatus,
+        cooperative.Name as coopName
+    from gestionnairebd.book , 
+		gestionnairebd.transactiontype ,
+		gestionnairebd.bookcondition ,
+		gestionnairebd.transactionstatus,
+        gestionnairebd.cooperative
+	WHERE book.FK_bookcondition = bookcondition.PK_id
+		and book.FK_transactionType = transactiontype.PK_id 
+        and book.FK_transactionStatus = transactionstatus.PK_id
+         and book.FK_cooperativeid = cooperative.PK_id;
+END ;;
+
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveLast10BookOnSale` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveLast10BookOnSale`()
+BEGIN
+	select book.* ,  
+		transactiontype.Name as transactionType,
+		bookcondition.Description as conditionDescription,
+		transactionstatus.Name as transactionStatus,
+        cooperative.Name as coopName
+    from gestionnairebd.book , 
+		gestionnairebd.transactiontype ,
+		gestionnairebd.bookcondition ,
+		gestionnairebd.transactionstatus,
+        gestionnairebd.cooperative
+	WHERE book.FK_bookcondition = bookcondition.PK_id
+		and book.FK_transactionType = transactiontype.PK_id 
+        and book.FK_transactionStatus = transactionstatus.PK_id
+         and book.FK_cooperativeid = cooperative.PK_id
+         and book.FK_transactionStatus = 2
+         ORDER BY book.`PK_id` DESC limit 10;
+         
+END ;;
+
 DELIMITER ;
 /*!50003 DROP PROCEDURE IF EXISTS `RetrieveBooksBySellerId` */;
 DELIMITER ;;
@@ -319,32 +368,10 @@ BEGIN
          and book.FK_cooperativeid = cooperative.PK_id;
 END ;;
 
-
 DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `RetrieveAllBooks` */;
+/*!50003 DROP PROCEDURE IF EXISTS `SearchBook` */;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveAllBooks`()
-BEGIN
-	select book.* ,  
-		transactiontype.Name as transactionType,
-		bookcondition.Description as conditionDescription,
-		transactionstatus.Name as transactionStatus,
-        cooperative.Name as coopName
-    from gestionnairebd.book , 
-		gestionnairebd.transactiontype ,
-		gestionnairebd.bookcondition ,
-		gestionnairebd.transactionstatus,
-        gestionnairebd.cooperative
-	WHERE book.FK_bookcondition = bookcondition.PK_id
-		and book.FK_transactionType = transactiontype.PK_id 
-        and book.FK_transactionStatus = transactionstatus.PK_id
-         and book.FK_cooperativeid = cooperative.PK_id;
-END ;;
-
-DELIMITER ;
-/*!50003 DROP PROCEDURE IF EXISTS `SeachBook` */;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SeachBook`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchBook`(
 		in bookTitle varchar(50),
         in bookIsbn varchar(50),
         in bookAuthor varchar(50),
@@ -367,7 +394,8 @@ BEGIN
 		and book.FK_bookcondition = bookcondition.PK_id
 		and book.FK_transactionType = transactiontype.PK_id 
         and book.FK_transactionStatus = transactionstatus.PK_id
-        and book.FK_cooperativeid = cooperative.PK_id;
+        and book.FK_cooperativeid = cooperative.PK_id
+        and book.FK_transactionStatus = 2;
 END ;;
 
 DELIMITER ;
@@ -400,7 +428,19 @@ BEGIN
 	WHERE   gestionnairebd.cooperative.PK_id = coop_id;
 END ;;
 
-
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `ReserveSpecificBook` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ReserveSpecificBook`(
+		in client_id int(11),
+        in book_id int(11))
+BEGIN
+	UPDATE `gestionnairebd`.`book`
+    SET 
+		`NewOwnerId`= client_id,
+        `FK_transactionStatus`='3'
+     WHERE `book`.`PK_id`= book_id ;
+END ;;
 
 
 DELIMITER ;
