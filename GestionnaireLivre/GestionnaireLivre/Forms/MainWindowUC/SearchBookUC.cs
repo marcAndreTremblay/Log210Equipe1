@@ -28,15 +28,12 @@ namespace GestionnaireLivre.Forms.MainUserControl
             DBService = dbService;
             InitializeComponent();
 
-
-
             foreach (Book currentBook in DBService.RetrieveLast10BookOnSale())
             {
                 BookInfoPanelUC panel = new BookInfoPanelUC(currentBook, null);
                 panel.OnBookReserved += OnBookReserveClick;
-                FLPBookSearchResult.Controls.Add(panel);                            
+                FLPBookSearchResult.Controls.Add(panel);
             }
-
         }
 
         
@@ -59,7 +56,6 @@ namespace GestionnaireLivre.Forms.MainUserControl
                                                    +"You will have 48 hours to pick it up at :" +sender.coopName +"\nPrice : "+sender.price+"$", "Important Question", MessageBoxButtons.YesNo);
             if (result1 == DialogResult.Yes)
             {
-
                 DBService.ReserveSpecificBook(DBService.loginID, sender);
             }
         }
