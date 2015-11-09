@@ -40,7 +40,13 @@ namespace GestionnaireLivre.Forms.MainUserControl
 
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
-            List<Book> bookResult = DBService.SearchBook(TBSearchTitle.Text,TBSearchAuthor.Text,"",TBSearchISBN.Text);
+            Search();
+        }
+
+
+        private void Search()
+        {
+            List<Book> bookResult = DBService.SearchBook(TBSearchTitle.Text, TBSearchAuthor.Text, "", TBSearchISBN.Text);
             FLPBookSearchResult.Controls.Clear();
             foreach (Book currentBook in bookResult)
             {
@@ -57,7 +63,10 @@ namespace GestionnaireLivre.Forms.MainUserControl
             if (result1 == DialogResult.Yes)
             {
                 DBService.ReserveSpecificBook(DBService.loginID, sender);
+                Search();
             }
+
+           
         }
     }
 }
