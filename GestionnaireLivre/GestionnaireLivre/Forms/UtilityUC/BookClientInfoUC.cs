@@ -19,6 +19,7 @@ namespace GestionnaireLivre.Forms.UtilityUC
             LTitle.Text = book.Title;
             LLanguage.Text = book.Language;
             LCondition.Text = book.bookconditionDescription;
+            LPrice.Text = book.price.ToString() + "$";
         }
     }
 }

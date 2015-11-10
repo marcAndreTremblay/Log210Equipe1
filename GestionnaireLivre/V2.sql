@@ -15,6 +15,10 @@ CREATE SCHEMA `gestionnairebd`;
 
 USE `gestionnairebd`;
 
+
+SET SQL_SAFE_UPDATES = 0;
+SET GLOBAL event_scheduler = ON;
+
 DROP TABLE IF EXISTS `cooperative`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -105,6 +109,7 @@ CREATE TABLE `book` (
   `FK_transactionType` int(11) NOT NULL,
   `FK_transactionStatus` int(11) NOT NULL,
   `FK_cooperativeid` int(11) NOT NULL,
+  `timeReserved` datetime DEFAULT NULL,
   PRIMARY KEY (`PK_id`),
   UNIQUE KEY `PK_id_UNIQUE` (`PK_id`),  
   KEY `BookCondition` (`FK_bookcondition`),
@@ -438,7 +443,8 @@ BEGIN
 	UPDATE `gestionnairebd`.`book`
     SET 
 		`NewOwnerId`= client_id,
-        `FK_transactionStatus`='3'
+        `FK_transactionStatus`='3',
+        `timeReserved`=now()
      WHERE `book`.`PK_id`= book_id ;
 END ;;
 
@@ -452,3 +458,19 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `ValidateUserCrendentials`(
 BEGIN
  select user.PK_id as id from gestionnairebd.user where user.username = username and user.password =userPassword ;
 END ;;
+
+
+
+DELIMITER ;;
+CREATE 
+	EVENT `UpdateOutdateReservedObject` 
+	ON SCHEDULE EVERY 1 minute 
+	DO BEGIN	
+    UPDATE `gestionnairebd`.`book`
+    SET 
+		`NewOwnerId`= null,
+        `FK_transactionStatus`='2',
+        `timeReserved`=null
+     WHERE Timediff(now(),`book`.timeReserved) > 1;
+END ;;
+
