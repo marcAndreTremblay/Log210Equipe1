@@ -57,10 +57,10 @@ namespace GestionnaireLivre.Model.DataObject
             FK_transactionStatus = (int)dataReader.GetValue(15);
             FK_coop_ref = (int)dataReader.GetValue(16);
 
-            transactionTypeName = dataReader.GetValue(17).ToString();
-            bookconditionDescription = dataReader.GetValue(18).ToString();
-            transactionStatusName = dataReader.GetValue(19).ToString();
-            coopName = dataReader.GetValue(20).ToString();
+             transactionTypeName = dataReader.GetValue(18).ToString();
+             bookconditionDescription = dataReader.GetValue(19).ToString();
+             transactionStatusName = dataReader.GetValue(20).ToString();
+            coopName = dataReader.GetValue(21).ToString();
         }
     }
 

@@ -17,9 +17,9 @@ namespace GestionnaireLivre.Forms.UtilityUC
             InitializeComponent();
             LAuthor.Text = book.Author;
             LTitle.Text = book.Title;
-            LLanguage.Text = book.Language;
             LCondition.Text = book.bookconditionDescription;
             LPrice.Text = book.price.ToString() + "$";
+            labelCoopName.Text = book.coopName;
         }
     }
 }

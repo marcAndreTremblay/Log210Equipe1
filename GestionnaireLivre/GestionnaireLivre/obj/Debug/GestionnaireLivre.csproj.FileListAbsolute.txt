@@ -258,4 +258,3 @@ D:\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\obj\Debug\Gestionna
 D:\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\obj\Debug\GestionnaireLivre.csproj.GenerateResource.Cache
 D:\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\obj\Debug\GestionnaireLivre.exe
 D:\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\obj\Debug\GestionnaireLivre.pdb
-D:\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\obj\Debug\GestionnaireLivre.csprojResolveAssemblyReference.cache

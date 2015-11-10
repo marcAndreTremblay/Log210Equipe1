@@ -31,8 +31,8 @@
             this.LTitle = new System.Windows.Forms.Label();
             this.LAuthor = new System.Windows.Forms.Label();
             this.LCondition = new System.Windows.Forms.Label();
-            this.LLanguage = new System.Windows.Forms.Label();
             this.LPrice = new System.Windows.Forms.Label();
+            this.labelCoopName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LTitle
@@ -56,37 +56,37 @@
             // LCondition
             // 
             this.LCondition.AutoSize = true;
-            this.LCondition.Location = new System.Drawing.Point(258, 3);
+            this.LCondition.Location = new System.Drawing.Point(267, 3);
             this.LCondition.Name = "LCondition";
             this.LCondition.Size = new System.Drawing.Size(62, 13);
             this.LCondition.TabIndex = 2;
             this.LCondition.Text = "- condition -";
             // 
-            // LLanguage
-            // 
-            this.LLanguage.AutoSize = true;
-            this.LLanguage.Location = new System.Drawing.Point(368, 3);
-            this.LLanguage.Name = "LLanguage";
-            this.LLanguage.Size = new System.Drawing.Size(33, 13);
-            this.LLanguage.TabIndex = 3;
-            this.LLanguage.Text = "- FR -";
-            // 
             // LPrice
             // 
             this.LPrice.AutoSize = true;
-            this.LPrice.Location = new System.Drawing.Point(427, 3);
+            this.LPrice.Location = new System.Drawing.Point(490, 3);
             this.LPrice.Name = "LPrice";
             this.LPrice.Size = new System.Drawing.Size(42, 13);
             this.LPrice.TabIndex = 4;
             this.LPrice.Text = "- price -";
+            // 
+            // labelCoopName
+            // 
+            this.labelCoopName.AutoSize = true;
+            this.labelCoopName.Location = new System.Drawing.Point(335, 3);
+            this.labelCoopName.Name = "labelCoopName";
+            this.labelCoopName.Size = new System.Drawing.Size(46, 13);
+            this.labelCoopName.TabIndex = 5;
+            this.labelCoopName.Text = "- coop  -";
             // 
             // BookClientInfoUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Controls.Add(this.labelCoopName);
             this.Controls.Add(this.LPrice);
-            this.Controls.Add(this.LLanguage);
             this.Controls.Add(this.LCondition);
             this.Controls.Add(this.LAuthor);
             this.Controls.Add(this.LTitle);
@@ -102,7 +102,7 @@
         private System.Windows.Forms.Label LTitle;
         private System.Windows.Forms.Label LAuthor;
         private System.Windows.Forms.Label LCondition;
-        private System.Windows.Forms.Label LLanguage;
         private System.Windows.Forms.Label LPrice;
+        private System.Windows.Forms.Label labelCoopName;
     }
 }
