@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.CompilerServices;
 
 using GestionnaireLivre.Model.Services;
 using GestionnaireLivre.Model;
 using GestionnaireLivre.Model.DataObject;
+
+using Google.Apis.Books.v1.Data;
 
 namespace GestionnaireLivre
 {
@@ -23,6 +26,10 @@ namespace GestionnaireLivre
 
 
             BookSeachService BookSService = new BookSeachService("gestionnaireBD", "AIzaSyAKEJaaZvVIMzPCOxqScfyP5UKcrtpjS4c");
+
+            Task<Volume> volumesResultTask = BookSService.SearchBookISBN("111111111");
+            Volume result = volumesResultTask.Result;
+           
             DataBaseService DBService = new DataBaseService();
 
       

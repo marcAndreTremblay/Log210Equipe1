@@ -222,6 +222,16 @@ namespace GestionnaireLivre.Forms.MainWindowUC
             }
         }
 
+        private void buttonSearchUpc_Click(object sender, EventArgs e)
+        {
+            bookSearchTread = BookSService.SearchBookISBN(textBoxCodeUPC.Text);
+        }
+
+        private void buttonSearchEAN_Click(object sender, EventArgs e)
+        {
+            bookSearchTread = BookSService.SearchBookISBN(textBoxCodeEAN.Text);
+        }
+
 
     }
 }

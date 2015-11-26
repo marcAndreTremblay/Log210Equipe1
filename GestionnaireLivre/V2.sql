@@ -468,7 +468,6 @@ CREATE
 	DO BEGIN	
     UPDATE `gestionnairebd`.`book`
     SET 
-		`NewOwnerId`= null,
         `FK_transactionStatus`='2',
         `timeReserved`=null
      WHERE timestampdiff(minute,`book`.timeReserved,now()) > 3;

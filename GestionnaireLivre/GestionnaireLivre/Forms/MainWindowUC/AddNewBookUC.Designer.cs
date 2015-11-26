@@ -61,6 +61,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxCodeEAN = new System.Windows.Forms.TextBox();
             this.textBoxCodeUPC = new System.Windows.Forms.TextBox();
+            this.buttonSearchEAN = new System.Windows.Forms.Button();
+            this.buttonSearchUpc = new System.Windows.Forms.Button();
             this.panelSellPrice.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -356,11 +358,37 @@
             this.textBoxCodeUPC.Size = new System.Drawing.Size(168, 20);
             this.textBoxCodeUPC.TabIndex = 33;
             // 
+            // buttonSearchEAN
+            // 
+            this.buttonSearchEAN.BackColor = System.Drawing.Color.YellowGreen;
+            this.buttonSearchEAN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchEAN.Location = new System.Drawing.Point(342, 103);
+            this.buttonSearchEAN.Name = "buttonSearchEAN";
+            this.buttonSearchEAN.Size = new System.Drawing.Size(83, 25);
+            this.buttonSearchEAN.TabIndex = 34;
+            this.buttonSearchEAN.Text = "Search";
+            this.buttonSearchEAN.UseVisualStyleBackColor = false;
+            this.buttonSearchEAN.Click += new System.EventHandler(this.buttonSearchEAN_Click);
+            // 
+            // buttonSearchUpc
+            // 
+            this.buttonSearchUpc.BackColor = System.Drawing.Color.YellowGreen;
+            this.buttonSearchUpc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchUpc.Location = new System.Drawing.Point(342, 126);
+            this.buttonSearchUpc.Name = "buttonSearchUpc";
+            this.buttonSearchUpc.Size = new System.Drawing.Size(83, 25);
+            this.buttonSearchUpc.TabIndex = 35;
+            this.buttonSearchUpc.Text = "Search";
+            this.buttonSearchUpc.UseVisualStyleBackColor = false;
+            this.buttonSearchUpc.Click += new System.EventHandler(this.buttonSearchUpc_Click);
+            // 
             // AddNewBookUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
+            this.Controls.Add(this.buttonSearchUpc);
+            this.Controls.Add(this.buttonSearchEAN);
             this.Controls.Add(this.textBoxCodeUPC);
             this.Controls.Add(this.textBoxCodeEAN);
             this.Controls.Add(this.label15);
@@ -433,5 +461,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxCodeEAN;
         private System.Windows.Forms.TextBox textBoxCodeUPC;
+        private System.Windows.Forms.Button buttonSearchEAN;
+        private System.Windows.Forms.Button buttonSearchUpc;
     }
 }
