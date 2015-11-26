@@ -1,0 +1,5 @@
+C:\Users\Marc-André\Documents\Log210Equipe9\GestionnaireLivre\MobileServer\bin\Debug\MobileServer.exe.config
+C:\Users\Marc-André\Documents\Log210Equipe9\GestionnaireLivre\MobileServer\bin\Debug\MobileServer.exe
+C:\Users\Marc-André\Documents\Log210Equipe9\GestionnaireLivre\MobileServer\bin\Debug\MobileServer.pdb
+C:\Users\Marc-André\Documents\Log210Equipe9\GestionnaireLivre\MobileServer\obj\Debug\MobileServer.exe
+C:\Users\Marc-André\Documents\Log210Equipe9\GestionnaireLivre\MobileServer\obj\Debug\MobileServer.pdb
