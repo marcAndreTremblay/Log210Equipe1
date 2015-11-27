@@ -72,7 +72,7 @@ namespace GestionnaireDeLivreMobile
                     if (int.Parse(noCoop.Text) <= count)
                     {
                         GestionReseau.EnvoyerNouveauLivre(noCode, code.Text, titre.Text, auteur.Text, editeur.Text, langue.Text,
-                            cathegorie.Text, etat, transaction, prix.Text, nbPages.Text, noCoop.ToString());
+                            cathegorie.Text, etat, transaction, prix.Text, nbPages.Text, noCoop.Text.ToString());
                         code.Text = "";
                         titre.Text = "Titre";
                         auteur.Text = "Auteur";

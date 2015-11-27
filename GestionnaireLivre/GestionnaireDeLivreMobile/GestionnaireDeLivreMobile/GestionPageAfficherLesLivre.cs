@@ -27,12 +27,36 @@ namespace GestionnaireDeLivreMobile
 		    listeLivres.Text = "";
 		    string[] ListeLivres =  GestionReseau.DemanderListeLivreDansLaCoop();
 		    
+
+
 		    foreach (string VARIABLE in ListeLivres)
 		    {
-		        count++;
-		        listeLivres.Text = listeLivres.Text + count + "- " + VARIABLE +"\n";
+		        if (VARIABLE != "")
+		        {
+		            count++;
+		            listeLivres.Text = listeLivres.Text + count + "- " + VARIABLE + "\n";
+		        }
 
 		    }
+            afficher.Enabled = false;
+            noLivre.TextChanged += delegate
+            {
+                try
+                {
+                    if (int.Parse(noLivre.Text) < 0)
+                    {
+                        afficher.Enabled = true;
+                    }
+                    else
+                    {
+                        afficher.Enabled = false;
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+            };
+
 
             afficher.Click += delegate
             {

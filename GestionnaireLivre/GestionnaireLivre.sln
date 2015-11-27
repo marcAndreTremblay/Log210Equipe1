@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2A703F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileServer", "MobileServer\MobileServer.csproj", "{CB595364-50F6-4FF8-83CA-9D658DDF7652}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionnaireDeLivreMobile", "..\..\..\..\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.csproj", "{C4CACE6A-9592-439F-98F0-717BFEA79E24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionnaireDeLivreMobile", "GestionnaireDeLivreMobile\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.csproj", "{C4CACE6A-9592-439F-98F0-717BFEA79E24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

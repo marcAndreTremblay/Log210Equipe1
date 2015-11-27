@@ -69,7 +69,7 @@ namespace MobileServer
                         Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,ProtocolType.Udp);
 
                         IPEndPoint endPoint = new IPEndPoint(iep.Address, 11000);
-                        Thread.Sleep(200);
+                        Thread.Sleep(500);
                         string text = "Hello";
                         byte[] send_buffer = Encoding.ASCII.GetBytes(text);
 
@@ -86,6 +86,7 @@ namespace MobileServer
 
         private static void Envoyer(string message,Socket sock)
         {
+            Thread.Sleep(100);
             byte[] buffer = new byte[1000];
             buffer = StringToBytes(message);
             sock.Send(buffer, 0, buffer.Length, SocketFlags.None);
@@ -113,17 +114,18 @@ namespace MobileServer
         private static void GererCommunication(Socket sock)
         {
             string Operation = null;
+
             while (Operation != "/Quitter")
             {
                 byte[] buffer = new byte[1000];
                 sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
-
+                User utilisateur;
                 Operation = BytesToString(buffer);
 
                 Console.WriteLine(Operation);
                 if (Operation == "/VerificationUtilisateur")
                 {
-                    Connexion(sock);
+                    utilisateur = Connexion(sock);
                 }
                 else if (Operation == "/DemandeInformationLivre")
                 {
@@ -156,10 +158,10 @@ namespace MobileServer
 
         private static void EnvoyerListeLivres(Socket sock) // a completer (liste des livres)
         {
-            string listeLivres = "";
+            string listeLivres = "/";
             List<Book> lesLivres = dbService.RetriveAllBooks(); //Utilier la nouvelle commande
 
-            for (int i = 0; i < listeLivres.Length; i++)
+            for (int i = 0; i < lesLivres.Count; i++)
             {
                 if (i < listeLivres.Length - 1)
                 {
@@ -173,7 +175,7 @@ namespace MobileServer
             Envoyer(listeLivres, sock);
         }
 
-        private static void EnvoyerListeCoop(Socket sock) // (liste des coops)
+        private static void EnvoyerListeCoop(Socket sock) // Tester et fonctionne (liste des coops)
         {
             string listeCoop = "";
             List<Cooperative> listeCoops = dbService.RetrieveCooperatives();
@@ -286,11 +288,11 @@ namespace MobileServer
             dbService.RegisterBook(NouveauLivre);
         }
 
-        private static void EnvoyerLivres(Socket sock) // a completer (recherche du livre par isbn/ean/upc)
+        private static void EnvoyerLivres(Socket sock) // vérifié et fonctionne (recherche du livre par isbn/ean/upc)
         {
             byte[] buffer = new byte[1000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
-            string Code = BytesToString(buffer); // utiliser le code pour trouver les informations ci-dessous
+            string Code = BytesToString(buffer); 
 
             BookSeachService bookSeach = new BookSeachService("gestionnaireBD", "AIzaSyAKEJaaZvVIMzPCOxqScfyP5UKcrtpjS4c");
 
@@ -301,20 +303,28 @@ namespace MobileServer
 
             //--------------------------------------------------
             string titre = result.VolumeInfo.Title;
-            string auteur = result.VolumeInfo.Authors.FirstOrDefault();
+            string auteur = "";
             string editeur = result.VolumeInfo.Publisher;
             string langue = result.VolumeInfo.Language;
-            string cathegorie = result.VolumeInfo.Categories.FirstOrDefault();
+            string cathegorie = "";
             double prix = 10;
+            if (result.VolumeInfo.Authors != null)
+            {
+                auteur = result.VolumeInfo.Authors.FirstOrDefault();
+            }
+            if (result.VolumeInfo.Categories != null)
+            {
+                cathegorie = result.VolumeInfo.Categories.FirstOrDefault();
+            }
             int nbDePages = 0;
-            nbDePages = result.VolumeInfo.PageCount.Value; // verifier
+            nbDePages = result.VolumeInfo.PageCount.Value;
             //--------------------------------------------------
 
             string envoi = titre + "/" + auteur + "/" + editeur + "/" + langue + "/" + cathegorie + "/" +
                            prix.ToString("0.##") + "/" + nbDePages.ToString();
             Envoyer(envoi, sock);
         }
-        private static void Connexion(Socket sock) //a completer
+        private static User Connexion(Socket sock) //a completer
         {
             byte[] buffer = new byte[1000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
@@ -324,19 +334,25 @@ namespace MobileServer
             string motDePasse = BytesToString(buffer);
 
             int loginID = dbService.CheckLogInCredentials(nomUtilisateur, motDePasse);// faire quelquechose avec
+            User utilisateur = dbService.RetrieveSpecificUser(loginID);
 
             if (loginID == -1)
             {
                 Envoyer("/Invalide", sock);
             }
-            else if (nomUtilisateur == motDePasse && motDePasse == "gestionnaire") // mettre la bonne logique
+            else if (utilisateur.UserTypeID == 2)
             {
                 Envoyer("/Gestionnaire", sock);
             }
-            else
+            else if(utilisateur.UserTypeID == 1)
             {
                 Envoyer("/Client", sock);
             }
+            else
+            {
+                Envoyer("/Invalide", sock);
+            }
+            return utilisateur;
         }
     }
 }
