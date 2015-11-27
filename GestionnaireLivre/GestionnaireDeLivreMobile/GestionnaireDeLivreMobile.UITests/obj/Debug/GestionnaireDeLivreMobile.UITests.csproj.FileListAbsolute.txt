@@ -1,0 +1,29 @@
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\GestionnaireDeLivreMobile.UITests.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\GestionnaireDeLivreMobile.UITests.pdb
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\nunit.framework.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\Xamarin.UITest.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\nunit.framework.xml
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\Xamarin.UITest.xml
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.csprojResolveAssemblyReference.cache
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.dll
+C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.pdb
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.dll
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.pdb
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\GestionnaireDeLivreMobile.UITests.dll.config
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\GestionnaireDeLivreMobile.UITests.dll
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\GestionnaireDeLivreMobile.UITests.pdb
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\nunit.framework.dll
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\Xamarin.UITest.dll
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\nunit.framework.xml
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\Xamarin.UITest.xml
+C:\Users\Mandaniaina\Desktop\Log210Equipe9\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.csprojResolveAssemblyReference.cache
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\GestionnaireDeLivreMobile.UITests.dll.config
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\GestionnaireDeLivreMobile.UITests.dll
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\GestionnaireDeLivreMobile.UITests.pdb
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\nunit.framework.dll
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\Xamarin.UITest.dll
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\nunit.framework.xml
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\bin\Debug\Xamarin.UITest.xml
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.csprojResolveAssemblyReference.cache
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.dll
+C:\Users\Mandaniaina\Desktop\GestionnaireDeLivreMobile 2015-11-24\GestionnaireDeLivreMobile\GestionnaireDeLivreMobile.UITests\obj\Debug\GestionnaireDeLivreMobile.UITests.pdb

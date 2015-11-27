@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/scrollView1">
+    <RelativeLayout
+        p1:layout_width="match_parent"
+        p1:layout_height="match_parent"
+        p1:id="@+id/relativeLayout1">
+        <Button
+            p1:text="Chercher"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/boutonChercher"
+            p1:layout_alignParentRight="true"
+            p1:enabled="false" />
+        <Spinner
+            p1:id="@+id/spinnerCode"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:prompt="@string/demande_type_code"
+            p1:layout_toLeftOf="@id/boutonChercher"
+            p1:layout_marginBottom="0.0dp"
+            p1:layout_alignBottom="@id/boutonChercher"
+            p1:layout_alignTop="@id/boutonChercher" />
+        <EditText
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/champCode"
+            p1:layout_toLeftOf="@id/spinnerCode"
+            p1:layout_marginLeft="0.0dp"
+            p1:layout_alignParentLeft="true"
+            p1:layout_alignBottom="@id/spinnerCode"
+            p1:layout_alignTop="@id/spinnerCode" />
+        <EditText
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/champCode"
+            p1:id="@+id/champTitre"
+            p1:layout_marginTop="41.8dp"
+            p1:text="Titre" />
+        <EditText
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/champTitre"
+            p1:id="@+id/champAuteur"
+            p1:text="Auteur" />
+        <EditText
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/champAuteur"
+            p1:id="@+id/champEditeur"
+            p1:text="Éditeur" />
+        <EditText
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/champEditeur"
+            p1:id="@+id/champLangue"
+            p1:text="Langue" />
+        <EditText
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/champLangue"
+            p1:id="@+id/champCathegorie"
+            p1:text="Cathégorie" />
+        <Spinner
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/champCathegorie"
+            p1:id="@+id/spinnerConditionLivre"
+            p1:prompt="@string/demande_condition_livre" />
+        <Spinner
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/spinnerConditionLivre"
+            p1:id="@+id/spinnerTypeTransaction"
+            p1:prompt="@string/demande_type_transaction" />
+        <EditText
+            p1:inputType="numberDecimal"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/spinnerTypeTransaction"
+            p1:id="@+id/champPrix"
+            p1:text="Prix" />
+        <EditText
+            p1:inputType="numberSigned"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/champPrix"
+            p1:id="@+id/champNbPages"
+            p1:text="Nb de pages" />
+        <Button
+            p1:text="Scanner"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/champNbPages"
+            p1:id="@+id/bouttonScanner" />
+        <Button
+            p1:text="Ajouter le Livre"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/bouttonScanner"
+            p1:id="@+id/boutonAjouterLivre" />
+        <EditText
+            p1:inputType="number"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_toRightOf="@id/champNbPages"
+            p1:id="@+id/champNoCoop"
+            p1:layout_alignTop="@id/champNbPages"
+            p1:text="# de la coop" />
+        <TextView
+            p1:text="Les coops"
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/boutonAjouterLivre"
+            p1:id="@+id/texteCoopZZ" />
+        <TextView
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_toRightOf="@id/boutonAjouterLivre"
+            p1:id="@+id/texteErreur"
+            p1:layout_alignTop="@id/boutonAjouterLivre"
+            p1:visibility="visible" />
+    </RelativeLayout>
+</ScrollView>
