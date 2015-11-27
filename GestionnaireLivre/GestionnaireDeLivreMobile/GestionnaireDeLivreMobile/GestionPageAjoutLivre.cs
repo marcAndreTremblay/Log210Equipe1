@@ -52,6 +52,7 @@ namespace GestionnaireDeLivreMobile
             TextView lesCoops = FindViewById<TextView>(Resource.Id.texteCoopZZ);
             EditText noCoop = FindViewById<EditText>(Resource.Id.champNoCoop);
             TextView erreur = FindViewById<TextView>(Resource.Id.texteErreur);
+            Button annuler = FindViewById<Button>(Resource.Id.boutonAnnuler);
 
             lesCoops.Text = "";
             int count = 0;
@@ -94,7 +95,18 @@ namespace GestionnaireDeLivreMobile
                 
             };
 
-
+            annuler.Click += async delegate
+            {
+                code.Text = "";
+                titre.Text = "Titre";
+                auteur.Text = "Auteur";
+                editeur.Text = "Éditeur";
+                langue.Text = "Langue";
+                cathegorie.Text = "Cathégorie";
+                prix.Text = "Prix";
+                nbPages.Text = "Nb de pages";
+                noCoop.Text = "# de la coop";
+            };
 
             scannerCode.Click += async delegate
             {

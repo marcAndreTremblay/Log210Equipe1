@@ -126,5 +126,12 @@
             p1:id="@+id/texteErreur"
             p1:layout_alignTop="@id/boutonAjouterLivre"
             p1:visibility="visible" />
+        <Button
+            p1:text="Annuler"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_toRightOf="@id/bouttonScanner"
+            p1:id="@+id/boutonAnnuler"
+            p1:layout_below="@id/champNbPages" />
     </RelativeLayout>
 </ScrollView>

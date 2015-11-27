@@ -1952,14 +1952,17 @@ namespace GestionnaireDeLivreMobile
 			// aapt resource value: 0x7f0b0072
 			public const int boutonAjouterLivre = 2131427442;
 			
+			// aapt resource value: 0x7f0b00a2
+			public const int boutonAnnuler = 2131427490;
+			
 			// aapt resource value: 0x7f0b0065
 			public const int boutonChercher = 2131427429;
 			
-			// aapt resource value: 0x7f0b00a8
-			public const int boutonQuitter = 2131427496;
+			// aapt resource value: 0x7f0b00a9
+			public const int boutonQuitter = 2131427497;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int boutonSeConnecter = 2131427494;
+			// aapt resource value: 0x7f0b00a7
+			public const int boutonSeConnecter = 2131427495;
 			
 			// aapt resource value: 0x7f0b0093
 			public const int bouttonChercherLeLivre = 2131427475;
@@ -1997,14 +2000,14 @@ namespace GestionnaireDeLivreMobile
 			// aapt resource value: 0x7f0b006a
 			public const int champEditeur = 2131427434;
 			
-			// aapt resource value: 0x7f0b00a3
-			public const int champIdentifiant = 2131427491;
+			// aapt resource value: 0x7f0b00a4
+			public const int champIdentifiant = 2131427492;
 			
 			// aapt resource value: 0x7f0b006b
 			public const int champLangue = 2131427435;
 			
-			// aapt resource value: 0x7f0b00a5
-			public const int champMotDePasse = 2131427493;
+			// aapt resource value: 0x7f0b00a6
+			public const int champMotDePasse = 2131427494;
 			
 			// aapt resource value: 0x7f0b0070
 			public const int champNbPages = 2131427440;
@@ -2036,8 +2039,8 @@ namespace GestionnaireDeLivreMobile
 			// aapt resource value: 0x7f0b001d
 			public const int collapseActionView = 2131427357;
 			
-			// aapt resource value: 0x7f0b00a9
-			public const int contentFrame = 2131427497;
+			// aapt resource value: 0x7f0b00aa
+			public const int contentFrame = 2131427498;
 			
 			// aapt resource value: 0x7f0b0046
 			public const int contentPanel = 2131427398;
@@ -2336,11 +2339,11 @@ namespace GestionnaireDeLivreMobile
 			// aapt resource value: 0x7f0b00a1
 			public const int texteErreur = 2131427489;
 			
-			// aapt resource value: 0x7f0b00a7
-			public const int texteErreurLogin = 2131427495;
+			// aapt resource value: 0x7f0b00a8
+			public const int texteErreurLogin = 2131427496;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int texteIdentifiant = 2131427490;
+			// aapt resource value: 0x7f0b00a3
+			public const int texteIdentifiant = 2131427491;
 			
 			// aapt resource value: 0x7f0b0099
 			public const int texteLangue = 2131427481;
@@ -2348,8 +2351,8 @@ namespace GestionnaireDeLivreMobile
 			// aapt resource value: 0x7f0b0095
 			public const int texteListeLivres = 2131427477;
 			
-			// aapt resource value: 0x7f0b00a4
-			public const int texteMotDePasse = 2131427492;
+			// aapt resource value: 0x7f0b00a5
+			public const int texteMotDePasse = 2131427493;
 			
 			// aapt resource value: 0x7f0b009e
 			public const int texteNbPage = 2131427486;
