@@ -35,7 +35,7 @@ namespace GestionnaireDeLivreMobile
 
         public static void Envoyer(string message)
         {
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[10000];
             buffer = StringToBytes(message);
             _sock.Send(buffer, 0, buffer.Length, SocketFlags.None);
             Thread.Sleep(100);
@@ -124,7 +124,7 @@ namespace GestionnaireDeLivreMobile
 
         public static void FermerConnexion()
         {
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[10000];
             buffer = StringToBytes("/Quitter");
             _sock.Send(buffer, 0, buffer.Length, SocketFlags.None);
             _sock.Shutdown(SocketShutdown.Both);

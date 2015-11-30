@@ -26,10 +26,8 @@ namespace MobileServer
             Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             string hostName = Dns.GetHostName(); // Retrive the Name of HOST
-            Console.WriteLine(hostName);
             // Get the IP
             string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
-            Console.WriteLine("My IP Address is :" + myIP);
 
 
             Thread udpThread = new Thread(EnvoyerIpUdp);
@@ -64,7 +62,7 @@ namespace MobileServer
                     string data = Encoding.ASCII.GetString(receiveBytes);
                     if (data == "/getIP")
                     {
-                        Console.WriteLine("Received " + iep.Address);
+                        Console.WriteLine("Connexion avec :" + iep.Address);
 
                         Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,ProtocolType.Udp);
 
@@ -87,7 +85,7 @@ namespace MobileServer
         private static void Envoyer(string message,Socket sock)
         {
             Thread.Sleep(100);
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[10000];
             buffer = StringToBytes(message);
             sock.Send(buffer, 0, buffer.Length, SocketFlags.None);
             Thread.Sleep(100);
@@ -117,9 +115,9 @@ namespace MobileServer
 
             while (Operation != "/Quitter")
             {
-                byte[] buffer = new byte[1000];
+                byte[] buffer = new byte[10000];
                 sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
-                User utilisateur;
+                User utilisateur = new User();
                 Operation = BytesToString(buffer);
 
                 Console.WriteLine(Operation);
@@ -145,7 +143,7 @@ namespace MobileServer
                 }
                 else if (Operation == "/DemandeListeLivres")
                 {
-                    EnvoyerListeLivres(sock);
+                    EnvoyerListeLivres(sock, utilisateur);
                 }
 
 
@@ -156,7 +154,7 @@ namespace MobileServer
             sock.Close();
         }
 
-        private static void EnvoyerListeLivres(Socket sock) // a completer (liste des livres)
+        private static void EnvoyerListeLivres(Socket sock, User utilisateur) // a completer (liste des livres)
         {
             string listeLivres = "/";
             List<Book> lesLivres = dbService.RetriveAllBooks(); //Utilier la nouvelle commande
@@ -197,7 +195,7 @@ namespace MobileServer
         {
 
 
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[10000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
 
             string temp = BytesToString(buffer);
@@ -210,31 +208,31 @@ namespace MobileServer
             string condition;
             string transaction;
             //----------------------------------------------
-            if (leLivre.FK_bookcondition == 0)
+            if (leLivre.FK_bookcondition == 1)
             {
-                condition = "";
+                condition = "Comme neuf";
             }
-            else if (leLivre.FK_bookcondition == 1)
+            else if (leLivre.FK_bookcondition == 2)
             {
-                condition = "";
+                condition = "Quelques pages pliés, utilisation d’un marqueur";
             }
-            else
+            else if (leLivre.FK_bookcondition == 3)
             {
-                condition = "";
+                condition = "Livre très utilisé, pages plié, couverture endommagés";
+            }else
+            {
+                condition = "Livre en mauvaise condition";
             }
 
-            if (leLivre.FK_transactionType == 0)
+            if (leLivre.FK_transactionType == 1)
             {
-                transaction = "";
+                transaction = "À vendre";
             }
-            else if (leLivre.FK_transactionType == 1)
+            else 
             {
-                transaction = "";
+                transaction = "À échanger";
             }
-            else
-            {
-                transaction = "";
-            }
+
 
             //------------------------------------------------
 
@@ -249,7 +247,7 @@ namespace MobileServer
         }
         private static void AjoutLivre(Socket sock)// a completer (ajouter livre dans la base de données)
         {
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[10000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
 
             string Livre = BytesToString(buffer);
@@ -276,21 +274,22 @@ namespace MobileServer
             NouveauLivre.Publishier = livreDecode[4];
             NouveauLivre.Language = livreDecode[5];
             NouveauLivre.Categorie = livreDecode[6];
-            
-            string etat = livreDecode[7]; // a faire
 
-            string transaction = livreDecode[8]; // a faire
+            NouveauLivre.FK_bookcondition = int.Parse(livreDecode[7]) + 1; // a verifier
+
+
+
+            NouveauLivre.FK_transactionType = int.Parse(livreDecode[8]) + 1; // a verifier
             NouveauLivre.price = double.Parse(livreDecode[9]);
             string nbDePages = livreDecode[10]; // a faire
-            NouveauLivre.FK_coop_ref = int.Parse(livreDecode[11]); //le munérode la coop dans l'ordre envoyé commance à 0 (à vérifier)
-
-
+            NouveauLivre.FK_coop_ref = int.Parse(livreDecode[11]) + 1; //le munérode la coop dans l'ordre envoyé commance à 0 dans le tableau(à vérifier)
+            
             dbService.RegisterBook(NouveauLivre);
         }
 
         private static void EnvoyerLivres(Socket sock) // vérifié et fonctionne (recherche du livre par isbn/ean/upc)
         {
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[10000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
             string Code = BytesToString(buffer); 
 
@@ -324,16 +323,16 @@ namespace MobileServer
                            prix.ToString("0.##") + "/" + nbDePages.ToString();
             Envoyer(envoi, sock);
         }
-        private static User Connexion(Socket sock) //a completer
+        private static User Connexion(Socket sock) // fonctionne
         {
-            byte[] buffer = new byte[1000];
+            byte[] buffer = new byte[10000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
             string nomUtilisateur = BytesToString(buffer);
 
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
             string motDePasse = BytesToString(buffer);
 
-            int loginID = dbService.CheckLogInCredentials(nomUtilisateur, motDePasse);// faire quelquechose avec
+            int loginID = dbService.CheckLogInCredentials(nomUtilisateur, motDePasse);
             User utilisateur = dbService.RetrieveSpecificUser(loginID);
 
             if (loginID == -1)
