@@ -518,5 +518,55 @@ namespace GestionnaireLivre.Model.Services
             if (i == 1) return true;
             return false;
         }
+
+
+
+        public void UpdateSpecificBookCondition(Book book, BookCondition condition)
+        {
+           
+
+            OpenConnection();
+
+            MySqlCommand cmd = new MySqlCommand("UpdateSpecificBookCondition", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("book_id", book.id));
+            cmd.Parameters.Add(new MySqlParameter("fk_condition_id", condition.id));
+
+            cmd.ExecuteScalar();
+
+
+            CloseConnection();
+        }
+
+        public void RemoveSpecificBook(Book book)
+        {
+
+
+            OpenConnection();
+
+            MySqlCommand cmd = new MySqlCommand("RemoveSpecificBook", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("book_id", book.id));
+
+            cmd.ExecuteScalar();
+
+
+            CloseConnection();
+        }
+
+        public void ValidateSpecificBookCondition(Book book)
+        {
+
+
+            OpenConnection();
+
+            MySqlCommand cmd = new MySqlCommand("ValidateSpecificBookCondition", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("book_id", book.id));
+            cmd.ExecuteScalar();
+
+
+            CloseConnection();
+        }
     }
 }

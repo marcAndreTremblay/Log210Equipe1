@@ -473,6 +473,42 @@ BEGIN
      WHERE `book`.`PK_id`= book_id ;
 END ;;
 
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `ValidateSpecificBookCondition` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ValidateSpecificBookCondition`(
+        in book_id int(11))
+BEGIN
+	UPDATE `gestionnairebd`.`book`
+    SET 
+        `FK_transactionStatus`='2'
+     WHERE `book`.`PK_id`= book_id ;
+END ;;
+
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `UpdateSpecificBookCondition` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateSpecificBookCondition`(
+        in book_id int(11),
+        in fk_condition_id int(11))
+BEGIN
+	UPDATE `gestionnairebd`.`book`
+    SET 
+        `FK_transactionStatus`= fk_condition_id
+     WHERE `book`.`PK_id`= book_id ;
+END ;;
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RemoveSpecificBook` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RemoveSpecificBook`(
+        in book_id int(11))
+BEGIN
+	DELETE FROM `gestionnairebd`.`book` WHERE `PK_id`=book_id;
+
+END ;;
+
 
 DELIMITER ;
 /*!50003 DROP PROCEDURE IF EXISTS `ValidateUserCrendentials` */;
