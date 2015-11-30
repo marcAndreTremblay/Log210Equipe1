@@ -350,6 +350,29 @@ END ;;
 
 
 DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveAllBooksWaitingForPickupByCoop` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveAllBooksWaitingForPickupByCoop`(
+		in coop_id int(11))
+BEGIN
+	select book.* ,  
+		transactiontype.Name as transactionType,
+		bookcondition.Description as conditionDescription,
+		transactionstatus.Name as transactionStatus,
+        cooperative.Name as coopName
+    from gestionnairebd.book , 
+		gestionnairebd.transactiontype ,
+		gestionnairebd.bookcondition ,
+		gestionnairebd.transactionstatus,
+        gestionnairebd.cooperative
+	WHERE book.FK_bookcondition = bookcondition.PK_id
+		and book.FK_transactionType = transactiontype.PK_id 
+        and book.FK_transactionStatus = 4
+         and book.FK_cooperativeid = cooperative.PK_id 
+          and book.FK_cooperativeid = coop_id;
+END ;;
+
+DELIMITER ;
 /*!50003 DROP PROCEDURE IF EXISTS `RetrieveLast10BookOnSale` */;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveLast10BookOnSale`()
