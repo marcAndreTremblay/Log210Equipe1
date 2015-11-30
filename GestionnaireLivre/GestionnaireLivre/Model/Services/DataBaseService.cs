@@ -224,6 +224,7 @@ namespace GestionnaireLivre.Model.Services
         }
 
 
+
         public List<Cooperative> RetrieveCooperatives()
         {
             OpenConnection();
@@ -333,7 +334,7 @@ namespace GestionnaireLivre.Model.Services
 
             List<Book> bookList = new List<Book>();
 
-            MySqlCommand cmd = new MySqlCommand("RetrieveBooksBySellerId", connection);
+            MySqlCommand cmd = new MySqlCommand("RetrieveBooksByCoopId", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add(new MySqlParameter("coop_id", coop_Id));
@@ -392,6 +393,28 @@ namespace GestionnaireLivre.Model.Services
             return bookList;
         }
         
+
+        public List<User> SearchUserByName(string name)
+        {
+            OpenConnection();
+
+            List<User> bookList = new List<User>();
+
+            MySqlCommand cmd = new MySqlCommand("SearchUserByName", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bookList.Add(new User(rdr));
+            }
+
+            CloseConnection();
+
+            return bookList;
+        }
+
         public List<Book> RetrieveLast10BookOnSale()
         {
             OpenConnection();
@@ -447,6 +470,29 @@ namespace GestionnaireLivre.Model.Services
             while (rdr.Read())
             {
                 bookList.Add(new Book(rdr));
+            }
+
+            CloseConnection();
+
+            return bookList;
+        }
+
+        public List<User> SearchUserByName(string name)
+        {
+            OpenConnection();
+
+            List<User> bookList = new List<User>();
+
+            MySqlCommand cmd = new MySqlCommand("SearchUserByName", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(new MySqlParameter("userName", "%" + name + "%"));
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bookList.Add(new User(rdr));
             }
 
             CloseConnection();

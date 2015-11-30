@@ -451,6 +451,20 @@ BEGIN
         and book.FK_transactionStatus = 2;
 END ;;
 
+
+
+
+/*!50003 DROP PROCEDURE IF EXISTS `SearchUserByName` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchUserByName`(
+		in userName varchar(50))
+BEGIN
+	select user.*
+    from gestionnairebd.user 
+		WHERE  user.Name LIKE userName;
+END ;;
+
+
 DELIMITER ;
 /*!50003 DROP PROCEDURE IF EXISTS `RetrieveSpecificUser` */;
 DELIMITER ;;
