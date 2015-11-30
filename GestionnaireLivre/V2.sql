@@ -518,7 +518,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateSpecificBookCondition`(
 BEGIN
 	UPDATE `gestionnairebd`.`book`
     SET 
-        `FK_transactionStatus`= fk_condition_id
+        `FK_bookcondition`= fk_condition_id
      WHERE `book`.`PK_id`= book_id ;
 END ;;
 
