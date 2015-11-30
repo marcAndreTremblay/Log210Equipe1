@@ -197,13 +197,13 @@ namespace GestionnaireDeLivreMobile
         private void spinner_ItemSelectedEtat(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
-            etat = string.Format("{0}", spinner.GetItemAtPosition(e.Position));
+            etat = e.Position.ToString();
         }
 
         private void spinner_ItemSelectedTransaction(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
-            transaction = string.Format("{0}", spinner.GetItemAtPosition(e.Position));
+            transaction = e.Position.ToString();
         }
 
         void HandleScanResult(ZXing.Result result)

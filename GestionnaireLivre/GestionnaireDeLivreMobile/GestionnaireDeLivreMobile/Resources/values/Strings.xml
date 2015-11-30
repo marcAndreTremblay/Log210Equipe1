@@ -12,6 +12,7 @@
     <item>Comme neuf</item>
     <item>Quelques pages pliés, utilisation d’un marqueur</item>
     <item>Livre très utilisé, pages plié, couverture endommagés</item>
+    <item>Livre en mauvaise condition</item>
   </string-array>
   <string name="demande_type_transaction">Ce livre va être</string>
   <string-array name="liste_transactions">
