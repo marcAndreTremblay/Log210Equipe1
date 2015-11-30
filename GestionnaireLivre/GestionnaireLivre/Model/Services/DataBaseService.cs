@@ -15,7 +15,7 @@ namespace GestionnaireLivre.Model.Services
     public class DataBaseService
     {
 
-        //Note(Marc) : Maybe Only keep the connection string and create a connection evetry time? So we avoid the multiple connection problems?
+        //Note(Marc) : Maybe Only keep the connection string and create a connection every time? So we avoid the multiple connection problems?
         private MySqlConnection connection;
         private string server = "localhost";
         private string database = "gestionnairebd";
@@ -99,7 +99,6 @@ namespace GestionnaireLivre.Model.Services
                 return false;
             }
         }
-
         public bool TestConnection()
         {
             try
@@ -113,6 +112,8 @@ namespace GestionnaireLivre.Model.Services
             return true;
         }
 
+   
+    
         public int CheckLogInCredentials(string username, string password)
         {
             password = Crypting.GetSHA512Hash(password); //Encrypte the password
@@ -133,10 +134,9 @@ namespace GestionnaireLivre.Model.Services
 
             }    
             connection.Close();
-
+            loginID = id;
             return id;
         }
-
 
         private  List<BookCondition> GetBookCondition()
         {
@@ -272,7 +272,6 @@ namespace GestionnaireLivre.Model.Services
             return coop;
         }
        
-        
         /// <summary>
         /// Retrive all the informations 
         /// </summary>
@@ -335,6 +334,28 @@ namespace GestionnaireLivre.Model.Services
             List<Book> bookList = new List<Book>();
 
             MySqlCommand cmd = new MySqlCommand("RetrieveBooksBySellerId", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(new MySqlParameter("coop_id", coop_Id));
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bookList.Add(new Book(rdr));
+            }
+
+            CloseConnection();
+
+            return bookList;
+        }
+        public List<Book> RetrieveAllBooksWaitingForPickupByCoop(int coop_Id)
+        {
+            OpenConnection();
+
+            List<Book> bookList = new List<Book>();
+
+            MySqlCommand cmd = new MySqlCommand("RetrieveAllBooksWaitingForPickupByCoop", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add(new MySqlParameter("coop_id", coop_Id));
