@@ -328,7 +328,28 @@ namespace GestionnaireLivre.Model.Services
 
             return bookList;
         }
+        public List<Book> RetrieveBooksByCoopId(int coop_Id)
+        {
+            OpenConnection();
 
+            List<Book> bookList = new List<Book>();
+
+            MySqlCommand cmd = new MySqlCommand("RetrieveBooksBySellerId", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(new MySqlParameter("coop_id", coop_Id));
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bookList.Add(new Book(rdr));
+            }
+
+            CloseConnection();
+
+            return bookList;
+        }
         public List<Book> RetriveAllBooks()
         {
             OpenConnection();
@@ -349,7 +370,7 @@ namespace GestionnaireLivre.Model.Services
 
             return bookList;
         }
-
+        
         public List<Book> RetrieveLast10BookOnSale()
         {
             OpenConnection();
@@ -484,6 +505,7 @@ namespace GestionnaireLivre.Model.Services
                 cmd.Parameters.Add(new MySqlParameter("publishier", newBook.Publishier));
                 cmd.Parameters.Add(new MySqlParameter("blanguage", newBook.Language));
                 cmd.Parameters.Add(new MySqlParameter("categorie", newBook.Categorie));
+                cmd.Parameters.Add(new MySqlParameter("pageCpt", newBook.PageCpt));
                 cmd.Parameters.Add(new MySqlParameter("price", newBook.price));
                 cmd.Parameters.Add(new MySqlParameter("fk_bootcondition", newBook.FK_bookcondition));
                 cmd.Parameters.Add(new MySqlParameter("fk_transactionType", newBook.FK_transactionType));

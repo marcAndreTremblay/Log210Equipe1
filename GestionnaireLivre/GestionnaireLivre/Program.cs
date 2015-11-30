@@ -40,6 +40,7 @@ namespace GestionnaireLivre
          
             if(DBService.loginID != -1)
             {
+                DBService.RetriveAllBooks();
                 Application.Run(new MainWindow(DBService,BookSService));
             }         
         }

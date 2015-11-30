@@ -63,6 +63,8 @@
             this.textBoxCodeUPC = new System.Windows.Forms.TextBox();
             this.buttonSearchEAN = new System.Windows.Forms.Button();
             this.buttonSearchUpc = new System.Windows.Forms.Button();
+            this.TBPage = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panelSellPrice.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -382,11 +384,30 @@
             this.buttonSearchUpc.UseVisualStyleBackColor = false;
             this.buttonSearchUpc.Click += new System.EventHandler(this.buttonSearchUpc_Click);
             // 
+            // TBPage
+            // 
+            this.TBPage.Location = new System.Drawing.Point(99, 277);
+            this.TBPage.Name = "TBPage";
+            this.TBPage.Size = new System.Drawing.Size(168, 20);
+            this.TBPage.TabIndex = 37;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(15, 281);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 16);
+            this.label13.TabIndex = 36;
+            this.label13.Text = "Page";
+            // 
             // AddNewBookUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
+            this.Controls.Add(this.TBPage);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.buttonSearchUpc);
             this.Controls.Add(this.buttonSearchEAN);
             this.Controls.Add(this.textBoxCodeUPC);
@@ -463,5 +484,7 @@
         private System.Windows.Forms.TextBox textBoxCodeUPC;
         private System.Windows.Forms.Button buttonSearchEAN;
         private System.Windows.Forms.Button buttonSearchUpc;
+        private System.Windows.Forms.TextBox TBPage;
+        private System.Windows.Forms.Label label13;
     }
 }

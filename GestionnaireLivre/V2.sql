@@ -101,6 +101,7 @@ CREATE TABLE `book` (
   `Publishier` varchar(45)  NULL,
   `Language` varchar(45)  NULL,
    `Categorie` varchar(45)  NULL,
+   `PageCpt` int(11),
   `Price` double NOT NULL,
 	`NewOwnerId` int(11)  ,
    `IsTransactionDone` bool,
@@ -245,13 +246,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RegisterNewBook`(
     IN publishier VARCHAR(45),
     IN blanguage VARCHAR(45),
      IN categorie VARCHAR(45),
+     IN pageCpt int(11),
     IN price double,
     IN fk_bootcondition int(11),
      IN fk_transactionType int(11),
      IN fk_cooperativeid int(11))
 BEGIN
-INSERT INTO `gestionnairebd`.`book` (`ISBN`, `EANcode`, `UPCcode`, `Title`, `Author`, `Publishier`, `Language`, `Categorie` , `Price`, `NewOwnerId` , `IsTransactionDone` ,`timeCreated`, `FK_bookcondition`, `FK_transactionType`,`FK_transactionStatus`,`FK_cooperativeid`) 
-        VALUES (isbn,eancode,upccode, title, author, publishier, blanguage, categorie , price, NULL , FALSE , now(), fk_bootcondition,fk_transactionType,1,fk_cooperativeid);
+INSERT INTO `gestionnairebd`.`book` (`ISBN`, `EANcode`, `UPCcode`, `Title`, `Author`, `Publishier`, `Language`, `Categorie` ,`PageCpt`, `Price`, `NewOwnerId` , `IsTransactionDone` ,`timeCreated`, `FK_bookcondition`, `FK_transactionType`,`FK_transactionStatus`,`FK_cooperativeid`) 
+        VALUES (isbn,eancode,upccode, title, author, publishier, blanguage, categorie, pageCpt, price, NULL , FALSE , now(), fk_bootcondition,fk_transactionType,1,fk_cooperativeid);
 
 INSERT INTO `gestionnairebd`.`user_book` (`FK_user_id`, `FK_book_id`) VALUES (bookSellerId, LAST_INSERT_ID());
 END ;;
@@ -299,6 +301,29 @@ BEGIN
 	select * from gestionnairebd.bookcondition;
 END ;;
 
+
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `RetrieveBooksByCoopId` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveBooksByCoopId`(
+		in coop_id int(11))
+BEGIN
+	select book.* ,  
+		transactiontype.Name as transactionType,
+		bookcondition.Description as conditionDescription,
+		transactionstatus.Name as transactionStatus,
+        cooperative.Name as coopName
+    from gestionnairebd.book , 
+		gestionnairebd.transactiontype ,
+		gestionnairebd.bookcondition ,
+		gestionnairebd.transactionstatus,
+        gestionnairebd.cooperative
+	WHERE book.FK_bookcondition = bookcondition.PK_id
+		and book.FK_transactionType = transactiontype.PK_id 
+        and book.FK_transactionStatus = transactionstatus.PK_id
+         and book.FK_cooperativeid = cooperative.PK_id 
+         and book.FK_cooperativeid = coop_id;
+END ;;
 
 
 

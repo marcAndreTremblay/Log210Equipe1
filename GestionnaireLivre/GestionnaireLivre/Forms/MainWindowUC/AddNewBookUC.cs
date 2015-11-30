@@ -161,7 +161,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
             textBoxBookName.Text = bookSearchTread.Result.VolumeInfo.Title;
             textBoxPublisher.Text = bookSearchTread.Result.VolumeInfo.Publisher;
             textBoxLanguage.Text = bookSearchTread.Result.VolumeInfo.Language;
-
+            TBPage.Text = bookSearchTread.Result.VolumeInfo.PageCount.ToString();
             if (bookSearchTread.Result.VolumeInfo.Authors != null)
             {
                 textBoxAuthor.Text = bookSearchTread.Result.VolumeInfo.Authors.FirstOrDefault();
@@ -204,6 +204,15 @@ namespace GestionnaireLivre.Forms.MainWindowUC
                 newbook.EANcode = textBoxCodeEAN.Text;
                 newbook.Language = textBoxLanguage.Text;
                 newbook.Categorie = textBCategorie.Text;
+                if (TBPage.Text != "")
+                {
+                    newbook.PageCpt = Int32.Parse(TBPage.Text);
+                }
+                else
+                {
+                    newbook.PageCpt = 0;
+                }
+                
                 newbook.Publishier = textBoxPublisher.Text;
                 newbook.price = price;
                 newbook.FK_bookcondition = bookcconditionSelected.id;
@@ -217,6 +226,10 @@ namespace GestionnaireLivre.Forms.MainWindowUC
                     if (result == true)
                     {
                         ClearPage();
+                    }
+                    else
+                    {
+
                     }
                 }
             }

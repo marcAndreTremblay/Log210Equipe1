@@ -16,6 +16,7 @@ namespace GestionnaireLivre.Model.DataObject
         public string Publishier;
         public string Language;
         public string Categorie;
+        public int PageCpt;
         public double price;
         public int NewUserId;
         public bool IsTransactionDone;
@@ -41,26 +42,27 @@ namespace GestionnaireLivre.Model.DataObject
             Publishier = dataReader.GetValue(6).ToString();
             Language = dataReader.GetValue(7).ToString();
             Categorie = dataReader.GetValue(8).ToString();
-            price = (double)dataReader.GetValue(9);
+            PageCpt = (int)dataReader.GetValue(9);
+            price = (double)dataReader.GetValue(10);
 
             
             NewUserId = -1;
-            if (dataReader.IsDBNull(10) != true)
+            if (dataReader.IsDBNull(11) != true)
             {
-                NewUserId = (int)dataReader.GetValue(10);
+                NewUserId = (int)dataReader.GetValue(11);
             }
-            IsTransactionDone = (bool)dataReader.GetValue(11);
-            timeCreated = (DateTime)dataReader.GetValue(12);
+            IsTransactionDone = (bool)dataReader.GetValue(12);
+            timeCreated = (DateTime)dataReader.GetValue(13);
 
-            FK_bookcondition = (int)dataReader.GetValue(13);
-            FK_transactionType = (int)dataReader.GetValue(14);
-            FK_transactionStatus = (int)dataReader.GetValue(15);
-            FK_coop_ref = (int)dataReader.GetValue(16);
+            FK_bookcondition = (int)dataReader.GetValue(14);
+            FK_transactionType = (int)dataReader.GetValue(15);
+            FK_transactionStatus = (int)dataReader.GetValue(16);
+            FK_coop_ref = (int)dataReader.GetValue(17);
 
-             transactionTypeName = dataReader.GetValue(18).ToString();
-             bookconditionDescription = dataReader.GetValue(19).ToString();
-             transactionStatusName = dataReader.GetValue(20).ToString();
-            coopName = dataReader.GetValue(21).ToString();
+             transactionTypeName = dataReader.GetValue(19).ToString();
+             bookconditionDescription = dataReader.GetValue(20).ToString();
+             transactionStatusName = dataReader.GetValue(21).ToString();
+            coopName = dataReader.GetValue(22).ToString();
         }
     }
 
@@ -74,6 +76,7 @@ namespace GestionnaireLivre.Model.DataObject
         public string Publishier;
         public string Language;
         public string Categorie;
+        public int PageCpt;
         public double price;
 
         public int FK_bookcondition;
