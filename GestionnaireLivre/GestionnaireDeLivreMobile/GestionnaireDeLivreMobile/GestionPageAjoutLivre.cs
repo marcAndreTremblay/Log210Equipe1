@@ -75,13 +75,13 @@ namespace GestionnaireDeLivreMobile
                         GestionReseau.EnvoyerNouveauLivre(noCode, code.Text, titre.Text, auteur.Text, editeur.Text, langue.Text,
                             cathegorie.Text, etat, transaction, prix.Text, nbPages.Text, noCoop.Text.ToString());
                         code.Text = "";
-                        titre.Text = "Titre";
-                        auteur.Text = "Auteur";
-                        editeur.Text = "Éditeur";
-                        langue.Text = "Langue";
-                        cathegorie.Text = "Cathégorie";
-                        prix.Text = "Prix";
-                        nbPages.Text = "Nb de pages";
+                        titre.Text = "";
+                        auteur.Text = "";
+                        editeur.Text = "";
+                        langue.Text = "";
+                        cathegorie.Text = "";
+                        prix.Text = "";
+                        nbPages.Text = "";
                         erreur.Text = "";
                     }
                     else
@@ -99,14 +99,14 @@ namespace GestionnaireDeLivreMobile
             annuler.Click += async delegate
             {
                 code.Text = "";
-                titre.Text = "Titre";
-                auteur.Text = "Auteur";
-                editeur.Text = "Éditeur";
-                langue.Text = "Langue";
-                cathegorie.Text = "Cathégorie";
-                prix.Text = "Prix";
-                nbPages.Text = "Nb de pages";
-                noCoop.Text = "# de la coop";
+                titre.Text = "";
+                auteur.Text = "";
+                editeur.Text = "";
+                langue.Text = "";
+                cathegorie.Text = "";
+                prix.Text = "";
+                nbPages.Text = "";
+                noCoop.Text = "";
                 erreur.Text = "";
             };
 

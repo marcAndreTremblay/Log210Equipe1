@@ -40,31 +40,31 @@
             p1:layout_below="@id/champCode"
             p1:id="@+id/champTitre"
             p1:layout_marginTop="41.8dp"
-            p1:text="Titre" />
+            p1:hint="Titre" />
         <EditText
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:layout_below="@id/champTitre"
             p1:id="@+id/champAuteur"
-            p1:text="Auteur" />
+            p1:hint="Auteur" />
         <EditText
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:layout_below="@id/champAuteur"
             p1:id="@+id/champEditeur"
-            p1:text="Éditeur" />
+            p1:hint="Éditeur" />
         <EditText
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:layout_below="@id/champEditeur"
             p1:id="@+id/champLangue"
-            p1:text="Langue" />
+            p1:hint="Langue" />
         <EditText
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:layout_below="@id/champLangue"
             p1:id="@+id/champCathegorie"
-            p1:text="Cathégorie" />
+            p1:hint="Cathégorie" />
         <Spinner
             p1:layout_width="wrap_content"
             p1:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             p1:layout_height="wrap_content"
             p1:layout_below="@id/champPrix"
             p1:id="@+id/champNbPages"
-            p1:text="Nb de pages" />
+            p1:hint="Nb de pages" />
         <Button
             p1:text="Scanner"
             p1:layout_width="wrap_content"
@@ -110,7 +110,7 @@
             p1:layout_toRightOf="@id/champNbPages"
             p1:id="@+id/champNoCoop"
             p1:layout_alignTop="@id/champNbPages"
-            p1:text="# de la coop" />
+            p1:hint="# de la coop" />
         <TextView
             p1:text="Les coops"
             p1:textAppearance="?android:attr/textAppearanceLarge"
