@@ -70,7 +70,7 @@ namespace GestionnaireDeLivreMobile
             {
                 try
                 {
-                    if (int.Parse(noCoop.Text) <= count)
+                    if (int.Parse(noCoop.Text) +1 <= count)
                     {
                         GestionReseau.EnvoyerNouveauLivre(noCode, code.Text, titre.Text, auteur.Text, editeur.Text, langue.Text,
                             cathegorie.Text, etat, transaction, prix.Text, nbPages.Text, noCoop.Text.ToString());
@@ -81,7 +81,8 @@ namespace GestionnaireDeLivreMobile
                         langue.Text = "Langue";
                         cathegorie.Text = "Cathégorie";
                         prix.Text = "Prix";
-                        nbPages.Text = "Nb de pages"; 
+                        nbPages.Text = "Nb de pages";
+                        erreur.Text = "";
                     }
                     else
                     {
@@ -106,6 +107,7 @@ namespace GestionnaireDeLivreMobile
                 prix.Text = "Prix";
                 nbPages.Text = "Nb de pages";
                 noCoop.Text = "# de la coop";
+                erreur.Text = "";
             };
 
             scannerCode.Click += async delegate

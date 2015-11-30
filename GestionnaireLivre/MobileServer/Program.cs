@@ -135,7 +135,7 @@ namespace MobileServer
                 }
                 else if (Operation == "/DemandeLivres")
                 {
-                    EnvoyerInformationLivre(sock);
+                    EnvoyerInformationLivre(sock, utilisateur);
                 }
                 else if (Operation == "/DemandeListeCoop")
                 {
@@ -157,7 +157,7 @@ namespace MobileServer
         private static void EnvoyerListeLivres(Socket sock, User utilisateur) // a completer (liste des livres)
         {
             string listeLivres = "/";
-            List<Book> lesLivres = dbService.RetriveAllBooks(); //Utilier la nouvelle commande
+            List<Book> lesLivres = dbService.RetrieveBooksByCoopId(utilisateur.CoopRefID); //Utilier la nouvelle commande
 
             for (int i = 0; i < lesLivres.Count; i++)
             {
@@ -191,7 +191,7 @@ namespace MobileServer
 
             Envoyer(listeCoop, sock);
         }
-        private static void EnvoyerInformationLivre(Socket sock) // a completer (info du livre dans la liste de livre)
+        private static void EnvoyerInformationLivre(Socket sock, User utilisateur) 
         {
 
 
@@ -201,7 +201,7 @@ namespace MobileServer
             string temp = BytesToString(buffer);
             int numeroDuLivre = int.Parse(temp);
 
-            List<Book> lesLivres = dbService.RetriveAllBooks(); //Utilier la nouvelle commande
+            List<Book> lesLivres = dbService.RetrieveBooksByCoopId(utilisateur.CoopRefID); //Utilier la nouvelle commande
 
             Book leLivre = lesLivres[numeroDuLivre - 1];
 
@@ -238,14 +238,13 @@ namespace MobileServer
 
 
 
-            //ajouter le nombre de page
             string Livre = leLivre.Title + "/" + leLivre.Author + "/" + leLivre.Publishier + "/" + leLivre.Language +
-                           "/" + leLivre.Categorie + "/" + leLivre.price + /* "/" + leLivre.NOMBREDEPAGE*/ "/ 12" + "/" +
+                           "/" + leLivre.Categorie + "/" + leLivre.price +"/" + leLivre.PageCpt.ToString() + "/" +
                            condition + "/" + transaction;
 
             Envoyer(Livre, sock);
         }
-        private static void AjoutLivre(Socket sock)// a completer (ajouter livre dans la base de données)
+        private static void AjoutLivre(Socket sock)// fait (ajouter livre dans la base de données)
         {
             byte[] buffer = new byte[10000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
@@ -281,9 +280,8 @@ namespace MobileServer
 
             NouveauLivre.FK_transactionType = int.Parse(livreDecode[8]) + 1; // a verifier
             NouveauLivre.price = double.Parse(livreDecode[9]);
-            string nbDePages = livreDecode[10]; // a faire
+            NouveauLivre.PageCpt = int.Parse(livreDecode[10]); 
             NouveauLivre.FK_coop_ref = int.Parse(livreDecode[11]) + 1; //le munérode la coop dans l'ordre envoyé commance à 0 dans le tableau(à vérifier)
-            
             dbService.RegisterBook(NouveauLivre);
         }
 
@@ -332,9 +330,9 @@ namespace MobileServer
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
             string motDePasse = BytesToString(buffer);
 
-            int loginID = dbService.CheckLogInCredentials(nomUtilisateur, motDePasse);
+            int loginID = dbService.loginID = dbService.CheckLogInCredentials(nomUtilisateur, motDePasse);
             User utilisateur = dbService.RetrieveSpecificUser(loginID);
-
+            
             if (loginID == -1)
             {
                 Envoyer("/Invalide", sock);
