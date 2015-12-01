@@ -30,9 +30,12 @@ namespace GestionnaireLivre.Forms.MainUserControl
 
             foreach (Book currentBook in DBService.RetrieveLast10BookOnSale())
             {
-                BookInfoPanelUC panel = new BookInfoPanelUC(currentBook, null);
-                panel.OnBookReserved += OnBookReserveClick;
-                FLPBookSearchResult.Controls.Add(panel);
+                if (currentBook.FK_transactionStatus == 2)
+                {
+                    BookInfoPanelUC panel = new BookInfoPanelUC(currentBook, null);
+                    panel.OnBookReserved += OnBookReserveClick;
+                    FLPBookSearchResult.Controls.Add(panel);
+                }
             }
         }
 
@@ -50,9 +53,13 @@ namespace GestionnaireLivre.Forms.MainUserControl
             FLPBookSearchResult.Controls.Clear();
             foreach (Book currentBook in bookResult)
             {
-                BookInfoPanelUC panel = new BookInfoPanelUC(currentBook, null);
-                panel.OnBookReserved += OnBookReserveClick;
-                FLPBookSearchResult.Controls.Add(panel);
+                if(currentBook.FK_transactionStatus ==2 )
+                {
+                    BookInfoPanelUC panel = new BookInfoPanelUC(currentBook, null);
+                    panel.OnBookReserved += OnBookReserveClick;
+                    FLPBookSearchResult.Controls.Add(panel);
+                }
+
             }
         }
 

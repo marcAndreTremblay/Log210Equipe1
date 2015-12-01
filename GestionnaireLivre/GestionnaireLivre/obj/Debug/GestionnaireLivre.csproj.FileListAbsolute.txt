@@ -468,3 +468,5 @@ C:\Users\Marc-André\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\b
 C:\Users\Marc-André\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\bin\Debug\System.Net.Http.Primitives.xml
 C:\Users\Marc-André\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\bin\Debug\Zlib.Portable.xml
 >>>>>>> 955018908cac8cd2443a21950b158e0146b26f47
+C:\Users\Marc-André\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\obj\Debug\GestionnaireLivre.Forms.MainWindowUC.BookDeliveryUC.resources
+C:\Users\Marc-André\Desktop\Log210Equipe9\GestionnaireLivre\GestionnaireLivre\obj\Debug\GestionnaireLivre.Forms.MainWindowUC.BookReceptionUC.resources

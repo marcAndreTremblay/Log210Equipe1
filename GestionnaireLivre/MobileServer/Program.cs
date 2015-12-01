@@ -15,11 +15,10 @@ namespace MobileServer
 {
     public class Program
     {
-        private static DataBaseService dbService;
         static void Main(string[] args)
         {
-            dbService = new DataBaseService();
-            
+
+
 
 
             List<Thread> listeThreads = new List<Thread>();
@@ -64,7 +63,7 @@ namespace MobileServer
                     {
                         Console.WriteLine("Connexion avec :" + iep.Address);
 
-                        Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,ProtocolType.Udp);
+                        Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
                         IPEndPoint endPoint = new IPEndPoint(iep.Address, 11000);
                         Thread.Sleep(500);
@@ -78,17 +77,17 @@ namespace MobileServer
                 {
                     Console.WriteLine(e.ToString());
                 }
-            }  
+            }
         }
 
 
-        private static void Envoyer(string message,Socket sock)
+        private static void Envoyer(string message, Socket sock)
         {
-            Thread.Sleep(100);
+            Thread.Sleep(200);
             byte[] buffer = new byte[10000];
             buffer = StringToBytes(message);
             sock.Send(buffer, 0, buffer.Length, SocketFlags.None);
-            Thread.Sleep(100);
+            Thread.Sleep(200);
         }
 
         private static string BytesToString(byte[] bytes)
@@ -107,23 +106,24 @@ namespace MobileServer
             return message.Split('/');
         }
 
-        
+
 
         private static void GererCommunication(Socket sock)
         {
             string Operation = null;
-
+            DataBaseService dbServiceUser = new DataBaseService();
+            User utilisateur = new User();
             while (Operation != "/Quitter")
             {
                 byte[] buffer = new byte[10000];
                 sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
-                User utilisateur = new User();
+
                 Operation = BytesToString(buffer);
 
                 Console.WriteLine(Operation);
                 if (Operation == "/VerificationUtilisateur")
                 {
-                    utilisateur = Connexion(sock);
+                    utilisateur = Connexion(sock, dbServiceUser);
                 }
                 else if (Operation == "/DemandeInformationLivre")
                 {
@@ -131,52 +131,42 @@ namespace MobileServer
                 }
                 else if (Operation == "/AjoutLivre")
                 {
-                    AjoutLivre(sock);
+                    AjoutLivre(sock, dbServiceUser);
                 }
                 else if (Operation == "/DemandeLivres")
                 {
-                    EnvoyerInformationLivre(sock, utilisateur);
+                    EnvoyerInformationLivre(sock, utilisateur, dbServiceUser);
                 }
                 else if (Operation == "/DemandeListeCoop")
                 {
-                    EnvoyerListeCoop(sock);
+                    EnvoyerListeCoop(sock, dbServiceUser);
                 }
                 else if (Operation == "/DemandeListeLivres")
                 {
-                    EnvoyerListeLivres(sock, utilisateur);
+                    EnvoyerListeLivres(sock, utilisateur, dbServiceUser);
                 }
-
-
-                
             }
 
             sock.Shutdown(SocketShutdown.Both);
             sock.Close();
         }
 
-        private static void EnvoyerListeLivres(Socket sock, User utilisateur) // a completer (liste des livres)
+        private static void EnvoyerListeLivres(Socket sock, User utilisateur, DataBaseService dbServiceUser) // a completer (liste des livres)
         {
-            string listeLivres = "/";
-            List<Book> lesLivres = dbService.RetrieveBooksByCoopId(utilisateur.CoopRefID); //Utilier la nouvelle commande
+            string listeLivres = "";
+            List<Book> lesLivres = dbServiceUser.RetrieveBooksByCoopId(utilisateur.CoopRefID);
 
             for (int i = 0; i < lesLivres.Count; i++)
             {
-                if (i < listeLivres.Length - 1)
-                {
-                    listeLivres = listeLivres + lesLivres[i].Title + "/";
-                }
-                else
-                {
-                    listeLivres = listeLivres + lesLivres[i].Title;
-                }
+                listeLivres = listeLivres + "/" + lesLivres[i].Title;
             }
             Envoyer(listeLivres, sock);
         }
 
-        private static void EnvoyerListeCoop(Socket sock) // Tester et fonctionne (liste des coops)
+        private static void EnvoyerListeCoop(Socket sock, DataBaseService dbServiceUser) // Tester et fonctionne (liste des coops)
         {
             string listeCoop = "";
-            List<Cooperative> listeCoops = dbService.RetrieveCooperatives();
+            List<Cooperative> listeCoops = dbServiceUser.RetrieveCooperatives();
             for (int i = 0; i < listeCoops.Count; i++)
             {
                 if (i < listeCoops.Count - 1)
@@ -191,7 +181,7 @@ namespace MobileServer
 
             Envoyer(listeCoop, sock);
         }
-        private static void EnvoyerInformationLivre(Socket sock, User utilisateur) 
+        private static void EnvoyerInformationLivre(Socket sock, User utilisateur, DataBaseService dbServiceUser)
         {
 
 
@@ -201,13 +191,13 @@ namespace MobileServer
             string temp = BytesToString(buffer);
             int numeroDuLivre = int.Parse(temp);
 
-            List<Book> lesLivres = dbService.RetrieveBooksByCoopId(utilisateur.CoopRefID); //Utilier la nouvelle commande
+            List<Book> lesLivres = dbServiceUser.RetrieveBooksByCoopId(utilisateur.CoopRefID);
 
             Book leLivre = lesLivres[numeroDuLivre - 1];
 
             string condition;
             string transaction;
-            //----------------------------------------------
+
             if (leLivre.FK_bookcondition == 1)
             {
                 condition = "Comme neuf";
@@ -219,7 +209,8 @@ namespace MobileServer
             else if (leLivre.FK_bookcondition == 3)
             {
                 condition = "Livre très utilisé, pages plié, couverture endommagés";
-            }else
+            }
+            else
             {
                 condition = "Livre en mauvaise condition";
             }
@@ -228,23 +219,22 @@ namespace MobileServer
             {
                 transaction = "À vendre";
             }
-            else 
+            else
             {
                 transaction = "À échanger";
             }
 
 
-            //------------------------------------------------
 
 
 
             string Livre = leLivre.Title + "/" + leLivre.Author + "/" + leLivre.Publishier + "/" + leLivre.Language +
-                           "/" + leLivre.Categorie + "/" + leLivre.price +"/" + leLivre.PageCpt.ToString() + "/" +
+                           "/" + leLivre.Categorie + "/" + leLivre.price + "/" + leLivre.PageCpt.ToString() + "/" +
                            condition + "/" + transaction;
 
             Envoyer(Livre, sock);
         }
-        private static void AjoutLivre(Socket sock)// fait (ajouter livre dans la base de données)
+        private static void AjoutLivre(Socket sock, DataBaseService dbServiceUser)// fait (ajouter livre dans la base de données)
         {
             byte[] buffer = new byte[10000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
@@ -269,27 +259,27 @@ namespace MobileServer
             }
 
             NouveauLivre.Title = livreDecode[2];
-            NouveauLivre.Author = livreDecode[3]; 
+            NouveauLivre.Author = livreDecode[3];
             NouveauLivre.Publishier = livreDecode[4];
             NouveauLivre.Language = livreDecode[5];
             NouveauLivre.Categorie = livreDecode[6];
 
-            NouveauLivre.FK_bookcondition = int.Parse(livreDecode[7]) + 1; // a verifier
+            NouveauLivre.FK_bookcondition = int.Parse(livreDecode[7]) + 1;
 
 
 
-            NouveauLivre.FK_transactionType = int.Parse(livreDecode[8]) + 1; // a verifier
+            NouveauLivre.FK_transactionType = int.Parse(livreDecode[8]) + 1;
             NouveauLivre.price = double.Parse(livreDecode[9]);
-            NouveauLivre.PageCpt = int.Parse(livreDecode[10]); 
+            NouveauLivre.PageCpt = int.Parse(livreDecode[10]);
             NouveauLivre.FK_coop_ref = int.Parse(livreDecode[11]) + 1; //le munérode la coop dans l'ordre envoyé commance à 0 dans le tableau(à vérifier)
-            dbService.RegisterBook(NouveauLivre);
+            dbServiceUser.RegisterBook(NouveauLivre);
         }
 
         private static void EnvoyerLivres(Socket sock) // vérifié et fonctionne (recherche du livre par isbn/ean/upc)
         {
             byte[] buffer = new byte[10000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
-            string Code = BytesToString(buffer); 
+            string Code = BytesToString(buffer);
 
             BookSeachService bookSeach = new BookSeachService("gestionnaireBD", "AIzaSyAKEJaaZvVIMzPCOxqScfyP5UKcrtpjS4c");
 
@@ -304,7 +294,7 @@ namespace MobileServer
             string editeur = result.VolumeInfo.Publisher;
             string langue = result.VolumeInfo.Language;
             string cathegorie = "";
-            double prix = 10;
+            double prix = 0;
             if (result.VolumeInfo.Authors != null)
             {
                 auteur = result.VolumeInfo.Authors.FirstOrDefault();
@@ -321,7 +311,7 @@ namespace MobileServer
                            prix.ToString("0.##") + "/" + nbDePages.ToString();
             Envoyer(envoi, sock);
         }
-        private static User Connexion(Socket sock) // fonctionne
+        private static User Connexion(Socket sock, DataBaseService dbServiceUser) // fonctionne
         {
             byte[] buffer = new byte[10000];
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
@@ -330,9 +320,9 @@ namespace MobileServer
             sock.Receive(buffer, 0, buffer.Length, SocketFlags.None);
             string motDePasse = BytesToString(buffer);
 
-            int loginID = dbService.loginID = dbService.CheckLogInCredentials(nomUtilisateur, motDePasse);
-            User utilisateur = dbService.RetrieveSpecificUser(loginID);
-            
+            int loginID = dbServiceUser.loginID = dbServiceUser.CheckLogInCredentials(nomUtilisateur, motDePasse);
+            User utilisateur = dbServiceUser.RetrieveSpecificUser(loginID);
+
             if (loginID == -1)
             {
                 Envoyer("/Invalide", sock);
@@ -341,7 +331,7 @@ namespace MobileServer
             {
                 Envoyer("/Gestionnaire", sock);
             }
-            else if(utilisateur.UserTypeID == 1)
+            else if (utilisateur.UserTypeID == 1)
             {
                 Envoyer("/Client", sock);
             }
@@ -353,6 +343,3 @@ namespace MobileServer
         }
     }
 }
-
-
-

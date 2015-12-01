@@ -47,3 +47,5 @@ C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireLivre\MobileServ
 C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireLivre\MobileServer\bin\Debug\Zlib.Portable.xml
 C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireLivre\MobileServer\obj\Debug\MobileServer.csproj.App.config
 C:\Users\Mandaniaina\Documents\GitHub\Log210Equipe9\GestionnaireLivre\MobileServer\obj\Debug\MobileServer.csprojResolveAssemblyReference.cache
+C:\Users\Marc-André\Desktop\Log210Equipe9\GestionnaireLivre\MobileServer\bin\Debug\MobileServer.exe
+C:\Users\Marc-André\Desktop\Log210Equipe9\GestionnaireLivre\MobileServer\bin\Debug\GestionnaireLivre.exe

@@ -448,8 +448,7 @@ BEGIN
 		and book.FK_bookcondition = bookcondition.PK_id
 		and book.FK_transactionType = transactiontype.PK_id 
         and book.FK_transactionStatus = transactionstatus.PK_id
-        and book.FK_cooperativeid = cooperative.PK_id
-        and book.FK_transactionStatus = 2;
+        and book.FK_cooperativeid = cooperative.PK_id;
 END ;;
 
 
@@ -460,9 +459,9 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchUserByName`(
 		in userName varchar(50))
 BEGIN
-	select user.PK_Id , user.Name , user.Phone , user.Username, user.Email , usertype.Name ,usertype.PK_id , user.FK_coop_ref
-    from gestionnairebd.user 
-		WHERE  user.Name LIKE userName;
+	select user.PK_Id , user.Name , user.Phone , user.Username, user.Email , usertype.Name ,user.FK_usertype_id, user.FK_coop_ref
+    from gestionnairebd.user , gestionnairebd.usertype
+		WHERE  user.Name LIKE userName AND usertype.`PK_id` =  user.FK_usertype_id;
 END ;;
 
 
@@ -472,9 +471,9 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RetrieveSpecificUser`(
 		in client_id int(11) )
 BEGIN
-	select user.PK_Id , user.Name , user.Phone , user.Username, user.Email , usertype.Name ,usertype.PK_id , user.FK_coop_ref
+	select user.PK_Id , user.Name , user.Phone , user.Username, user.Email , usertype.Name ,user.FK_usertype_id , user.FK_coop_ref
 	from gestionnairebd.user , gestionnairebd.usertype
-	WHERE  user.PK_Id = client_id AND user.FK_usertype_id =  usertype.PK_Id ;
+	WHERE  user.PK_Id = client_id AND usertype.`PK_id` =  user.FK_usertype_id ;
 END ;;
 
 DELIMITER ;
@@ -554,6 +553,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RemoveSpecificBook`(
         in book_id int(11))
 BEGIN
+	DELETE FROM `gestionnairebd`.`user_book` WHERE `FK_book_id`=book_id;
 	DELETE FROM `gestionnairebd`.`book` WHERE `PK_id`=book_id;
 END ;;
 
