@@ -188,7 +188,7 @@ INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('5', 
 
 INSERT INTO `gestionnairebd`.`cooperative` (`PK_id`, `Name`, `Adress`, `Contactinfo`) VALUES ('1', 'Coopérative ETS', '231 something', '231 442 1234');
 
-INSERT INTO `gestionnairebd`.`user` (`PK_id`, `Name`, `Phone`, `Password`, `Username`, `FK_usertype_id`, `Email`,`FK_coop_ref`) VALUES ('1', 'GodClient ', '4189999999', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'test', '1', 'god@paradise.god',0);
+INSERT INTO `gestionnairebd`.`user` (`PK_id`, `Name`, `Phone`, `Password`, `Username`, `FK_usertype_id`, `Email`,`FK_coop_ref`) VALUES ('1', 'GodClient ', '4189999999', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'test', '1', 'god@paradise.god',1);
 INSERT INTO `gestionnairebd`.`user` (`PK_id`, `Name`, `Phone`, `Password`, `Username`, `FK_usertype_id`, `Email` , `FK_coop_ref`) VALUES ('2', 'GodAdmin ', '4189999999', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'test1', '2', 'god@paradise.god' ,1);
 
 
