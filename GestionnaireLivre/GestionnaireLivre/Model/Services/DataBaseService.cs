@@ -614,5 +614,20 @@ namespace GestionnaireLivre.Model.Services
 
             CloseConnection();
         }
+
+        public void CompleteBookTransaction(Book book)
+        {
+
+
+            OpenConnection();
+
+            MySqlCommand cmd = new MySqlCommand("CompleteBookTransaction", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("book_id", book.id));
+            cmd.ExecuteScalar();
+
+
+            CloseConnection();
+        }
     }
 }

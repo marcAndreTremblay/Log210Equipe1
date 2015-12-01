@@ -185,6 +185,7 @@ INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('2', 
 INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('3', 'Reserved');
 INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('4', 'waiting for pick up');
 INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('5', 'In transit');
+INSERT INTO `gestionnairebd`.`transactionstatus` (`PK_id`, `Name`) VALUES ('6', 'Transaction complete');
 
 INSERT INTO `gestionnairebd`.`cooperative` (`PK_id`, `Name`, `Adress`, `Contactinfo`) VALUES ('1', 'Coopérative ETS', '231 something', '231 442 1234');
 
@@ -522,6 +523,17 @@ BEGIN
      WHERE `book`.`PK_id`= book_id ;
 END ;;
 
+DELIMITER ;
+/*!50003 DROP PROCEDURE IF EXISTS `CompleteBookTransaction` */;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CompleteBookTransaction`(
+        in book_id int(11))
+BEGIN
+	UPDATE `gestionnairebd`.`book`
+    SET 
+        `FK_transactionStatus`='6'
+     WHERE `book`.`PK_id`= book_id ;
+END ;;
 
 DELIMITER ;
 /*!50003 DROP PROCEDURE IF EXISTS `UpdateSpecificBookCondition` */;
@@ -543,7 +555,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RemoveSpecificBook`(
         in book_id int(11))
 BEGIN
 	DELETE FROM `gestionnairebd`.`book` WHERE `PK_id`=book_id;
-
 END ;;
 
 
