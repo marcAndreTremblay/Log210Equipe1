@@ -245,7 +245,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
             {
                 body = body + " " + book.Title;
             }
-            body = ".";
+            body = body + ".";
 
             var smtp = new SmtpClient
             {
