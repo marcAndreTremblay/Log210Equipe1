@@ -12,6 +12,7 @@ using GestionnaireLivre.Model.Services;
 using GestionnaireLivre.Model.DataObject;
 using GestionnaireLivre.Forms.UtilityUC;
 using System.Net.Mail;
+using System.Net;
 
 namespace GestionnaireLivre.Forms.MainWindowUC
 {
@@ -77,7 +78,8 @@ namespace GestionnaireLivre.Forms.MainWindowUC
             int id = 0;
             List<User> userList = dBService.SearchUserByName(clientName);
             List<Book> tmpBookList = new List<Book>();
-            
+            bookList = new List<Book>();
+
             if (userList.Count != 0)
             {
                 //Hide no result found error
@@ -135,6 +137,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
         private void showSearchResult(List<Book> tmpBookList, String clientName)
         {
             int id = 0;
+            bookList = new List<Book>();
 
             if (tmpBookList.Count != 0)
             {
@@ -195,6 +198,7 @@ namespace GestionnaireLivre.Forms.MainWindowUC
 
                     searchResultLV.Items.Clear();
                     searchResultLV.Refresh();
+
                 }
                 else
                 {
@@ -232,21 +236,34 @@ namespace GestionnaireLivre.Forms.MainWindowUC
 
         private void sendMail()
         {
-            String body = "Hi, we have well recevied those books:";
-            MailMessage mail = new MailMessage("etienne.lalumiere.1@gmail.com", clientUser.EmailAdress);
-            SmtpClient client = new SmtpClient();
-            client.Port = 25;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Host = "smtp.google.com";
-            mail.Subject = "New book reception";
-            foreach(Book book in bookRecevied)
+            var fromAddress = new MailAddress("log210automne2015@gmail.com", "");
+            var toAddress = new MailAddress(clientUser.EmailAdress, "");
+            const string fromPassword = "log2102015";
+            const string subject = "New book reception";
+            string body = "Hi, we have well recevied those books:";
+            foreach (Book book in bookRecevied)
             {
                 body = body + " " + book.Title;
             }
             body = ".";
-            mail.Body = body;
-            client.Send(mail);
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
         }
 
         private void clearAll()

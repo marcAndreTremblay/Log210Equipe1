@@ -394,10 +394,6 @@ namespace GestionnaireLivre.Model.Services
         }
         
 
-<<<<<<< HEAD
-=======
-   
->>>>>>> 955018908cac8cd2443a21950b158e0146b26f47
         public List<Book> RetrieveLast10BookOnSale()
         {
             OpenConnection();
