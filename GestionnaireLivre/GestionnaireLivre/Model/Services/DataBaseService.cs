@@ -394,27 +394,7 @@ namespace GestionnaireLivre.Model.Services
         }
         
 
-        public List<User> SearchUserByName(string name)
-        {
-            OpenConnection();
-
-            List<User> bookList = new List<User>();
-
-            MySqlCommand cmd = new MySqlCommand("SearchUserByName", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            MySqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
-            {
-                bookList.Add(new User(rdr));
-            }
-
-            CloseConnection();
-
-            return bookList;
-        }
-
+   
         public List<Book> RetrieveLast10BookOnSale()
         {
             OpenConnection();

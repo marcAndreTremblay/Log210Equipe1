@@ -459,7 +459,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchUserByName`(
 		in userName varchar(50))
 BEGIN
-	select user.*
+	select user.PK_Id , user.Name , user.Phone , user.Username, user.Email , usertype.Name ,usertype.PK_id , user.FK_coop_ref
     from gestionnairebd.user 
 		WHERE  user.Name LIKE userName;
 END ;;
