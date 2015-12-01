@@ -125,6 +125,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\MainWindowUC\BookDeliveryUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\MainWindowUC\BookDeliveryUC.Designer.cs">
+      <DependentUpon>BookDeliveryUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainWindowUC\BookReceptionUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\MainWindowUC\BookReceptionUC.Designer.cs">
+      <DependentUpon>BookReceptionUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UtilityUC\BookClientInfoUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,6 +209,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindowUC\AddNewBookUC.resx">
       <DependentUpon>AddNewBookUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainWindowUC\BookDeliveryUC.resx">
+      <DependentUpon>BookDeliveryUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainWindowUC\BookReceptionUC.resx">
+      <DependentUpon>BookReceptionUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindowUC\ClientHomeUC.resx">
       <DependentUpon>ClientHomeUC.cs</DependentUpon>

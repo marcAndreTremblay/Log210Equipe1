@@ -34,6 +34,9 @@ namespace GestionnaireLivre
         private DataBaseService DBService;
         private BookSeachService BookSServices;
         #endregion
+
+        private User loggedUser;
+
         #region Constructors
         public MainWindow(DataBaseService _dbService,BookSeachService _bookSeachServices)
         {
@@ -97,6 +100,9 @@ namespace GestionnaireLivre
         private void MainWindow_Load(object sender, EventArgs e)
         {
             User userinfo = DBService.RetrieveSpecificUser(DBService.loginID);
+
+            loggedUser = userinfo;
+
             labelWelcomeName.Text = "(" + userinfo .UserTypeName+ ")" + userinfo.Name;
             labelClientPhone.Text = userinfo.Phone;
 
@@ -115,10 +121,22 @@ namespace GestionnaireLivre
 
         }
 
+        private void buttonBookReception_Click(object sender, EventArgs e)
+        {
+            BookReceptionUC control = new BookReceptionUC(DBService, loggedUser);
+            showUserControl(control);
+        }
 
+        private void buttonBookDelivery_Click(object sender, EventArgs e)
+        {
+            BookDeliveryUC control = new BookDeliveryUC(DBService, loggedUser);
+            showUserControl(control);
+        }
 
-
-
-
+        private void buttonHome2_Click(object sender, EventArgs e)
+        {
+            GlobalHomeUC control = new GlobalHomeUC(DBService);
+            showUserControl(control);
+        }
     }
 }

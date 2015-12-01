@@ -36,9 +36,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelWelcomeName = new System.Windows.Forms.Label();
             this.panelAdminFunc = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonBookReception = new System.Windows.Forms.Button();
+            this.buttonHome2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.labelClientPhone = new System.Windows.Forms.Label();
+            this.buttonBookDelivery = new System.Windows.Forms.Button();
             this.panelClientFunctionnality.SuspendLayout();
             this.panelAdminFunc.SuspendLayout();
             this.SuspendLayout();
@@ -116,20 +118,33 @@
             // 
             // panelAdminFunc
             // 
-            this.panelAdminFunc.Controls.Add(this.button4);
+            this.panelAdminFunc.Controls.Add(this.buttonBookDelivery);
+            this.panelAdminFunc.Controls.Add(this.buttonBookReception);
+            this.panelAdminFunc.Controls.Add(this.buttonHome2);
             this.panelAdminFunc.Location = new System.Drawing.Point(10, 120);
             this.panelAdminFunc.Name = "panelAdminFunc";
             this.panelAdminFunc.Size = new System.Drawing.Size(130, 205);
             this.panelAdminFunc.TabIndex = 4;
             // 
-            // button4
+            // buttonBookReception
             // 
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(119, 43);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Home";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonBookReception.Location = new System.Drawing.Point(3, 52);
+            this.buttonBookReception.Name = "buttonBookReception";
+            this.buttonBookReception.Size = new System.Drawing.Size(119, 43);
+            this.buttonBookReception.TabIndex = 7;
+            this.buttonBookReception.Text = "Book Reception";
+            this.buttonBookReception.UseVisualStyleBackColor = true;
+            this.buttonBookReception.Click += new System.EventHandler(this.buttonBookReception_Click);
+            // 
+            // buttonHome2
+            // 
+            this.buttonHome2.Location = new System.Drawing.Point(3, 3);
+            this.buttonHome2.Name = "buttonHome2";
+            this.buttonHome2.Size = new System.Drawing.Size(119, 43);
+            this.buttonHome2.TabIndex = 0;
+            this.buttonHome2.Text = "Home";
+            this.buttonHome2.UseVisualStyleBackColor = true;
+            this.buttonHome2.Click += new System.EventHandler(this.buttonHome2_Click);
             // 
             // label2
             // 
@@ -150,6 +165,16 @@
             this.labelClientPhone.Size = new System.Drawing.Size(132, 24);
             this.labelClientPhone.TabIndex = 6;
             this.labelClientPhone.Text = "-435 634 5343-";
+            // 
+            // buttonBookDelivery
+            // 
+            this.buttonBookDelivery.Location = new System.Drawing.Point(3, 101);
+            this.buttonBookDelivery.Name = "buttonBookDelivery";
+            this.buttonBookDelivery.Size = new System.Drawing.Size(119, 43);
+            this.buttonBookDelivery.TabIndex = 8;
+            this.buttonBookDelivery.Text = "Book Delivery";
+            this.buttonBookDelivery.UseVisualStyleBackColor = true;
+            this.buttonBookDelivery.Click += new System.EventHandler(this.buttonBookDelivery_Click);
             // 
             // MainWindow
             // 
@@ -183,12 +208,13 @@
         private System.Windows.Forms.Label labelWelcomeName;
         private System.Windows.Forms.Button buttonMyBook;
         private System.Windows.Forms.Panel panelAdminFunc;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonHome2;
         private System.Windows.Forms.Button buttonSeachBook;
         private System.Windows.Forms.Button buttonAddBook;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelClientPhone;
-
+        private System.Windows.Forms.Button buttonBookReception;
+        private System.Windows.Forms.Button buttonBookDelivery;
     }
 }
 
